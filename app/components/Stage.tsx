@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { BrandSigil, Wordmark } from "./Mark";
 import { useI18n } from "../i18n/I18nProvider";
 
-const STAGE_DONE_KEY = "dya.stage.seen.v10";
 const PER_LINE = 1.4;
 const TAIL = 2.6;
+const SKIPPED_KEY = "dya.stage.skipped";
+const SKIPPED_TTL_MS = 30 * 60 * 1000;
 
 export default function Stage() {
   const { t } = useI18n();
@@ -15,9 +16,19 @@ export default function Stage() {
 
   useEffect(() => {
     try {
-      const seen = window.sessionStorage.getItem(STAGE_DONE_KEY);
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (seen === "1" || reduce) {
+      const forced = new URLSearchParams(window.location.search).has("stage");
+      let recentlySkipped = false;
+      if (!forced) {
+        const raw = window.localStorage.getItem(SKIPPED_KEY);
+        if (raw) {
+          const ts = parseInt(raw, 10);
+          if (!Number.isNaN(ts) && Date.now() - ts < SKIPPED_TTL_MS) {
+            recentlySkipped = true;
+          }
+        }
+      }
+      if ((!forced && recentlySkipped) || reduce) {
         setActive(false);
         document.documentElement.classList.remove("stage-active");
         return;
@@ -34,15 +45,18 @@ export default function Stage() {
     if (!active) return;
     const lines = t.stage.problems.length;
     const totalMs = (lines * PER_LINE + TAIL) * 1000;
-    const id = window.setTimeout(() => exit(), totalMs);
+    const id = window.setTimeout(() => exit(true), totalMs);
     return () => window.clearTimeout(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
 
-  const exit = () => {
-    try {
-      window.sessionStorage.setItem(STAGE_DONE_KEY, "1");
-    } catch {}
+  const exit = (markSkipped: boolean) => {
+    if (markSkipped) {
+      try {
+        window.localStorage.setItem(SKIPPED_KEY, String(Date.now()));
+        window.sessionStorage.removeItem("dya.stage.seen.v10");
+      } catch {}
+    }
     document.documentElement.classList.remove("stage-active");
     document.body.style.overflow = "";
     const el = stageRef.current;
@@ -59,7 +73,7 @@ export default function Stage() {
   };
 
   const skip = () => {
-    exit();
+    exit(true);
   };
 
   if (active === false) return null;

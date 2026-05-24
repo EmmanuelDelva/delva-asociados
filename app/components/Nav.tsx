@@ -62,10 +62,10 @@ export default function Nav() {
       data-nav
     >
       <div className="relative mx-auto flex items-center justify-between gap-2 max-w-[1500px] pl-4 pr-3 md:pl-7 md:pr-5 py-3 md:py-3.5">
-        <Link href="/" className="flex items-center gap-2.5 pl-1 group shrink-0" aria-label="Delva & Asociados — Inicio">
+        <Link href="/" className="flex items-center gap-3 pl-1 group shrink-0" aria-label="Delva & Asociados — Inicio">
           <span
-            style={{ width: 28, height: 28 }}
-            className="block shrink-0 opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+            style={{ width: 40, height: 40 }}
+            className="block shrink-0 opacity-95 group-hover:opacity-100 transition-opacity duration-500"
           >
             <BrandSigil />
           </span>
