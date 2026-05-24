@@ -80,6 +80,9 @@ export default function Stage() {
 
   const lines = t.stage.problems.length;
   const totalSec = lines * PER_LINE + TAIL;
+  const lineDurSec = PER_LINE * 1.8;
+  const revealDelay = lines * PER_LINE - 0.4;
+  const progressDur = totalSec - TAIL + 0.6;
 
   return (
     <div
@@ -88,35 +91,6 @@ export default function Stage() {
       style={{ opacity: active === null ? 0 : 1, transition: "opacity 400ms ease" }}
       aria-hidden={!active}
     >
-      <style jsx>{`
-        @keyframes stageLine {
-          0%   { opacity: 0; transform: translateY(28px); filter: blur(8px); }
-          18%  { opacity: 1; transform: translateY(0); filter: blur(0); }
-          70%  { opacity: 1; transform: translateY(0); filter: blur(0); }
-          100% { opacity: 0; transform: translateY(-18px); filter: blur(6px); }
-        }
-        @keyframes stageReveal {
-          0%, 70% { opacity: 0; transform: translateY(20px); }
-          100%    { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes stageProgress {
-          from { transform: scaleX(0); }
-          to   { transform: scaleX(1); }
-        }
-        .stage-line {
-          animation: stageLine ${PER_LINE * 1.6}s cubic-bezier(0.16, 1, 0.3, 1) both;
-          opacity: 0;
-        }
-        .stage-reveal {
-          animation: stageReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
-          animation-delay: ${lines * PER_LINE - 0.4}s;
-        }
-        .stage-progress {
-          animation: stageProgress ${totalSec - TAIL + 0.4}s linear both;
-          transform-origin: left center;
-        }
-      `}</style>
-
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute -top-32 -right-32 w-[55vmin] h-[55vmin] rounded-full opacity-25 blur-[120px]"
@@ -139,7 +113,10 @@ export default function Stage() {
       </div>
 
       <div className="absolute left-5 right-5 md:left-7 md:right-7 bottom-5 md:bottom-7 h-px bg-bone/15 z-10 overflow-hidden">
-        <div className="stage-progress h-full bg-bone" />
+        <div
+          className="dya-stage-progress h-full bg-bone"
+          style={{ animationDuration: `${progressDur}s` }}
+        />
       </div>
 
       <div className="relative z-10 flex h-full min-h-screen items-center justify-center px-4 sm:px-6 md:px-12 lg:px-20">
@@ -148,10 +125,11 @@ export default function Stage() {
             {t.stage.problems.map((p, i) => (
               <span
                 key={i}
-                className="stage-line absolute font-serif text-[clamp(1.85rem,7vw,5.25rem)] md:text-d-3 leading-[0.98] md:leading-[0.95] text-balance px-2 sm:px-4"
+                className="dya-stage-line absolute font-serif text-[clamp(1.85rem,7vw,5.25rem)] md:text-d-3 leading-[0.98] md:leading-[0.95] text-balance px-2 sm:px-4"
                 style={{
                   fontWeight: 400,
-                  animationDelay: `${i * PER_LINE}s`
+                  animationDelay: `${i * PER_LINE}s`,
+                  animationDuration: `${lineDurSec}s`
                 }}
               >
                 {p}
@@ -159,7 +137,10 @@ export default function Stage() {
             ))}
           </div>
 
-          <div className="stage-reveal mt-12 md:mt-20">
+          <div
+            className="dya-stage-reveal mt-12 md:mt-20"
+            style={{ animationDelay: `${revealDelay}s` }}
+          >
             <p className="font-mono text-[11px] uppercase tracking-[0.32em] opacity-65">
               {t.stage.reveal}
             </p>

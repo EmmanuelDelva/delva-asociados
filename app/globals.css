@@ -72,3 +72,38 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: clip; }
+
+@keyframes dyaStageLine {
+  0%   { opacity: 0; transform: translateY(28px); filter: blur(8px); }
+  16%  { opacity: 1; transform: translateY(0); filter: blur(0); }
+  72%  { opacity: 1; transform: translateY(0); filter: blur(0); }
+  100% { opacity: 0; transform: translateY(-18px); filter: blur(6px); }
+}
+@keyframes dyaStageReveal {
+  0%, 80% { opacity: 0; transform: translateY(22px); }
+  100%    { opacity: 1; transform: translateY(0); }
+}
+@keyframes dyaStageProgress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+.dya-stage-line {
+  opacity: 0;
+  animation-name: dyaStageLine;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: both;
+}
+.dya-stage-reveal {
+  opacity: 0;
+  animation-name: dyaStageReveal;
+  animation-duration: 1.4s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: both;
+}
+.dya-stage-progress {
+  transform-origin: left center;
+  transform: scaleX(0);
+  animation-name: dyaStageProgress;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
