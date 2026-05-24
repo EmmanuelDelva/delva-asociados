@@ -4,13 +4,13 @@ import Link from "next/link";
 import Mark, { Wordmark } from "./Mark";
 import { useI18n } from "../i18n/I18nProvider";
 import { locales } from "../i18n/dict";
-import { servicios } from "../lib/servicios";
+import { areas, getAreaContent } from "../lib/servicios";
 
 const socials = [
-  { label: "Facebook", href: "https://www.facebook.com/DelvaAsociados/", icon: "F" },
+  { label: "Facebook", href: "https://www.facebook.com/DelvaAsociados/", icon: "f" },
   { label: "Instagram", href: "https://instagram.com/DelvaAsociados", icon: "Ig" },
-  { label: "LinkedIn", href: "https://linkedin.com/company/delva-asociados", icon: "In" },
-  { label: "X / Twitter", href: "https://x.com/DelvaAsociados", icon: "X" }
+  { label: "LinkedIn", href: "https://linkedin.com/company/delva-asociados", icon: "in" },
+  { label: "X", href: "https://x.com/DelvaAsociados", icon: "X" }
 ];
 
 export default function Footer() {
@@ -60,13 +60,16 @@ export default function Footer() {
               {t.footer.explore}
             </p>
             <ul className="space-y-2 font-sans text-sm text-ink-soft">
-              {servicios.slice(0, 6).map((s) => (
-                <li key={s.slug}>
-                  <Link href={`/servicios/${s.slug}`} className="hover:text-ink transition-colors">
-                    {s.i18n[locale].title}
-                  </Link>
-                </li>
-              ))}
+              {areas.slice(0, 7).map((a) => {
+                const c = getAreaContent(a, locale);
+                return (
+                  <li key={a.slug}>
+                    <Link href={`/servicios/${a.slug}`} className="hover:text-ink transition-colors">
+                      {c.title}
+                    </Link>
+                  </li>
+                );
+              })}
               <li>
                 <Link href="/#areas" className="font-mono uppercase tracking-widest text-[10.5px] text-ink-mute hover:text-ink transition-colors">
                   {t.nav.submenuExplore} →
@@ -92,12 +95,12 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/despacho" className="hover:text-ink transition-colors">
-                  {t.nav.despacho}
+                  {t.nav.nosotros}
                 </Link>
               </li>
               <li>
                 <Link href="/manifiesto" className="hover:text-ink transition-colors">
-                  {t.nav.manifiesto}
+                  {t.footer.manifiesto}
                 </Link>
               </li>
               <li className="pt-2">
@@ -134,20 +137,6 @@ export default function Footer() {
               <span key={l} className="hover:text-ink transition-colors">{l}</span>
             ))}
           </div>
-        </div>
-
-        <div className="relative mt-14 md:mt-20 -mb-2 md:-mb-6 overflow-hidden">
-          <p
-            className="font-serif leading-[0.85] text-ink select-none"
-            style={{
-              fontSize: "clamp(4rem, 21vw, 21rem)",
-              fontWeight: 400,
-              letterSpacing: "-0.045em",
-              whiteSpace: "nowrap"
-            }}
-          >
-            Delva <span className="italic">&amp;</span> Asociados
-          </p>
         </div>
       </div>
     </footer>

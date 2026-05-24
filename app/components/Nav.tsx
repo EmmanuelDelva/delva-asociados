@@ -5,12 +5,12 @@ import Link from "next/link";
 import Mark, { Wordmark } from "./Mark";
 import { useI18n } from "../i18n/I18nProvider";
 import { locales } from "../i18n/dict";
-import { servicios } from "../lib/servicios";
+import { areas, getAreaContent } from "../lib/servicios";
 
 export default function Nav() {
   const { locale, setLocale, t } = useI18n();
   const [onDark, setOnDark] = useState(true);
-  const [open, setOpen] = useState<"practica" | "mobile" | null>(null);
+  const [open, setOpen] = useState<"servicios" | "mobile" | null>(null);
   const closeTimer = useRef<number | null>(null);
 
   useEffect(() => {
@@ -41,11 +41,11 @@ export default function Nav() {
     : "bg-bone/65 border border-ink/10 backdrop-blur-xl";
   const panelBg = onDark ? "bg-forest border-bone/12 text-bone" : "bg-bone border-ink/10 text-ink";
 
-  const openPractica = () => {
+  const openServicios = () => {
     if (closeTimer.current) window.clearTimeout(closeTimer.current);
-    setOpen("practica");
+    setOpen("servicios");
   };
-  const closePracticaSoon = () => {
+  const closeServiciosSoon = () => {
     if (closeTimer.current) window.clearTimeout(closeTimer.current);
     closeTimer.current = window.setTimeout(() => setOpen(null), 220);
   };
@@ -59,36 +59,39 @@ export default function Nav() {
         </Link>
 
         <nav className="hidden lg:flex items-center gap-0.5 font-mono text-[10.5px] uppercase tracking-[0.2em]">
-          <div className="relative" onMouseEnter={openPractica} onMouseLeave={closePracticaSoon}>
+          <div className="relative" onMouseEnter={openServicios} onMouseLeave={closeServiciosSoon}>
             <button
               type="button"
               className="px-3 py-1.5 opacity-80 hover:opacity-100 transition-opacity duration-300 flex items-center gap-1.5"
-              aria-expanded={open === "practica"}
+              aria-expanded={open === "servicios"}
             >
-              {t.nav.practica}
+              {t.nav.servicios}
               <span aria-hidden className="text-[8px] opacity-60">▼</span>
             </button>
 
-            {open === "practica" && (
+            {open === "servicios" && (
               <div
-                className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[560px] rounded-3xl border ${panelBg} p-5 shadow-2xl`}
-                onMouseEnter={openPractica}
-                onMouseLeave={closePracticaSoon}
+                className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[640px] rounded-3xl border ${panelBg} p-5 shadow-2xl`}
+                onMouseEnter={openServicios}
+                onMouseLeave={closeServiciosSoon}
               >
                 <div className="grid grid-cols-2 gap-1">
-                  {servicios.map((s) => (
-                    <Link
-                      key={s.slug}
-                      href={`/servicios/${s.slug}`}
-                      onClick={() => setOpen(null)}
-                      className="group flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-current/5 transition-colors duration-300"
-                    >
-                      <span className="font-mono text-[9.5px] opacity-50 mt-0.5 w-5">{s.num}</span>
-                      <span className="font-serif normal-case tracking-normal text-[14px] leading-tight">
-                        {s.i18n[locale].title}
-                      </span>
-                    </Link>
-                  ))}
+                  {areas.map((a) => {
+                    const c = getAreaContent(a, locale);
+                    return (
+                      <Link
+                        key={a.slug}
+                        href={`/servicios/${a.slug}`}
+                        onClick={() => setOpen(null)}
+                        className="group flex items-baseline gap-3 px-3 py-2.5 rounded-xl hover:bg-current/5 transition-colors duration-300"
+                      >
+                        <span className="font-mono text-[9.5px] opacity-50 w-5 shrink-0">{a.num}</span>
+                        <span className="font-serif normal-case tracking-normal text-[13.5px] leading-tight">
+                          {c.title}
+                        </span>
+                      </Link>
+                    );
+                  })}
                 </div>
                 <div className="mt-3 pt-3 border-t border-current/15">
                   <Link
@@ -105,13 +108,10 @@ export default function Nav() {
           </div>
 
           <Link href="/despacho" className="px-3 py-1.5 opacity-80 hover:opacity-100 transition-opacity duration-300">
-            {t.nav.despacho}
-          </Link>
-          <Link href="/manifiesto" className="px-3 py-1.5 opacity-80 hover:opacity-100 transition-opacity duration-300">
-            {t.nav.manifiesto}
+            {t.nav.nosotros}
           </Link>
           <Link href="/#firmar" className="px-3 py-1.5 opacity-80 hover:opacity-100 transition-opacity duration-300">
-            {t.nav.dialogo}
+            {t.nav.contacto}
           </Link>
         </nav>
 
@@ -153,22 +153,25 @@ export default function Nav() {
       </div>
 
       {open === "mobile" && (
-        <div className={`lg:hidden mt-2 mx-auto max-w-[1400px] rounded-3xl border ${panelBg} p-5`}>
+        <div className={`lg:hidden mt-2 mx-auto max-w-[1400px] rounded-3xl border ${panelBg} p-5 max-h-[80vh] overflow-y-auto`}>
           <div className="font-mono text-[10px] uppercase tracking-[0.22em] opacity-60 mb-3">
-            {t.nav.practica}
+            {t.nav.servicios}
           </div>
           <div className="grid grid-cols-1 gap-0">
-            {servicios.map((s) => (
-              <Link
-                key={s.slug}
-                href={`/servicios/${s.slug}`}
-                onClick={() => setOpen(null)}
-                className="flex items-baseline gap-3 py-3 border-b border-current/10"
-              >
-                <span className="font-mono text-[10px] opacity-50 w-7">{s.num}</span>
-                <span className="font-serif text-[16px] leading-tight">{s.i18n[locale].title}</span>
-              </Link>
-            ))}
+            {areas.map((a) => {
+              const c = getAreaContent(a, locale);
+              return (
+                <Link
+                  key={a.slug}
+                  href={`/servicios/${a.slug}`}
+                  onClick={() => setOpen(null)}
+                  className="flex items-baseline gap-3 py-3 border-b border-current/10"
+                >
+                  <span className="font-mono text-[10px] opacity-50 w-7">{a.num}</span>
+                  <span className="font-serif text-[15px] leading-tight">{c.title}</span>
+                </Link>
+              );
+            })}
           </div>
           <div className="mt-5 grid grid-cols-2 gap-3">
             <Link
@@ -176,14 +179,14 @@ export default function Nav() {
               onClick={() => setOpen(null)}
               className="font-mono text-[10.5px] uppercase tracking-[0.2em] py-2.5 rounded-full border border-current/30 text-center"
             >
-              {t.nav.despacho}
+              {t.nav.nosotros}
             </Link>
             <Link
               href="/manifiesto"
               onClick={() => setOpen(null)}
               className="font-mono text-[10.5px] uppercase tracking-[0.2em] py-2.5 rounded-full border border-current/30 text-center"
             >
-              {t.nav.manifiesto}
+              {t.footer.manifiesto}
             </Link>
           </div>
           <a

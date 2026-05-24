@@ -26,10 +26,10 @@ export default function DespachoClient() {
         </div>
         <div className="relative z-10 px-6 md:px-12 lg:px-20">
           <p className="font-mono text-[10.5px] uppercase tracking-[0.28em] text-bone/60 mb-8 reveal-init">
-            {t.despachoPage.kicker}
+            {t.nosotrosPage.kicker}
           </p>
           <h1 className="font-serif text-d-3 md:text-d-4 max-w-5xl leading-[0.9] reveal-init" style={{ fontWeight: 400 }}>
-            {t.despachoPage.title}
+            {t.nosotrosPage.title}
           </h1>
         </div>
       </section>
@@ -55,7 +55,7 @@ export default function DespachoClient() {
                       Juan Emmanuel Delva Benavides
                     </p>
                     <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-bone/55">
-                      {t.despachoPage.label} · MMXXV
+                      {t.nosotrosPage.label} · MMXXV
                     </p>
                   </div>
                 </div>
@@ -64,8 +64,8 @@ export default function DespachoClient() {
 
             <div className="col-span-12 md:col-span-7 reveal-init">
               <div className="space-y-6 font-serif text-[1.18rem] md:text-[1.35rem] leading-[1.5] text-ink-soft" style={{ fontWeight: 400 }}>
-                {t.despachoPage.bio.map((p, i) => (
-                  <p key={i} className={i === t.despachoPage.bio.length - 1 ? "text-ink" : ""}>
+                {t.nosotrosPage.bio.map((p, i) => (
+                  <p key={i} className={i === t.nosotrosPage.bio.length - 1 ? "text-ink" : ""}>
                     {p}
                   </p>
                 ))}
@@ -83,7 +83,7 @@ export default function DespachoClient() {
                   href="/#firmar"
                   className="inline-flex items-center gap-2 border border-ink/40 font-mono text-[11px] uppercase tracking-[0.2em] rounded-full px-5 py-3 hover:bg-ink hover:text-bone transition-colors duration-500"
                 >
-                  {t.despachoPage.credCta}
+                  {t.nosotrosPage.credCta}
                 </a>
               </div>
             </div>

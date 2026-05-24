@@ -1,0 +1,49 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { areas, getProblematica } from "../../../lib/servicios";
+import ProblemaClient from "./ProblemaClient";
+
+export function generateStaticParams() {
+  const params: { slug: string; problema: string }[] = [];
+  areas.forEach((a) => {
+    a.problematicas.forEach((p) => {
+      params.push({ slug: a.slug, problema: p.id });
+    });
+  });
+  return params;
+}
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ slug: string; problema: string }>;
+}): Promise<Metadata> {
+  const { slug, problema } = await params;
+  const found = getProblematica(slug, problema);
+  if (!found) return { title: "No encontrado · Delva & Asociados" };
+  const pc = found.problema.i18n.es!;
+  return {
+    title: `${pc.title} — Delva & Asociados`,
+    description: pc.hook,
+    openGraph: {
+      title: pc.title,
+      description: pc.hook
+    }
+  };
+}
+
+export default async function ProblemaPage({
+  params
+}: {
+  params: Promise<{ slug: string; problema: string }>;
+}) {
+  const { slug, problema } = await params;
+  const found = getProblematica(slug, problema);
+  if (!found) notFound();
+
+  const { area, problema: prob } = found;
+  const index = area.problematicas.findIndex((p) => p.id === prob.id);
+  const next = area.problematicas[(index + 1) % area.problematicas.length];
+
+  return <ProblemaClient area={area} problema={prob} next={next} />;
+}

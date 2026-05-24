@@ -40,9 +40,9 @@ export default function ManifiestoClient() {
     }, containerRef);
 
     return () => ctx.revert();
-  }, [t.manifestoPage]);
+  }, [t.manifiestoPage]);
 
-  const body = t.manifestoPage.body.join(" ");
+  const body = t.manifiestoPage.body.join(" ");
   const words = body.split(/\s+/);
 
   return (
@@ -55,10 +55,10 @@ export default function ManifiestoClient() {
       >
         <div className="px-6 md:px-12 lg:px-20">
           <p className="font-mono text-[10.5px] uppercase tracking-[0.28em] text-ink-mute mb-8 reveal-init">
-            {t.manifestoPage.kicker}
+            {t.manifiestoPage.kicker}
           </p>
           <h1 className="font-serif text-d-2 md:text-d-3 text-balance leading-[0.95] max-w-5xl reveal-init" style={{ fontWeight: 400 }}>
-            {t.manifestoPage.title}
+            {t.manifiestoPage.title}
           </h1>
         </div>
       </section>
@@ -97,7 +97,7 @@ export default function ManifiestoClient() {
             Pull quote
           </p>
           <p className="font-serif italic text-d-1 md:text-d-2 max-w-5xl leading-[1.1] text-balance reveal-init" style={{ fontWeight: 400 }}>
-            &ldquo;{t.manifestoPage.pull}&rdquo;
+            &ldquo;{t.manifiestoPage.pull}&rdquo;
           </p>
         </div>
       </section>
