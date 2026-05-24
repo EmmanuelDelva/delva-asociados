@@ -11,8 +11,8 @@ export default async function OG() {
         style={{
           width: "100%",
           height: "100%",
-          background: "oklch(0.158 0.018 155)",
-          color: "oklch(0.962 0.008 85)",
+          background: "#171f1c",
+          color: "#f5f2eb",
           display: "flex",
           flexDirection: "column",
           padding: 80,
