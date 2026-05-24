@@ -24,17 +24,31 @@ export default function AreasInteractivas() {
           <div className="col-span-12 md:col-span-8 reveal-init">
             <TextScramble
               as="p"
-              text={t.areas.kicker}
+              text={
+                locale === "es"
+                  ? "Vista detallada"
+                  : locale === "en"
+                  ? "Detailed view"
+                  : "Vue détaillée"
+              }
               className="block font-mono text-[10.5px] uppercase tracking-[0.32em] text-ink-mute mb-5"
             />
             <h2
-              className="font-serif text-d-2 md:text-d-3 text-balance max-w-4xl leading-[0.95]"
+              className="font-serif text-d-1 md:text-d-2 text-balance max-w-4xl leading-[0.98]"
               style={{ fontWeight: 400 }}
             >
-              {t.areas.title}
+              {locale === "es"
+                ? "Recorrelas una por una."
+                : locale === "en"
+                ? "Browse them one by one."
+                : "Parcourez-les une par une."}
             </h2>
             <p className="mt-5 max-w-2xl text-base md:text-lg text-ink-soft">
-              {t.areas.sub}
+              {locale === "es"
+                ? "Pasa el cursor sobre cualquier área para verla expandida."
+                : locale === "en"
+                ? "Hover any area to see it expanded."
+                : "Survolez n'importe quel domaine pour le voir développé."}
             </p>
           </div>
           <div className="col-span-12 md:col-span-4 md:text-right reveal-init">

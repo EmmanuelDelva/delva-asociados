@@ -1,6 +1,7 @@
 import Nav from "./components/Nav";
 import Stage from "./components/Stage";
 import Hero from "./components/Hero";
+import AreasShowcase from "./components/AreasShowcase";
 import AreasInteractivas from "./components/AreasInteractivas";
 import Dominios from "./components/Dominios";
 import FirmaCTA from "./components/FirmaCTA";
@@ -12,6 +13,7 @@ export default function Home() {
       <Stage />
       <Nav />
       <Hero />
+      <AreasShowcase />
       <AreasInteractivas />
       <Dominios />
       <FirmaCTA />
