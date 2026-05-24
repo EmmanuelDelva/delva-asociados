@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useI18n } from "../i18n/I18nProvider";
-import { areas, getAreaContent, getProblematicaContent } from "../lib/servicios";
+import { areas, getAreaContent } from "../lib/servicios";
+import TextScramble from "./TextScramble";
 import ProblemaScene from "./ProblemaScene";
 
 export default function AreasInteractivas() {
@@ -16,23 +17,33 @@ export default function AreasInteractivas() {
     <section
       id="areas"
       data-surface="light"
-      className="relative bg-bone text-ink py-20 md:py-32 overflow-hidden"
+      className="relative bg-bone text-ink py-16 md:py-24 overflow-hidden"
     >
       <div className="px-6 md:px-12 lg:px-20">
-        <div className="grid grid-cols-12 gap-6 mb-10 md:mb-16 items-end">
-          <div className="col-span-12 md:col-span-8 reveal-init">
-            <p className="font-mono text-[10.5px] uppercase tracking-[0.28em] text-ink-mute mb-5">
-              {t.areas.kicker}
-            </p>
+        <div className="grid grid-cols-12 gap-6 mb-8 md:mb-12 items-end">
+          <div className="col-span-12 md:col-span-7 reveal-init">
+            <TextScramble
+              as="p"
+              text={t.areas.kicker}
+              className="block font-mono text-[10.5px] uppercase tracking-[0.28em] text-ink-mute mb-4"
+            />
             <h2 className="font-serif text-d-2 md:text-d-3 text-balance max-w-4xl leading-[0.95]" style={{ fontWeight: 400 }}>
               {t.areas.title}
             </h2>
-            <p className="mt-5 max-w-2xl text-base md:text-lg text-ink-soft">{t.areas.sub}</p>
+          </div>
+          <div className="col-span-12 md:col-span-4 md:col-start-9 md:text-right reveal-init">
+            <Link
+              href="/servicios"
+              className="inline-flex items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.22em] border border-ink/30 rounded-full px-4 py-2.5 hover:bg-ink hover:text-bone transition-colors duration-500"
+            >
+              {t.nav.submenuExplore}
+              <span aria-hidden>→</span>
+            </Link>
           </div>
         </div>
 
-        <div className="grid grid-cols-12 gap-4 md:gap-8 items-stretch">
-          <ol className="col-span-12 md:col-span-5 lg:col-span-4 border-t border-ink/12">
+        <div className="grid grid-cols-12 gap-3 md:gap-6 items-start">
+          <ol className="col-span-12 md:col-span-7 lg:col-span-7 border-t border-ink/12">
             {areas.map((a, i) => {
               const c = getAreaContent(a, locale);
               const isActive = i === activeIdx;
@@ -43,21 +54,20 @@ export default function AreasInteractivas() {
                     href={`/servicios/${a.slug}`}
                     onMouseEnter={() => setActiveIdx(i)}
                     onFocus={() => setActiveIdx(i)}
-                    onClick={() => setActiveIdx(i)}
-                    className={`group block py-3 md:py-4 px-1 transition-colors duration-500 ${
+                    className={`group block py-2.5 md:py-3 px-1 transition-colors duration-500 ${
                       isActive ? "bg-bone-soft/70" : "hover:bg-bone-soft/40"
                     }`}
                   >
-                    <div className="grid grid-cols-12 gap-2 md:gap-3 items-baseline">
-                      <span className={`col-span-2 font-mono text-[10.5px] uppercase tracking-widest ${accentText}`}>
+                    <div className="grid grid-cols-12 gap-2 items-baseline">
+                      <span className={`col-span-2 md:col-span-1 font-mono text-[10px] uppercase tracking-widest ${accentText}`}>
                         {a.num}
                       </span>
-                      <span className="col-span-9 font-serif text-[1.1rem] md:text-[1.25rem] leading-[1.1] tracking-tight" style={{ fontWeight: 400 }}>
+                      <span className="col-span-9 md:col-span-10 font-serif text-[1.05rem] md:text-[1.18rem] leading-[1.05] tracking-tight" style={{ fontWeight: 400 }}>
                         {c.title}
                       </span>
                       <span
                         aria-hidden
-                        className={`col-span-1 text-right font-mono text-[12px] transition-all duration-500 ${
+                        className={`col-span-1 text-right font-mono text-[11px] transition-all duration-500 ${
                           isActive ? "translate-x-1 opacity-100" : "opacity-30 group-hover:opacity-70"
                         }`}
                       >
@@ -68,20 +78,16 @@ export default function AreasInteractivas() {
                 </li>
               );
             })}
-            <li className="pt-4 pb-2 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
-              <span>{t.areas.pick}</span>
-              <span>{String(activeIdx + 1).padStart(2, "0")} / 12</span>
-            </li>
           </ol>
 
-          <div className="col-span-12 md:col-span-7 lg:col-span-8">
+          <div className="col-span-12 md:col-span-5 lg:col-span-5 md:sticky md:top-28 self-start hidden md:block">
             <div
               key={activeArea.slug}
-              className="relative h-full min-h-[480px] md:min-h-[600px] rounded-3xl overflow-hidden border border-ink/10 bg-forest text-bone grain animate-in fade-in duration-700"
+              className="relative rounded-2xl overflow-hidden border border-ink/10 bg-forest text-bone grain min-h-[380px] p-7 lg:p-8 animate-in fade-in duration-500"
             >
               <div className="absolute inset-0 pointer-events-none">
                 <div
-                  className="absolute -top-20 -right-20 w-[55vmin] h-[55vmin] rounded-full opacity-30 blur-[120px]"
+                  className="absolute -top-20 -right-20 w-[40vmin] h-[40vmin] rounded-full opacity-30 blur-[120px]"
                   style={{
                     background:
                       activeArea.accent === "ember"
@@ -91,67 +97,33 @@ export default function AreasInteractivas() {
                         : "oklch(0.34 0.08 150)"
                   }}
                 />
-                <div
-                  className="absolute -bottom-20 -left-20 w-[40vmin] h-[40vmin] rounded-full opacity-15 blur-[140px]"
-                  style={{ background: "oklch(0.34 0.080 150)" }}
-                />
               </div>
-
-              <div className="relative h-full flex flex-col md:flex-row">
-                <div className="flex-1 flex flex-col p-6 md:p-10 lg:p-12">
-                  <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.28em] text-bone/60">
-                    <span>§ {activeArea.num}</span>
-                    <span>{activeArea.problematicas.length} {locale === "es" ? "casos" : locale === "en" ? "cases" : "cas"}</span>
-                  </div>
-
-                  <h3
-                    className="font-serif text-[2.2rem] md:text-[3.4rem] lg:text-[4rem] mt-5 md:mt-8 leading-[0.95] text-balance"
-                    style={{ fontWeight: 400 }}
-                  >
-                    {activeContent.title}
-                  </h3>
-
-                  <p className="mt-5 md:mt-7 max-w-[42ch] text-bone/75 leading-relaxed text-[0.98rem] md:text-base">
-                    {activeContent.intro}
-                  </p>
-
-                  <ul className="mt-6 md:mt-8 space-y-2 max-w-[42ch]">
-                    {activeArea.problematicas.slice(0, 3).map((p) => {
-                      const pc = getProblematicaContent(p, locale);
-                      return (
-                        <li key={p.id} className="flex items-baseline gap-3 font-sans text-[0.92rem] md:text-[0.98rem] text-bone/80">
-                          <span aria-hidden className="opacity-50 text-[10px] font-mono">—</span>
-                          <span className="leading-snug">{pc.title}</span>
-                        </li>
-                      );
-                    })}
-                  </ul>
-
-                  <div className="mt-auto pt-8 md:pt-10 flex flex-wrap items-center gap-3">
-                    <Link
-                      href={`/servicios/${activeArea.slug}`}
-                      className="inline-flex items-center gap-2 bg-bone text-forest font-mono text-[10.5px] uppercase tracking-[0.2em] rounded-full px-4 py-2.5 hover:bg-ember transition-colors duration-500"
-                    >
-                      {t.areas.open}
-                      <span aria-hidden>→</span>
-                    </Link>
-                    <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-bone/55">
-                      {activeArea.problematicas.length} {locale === "es" ? "problemas resueltos" : locale === "en" ? "problems resolved" : "problèmes résolus"}
-                    </span>
-                  </div>
+              <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[55%] aspect-square pointer-events-none text-bone/40">
+                <ProblemaScene key={activeArea.slug} scene={activeArea.scene} accent={activeArea.accent} />
+              </div>
+              <div className="relative h-full flex flex-col">
+                <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.24em] text-bone/55">
+                  <span>§ {activeArea.num}</span>
                 </div>
-
-                <div className="hidden md:flex w-[42%] lg:w-[40%] items-center justify-center p-6 lg:p-10 border-l border-bone/12">
-                  <div className="w-full max-w-[340px] aspect-square text-bone/85">
-                    <ProblemaScene key={activeArea.slug} scene={activeArea.problematicas[0].scene} accent={activeArea.accent} />
-                  </div>
-                </div>
+                <h3 className="font-serif text-[1.8rem] lg:text-[2.2rem] mt-5 leading-[1.0] text-balance max-w-[14ch]" style={{ fontWeight: 400 }}>
+                  {activeContent.title}
+                </h3>
+                <p className="mt-3 text-[0.92rem] text-bone/80 leading-snug max-w-[26ch]">
+                  {activeContent.short}
+                </p>
+                <Link
+                  href={`/servicios/${activeArea.slug}`}
+                  className="mt-auto pt-6 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-bone/70 hover:text-bone transition-colors duration-500 self-start border-b border-bone/30 hover:border-bone pb-1"
+                >
+                  {t.areas.open}
+                  <span aria-hidden>→</span>
+                </Link>
               </div>
             </div>
           </div>
         </div>
 
-        <p className="mt-12 max-w-3xl font-serif italic text-lg md:text-xl text-ink-soft reveal-init" style={{ fontWeight: 400 }}>
+        <p className="mt-10 max-w-3xl font-serif italic text-base md:text-lg text-ink-soft reveal-init" style={{ fontWeight: 400 }}>
           {t.areas.cta}
         </p>
       </div>

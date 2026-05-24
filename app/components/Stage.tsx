@@ -5,7 +5,7 @@ import gsap from "gsap";
 import Mark, { Wordmark } from "./Mark";
 import { useI18n } from "../i18n/I18nProvider";
 
-const STAGE_DONE_KEY = "dya.stage.seen";
+const STAGE_DONE_KEY = "dya.stage.seen.v3";
 
 export default function Stage() {
   const { t } = useI18n();

@@ -1,12 +1,19 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { useI18n } from "../i18n/I18nProvider";
 import Mark from "./Mark";
+import Marquee from "./Marquee";
+import TextScramble from "./TextScramble";
+
+const HERO_IMAGE = "/scenes/hero.jpg";
 
 export default function Hero() {
   const { t } = useI18n();
   const ampRef = useRef<HTMLSpanElement>(null);
+  const gradientRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     let raf = 0;
@@ -26,12 +33,47 @@ export default function Hero() {
     };
   }, []);
 
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => {
+      if (!sectionRef.current || !gradientRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      gradientRef.current.style.background = `radial-gradient(600px circle at ${x}% ${y}%, oklch(0.72 0.155 50 / 0.18), transparent 70%)`;
+    };
+    const node = sectionRef.current;
+    if (node) node.addEventListener("mousemove", onMove);
+    return () => {
+      if (node) node.removeEventListener("mousemove", onMove);
+    };
+  }, []);
+
+  const heroProblems = [
+    t.stage.problems[2],
+    t.stage.problems[6],
+    t.stage.problems[1],
+    t.stage.problems[4],
+    t.stage.problems[5]
+  ].filter(Boolean);
+
   return (
     <section
       id="top"
+      ref={sectionRef}
       data-surface="dark"
       className="relative bg-forest text-bone overflow-hidden grain min-h-[100svh] flex flex-col"
     >
+      <Image
+        src={HERO_IMAGE}
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center opacity-35 pointer-events-none"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-forest/85 via-forest/70 to-forest/95 pointer-events-none" />
+      <div ref={gradientRef} className="absolute inset-0 pointer-events-none transition-opacity duration-500" />
+
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute top-1/4 right-[-15%] w-[60vmin] h-[60vmin] rounded-full opacity-20 blur-[140px]"
@@ -59,9 +101,9 @@ export default function Hero() {
       </span>
 
       <div className="relative z-10 flex-1 flex flex-col px-6 md:px-12 lg:px-20 pt-32 md:pt-40 pb-16">
-        <p className="reveal-init font-mono text-[10.5px] uppercase tracking-[0.28em] opacity-65 mb-10 md:mb-14">
-          {t.hero.eyebrow}
-          <span className="ml-2 opacity-50 hidden sm:inline">— MMXXV · Guadalajara · Internacional</span>
+        <p className="reveal-init font-mono text-[10.5px] uppercase tracking-[0.28em] opacity-75 mb-10 md:mb-14 flex flex-wrap items-center gap-3">
+          <TextScramble as="span" text={t.hero.eyebrow} trigger="mount" duration={1.6} />
+          <span className="opacity-50 hidden sm:inline">— MMXXV · Guadalajara · Internacional</span>
         </p>
 
         <div className="flex-1 flex items-center max-w-6xl">
@@ -82,6 +124,7 @@ export default function Hero() {
           <div className="col-span-12 md:col-span-4 md:col-start-9 flex flex-wrap items-center gap-3 md:justify-end reveal-init">
             <a
               href="#firmar"
+              data-magnetic
               className="group inline-flex items-center gap-2 bg-bone text-forest font-mono text-[11px] uppercase tracking-[0.2em] rounded-full px-5 py-3 hover:bg-ember transition-colors duration-500"
             >
               {t.hero.ctaPrimary}
@@ -97,8 +140,12 @@ export default function Hero() {
         </div>
 
         <div className="absolute bottom-5 left-6 md:left-12 lg:left-20 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.28em] opacity-50">
-          <Mark size={20} />
+          <Mark size={26} />
         </div>
+      </div>
+
+      <div className="relative z-10 border-t border-bone/12 py-5 md:py-7 overflow-hidden text-bone/75">
+        <Marquee items={heroProblems} speed={48} />
       </div>
     </section>
   );

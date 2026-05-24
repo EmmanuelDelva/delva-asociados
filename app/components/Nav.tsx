@@ -53,21 +53,20 @@ export default function Nav() {
   return (
     <header className={`fixed top-3 md:top-5 left-0 right-0 z-50 px-3 md:px-6 transition-colors duration-700 ease-out ${tone}`} data-nav>
       <div className={`relative mx-auto flex items-center justify-between gap-2 max-w-[1400px] rounded-full ${pill} pl-3 pr-2 py-2 transition-colors duration-700`}>
-        <Link href="/" className="flex items-center gap-2.5 pl-1 group shrink-0">
-          <Mark size={28} />
-          <Wordmark className="hidden sm:inline text-[10.5px]" />
+        <Link href="/" className="flex items-center gap-2.5 pl-2 group shrink-0">
+          <Wordmark className="text-[10.5px] sm:text-[11px]" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-0.5 font-mono text-[10.5px] uppercase tracking-[0.2em]">
           <div className="relative" onMouseEnter={openServicios} onMouseLeave={closeServiciosSoon}>
-            <button
-              type="button"
+            <Link
+              href="/servicios"
               className="px-3 py-1.5 opacity-80 hover:opacity-100 transition-opacity duration-300 flex items-center gap-1.5"
               aria-expanded={open === "servicios"}
             >
               {t.nav.servicios}
               <span aria-hidden className="text-[8px] opacity-60">▼</span>
-            </button>
+            </Link>
 
             {open === "servicios" && (
               <div
@@ -116,7 +115,7 @@ export default function Nav() {
         </nav>
 
         <div className="flex items-center gap-1.5">
-          <div className="hidden sm:flex items-center gap-0.5 font-mono text-[10px] uppercase tracking-widest px-1">
+          <div className="flex items-center gap-0.5 font-mono text-[10px] uppercase tracking-widest px-0.5 sm:px-1">
             {locales.map((loc) => (
               <button
                 key={loc}

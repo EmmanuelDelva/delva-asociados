@@ -51,6 +51,16 @@ export default function AreaClient({ area, next }: { area: Area; next: Area }) {
             scrub: 0.6
           }
         });
+        gsap.to(sceneRef.current.querySelectorAll("[data-parallax-bg]"), {
+          y: "+=80",
+          scale: 1.1,
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1
+          }
+        });
       }
     }, heroRef);
     return () => ctx.revert();
@@ -71,6 +81,19 @@ export default function AreaClient({ area, next }: { area: Area; next: Area }) {
 
       <section ref={heroRef} data-surface="dark" className="relative bg-forest text-bone overflow-hidden grain min-h-[90svh]">
         <div ref={sceneRef} className="absolute inset-0 pointer-events-none">
+          {area.image && (
+            <div data-parallax-bg className="absolute inset-0 will-change-transform">
+              <Image
+                src={area.image}
+                alt=""
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover object-center opacity-35"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-forest/70 via-forest/55 to-forest/95" />
+            </div>
+          )}
           <div data-orb className="absolute top-[18%] right-[-12%] w-[55vmin] h-[55vmin] rounded-full opacity-25 blur-[140px]" style={{ background: accentGlow }} />
           <div data-orb className="absolute bottom-[-15%] left-[-10%] w-[45vmin] h-[45vmin] rounded-full opacity-20 blur-[160px]" style={{ background: "oklch(0.34 0.080 150)" }} />
         </div>
@@ -100,7 +123,7 @@ export default function AreaClient({ area, next }: { area: Area; next: Area }) {
 
           <div className="grid grid-cols-12 gap-6 mt-12 md:mt-16 items-end">
             <div className="col-span-12 md:col-span-7" data-hero-anim>
-              <p className="font-serif italic text-[1.25rem] md:text-[1.6rem] leading-[1.4] text-bone/80" style={{ fontWeight: 400 }}>
+              <p className="font-serif italic text-[1.25rem] md:text-[1.6rem] leading-[1.4] text-bone/85" style={{ fontWeight: 400 }}>
                 {content.intro}
               </p>
             </div>
@@ -149,8 +172,9 @@ export default function AreaClient({ area, next }: { area: Area; next: Area }) {
                   href={`/servicios/${area.slug}/${p.id}`}
                   className="group relative aspect-[5/4] sm:aspect-[3/2] md:aspect-[4/3] rounded-2xl overflow-hidden border border-ink/12 bg-bone-soft hover:border-ink/40 transition-all duration-700 reveal-init"
                   style={{ transitionDelay: `${Math.min(i * 50, 360)}ms` }}
+                  data-magnetic
                 >
-                  <div className="absolute inset-0 opacity-25 pointer-events-none">
+                  <div className="absolute inset-0 opacity-20 pointer-events-none group-hover:opacity-30 transition-opacity duration-700">
                     <ProblemaScene scene={p.scene} accent={area.accent} />
                   </div>
                   <div className="relative h-full flex flex-col p-5 md:p-7">
@@ -182,7 +206,7 @@ export default function AreaClient({ area, next }: { area: Area; next: Area }) {
             <div className="flex items-start justify-between gap-6">
               <div className="flex-1">
                 <p className="font-mono text-[10.5px] uppercase tracking-[0.28em] text-ink-mute mb-4 flex items-center gap-2">
-                  {t.problemaPage.next.replace("caso", "área").replace("cas", "domaine").replace("case", "area")} <span aria-hidden className="opacity-50">— {next.num}</span>
+                  {locale === "es" ? "Siguiente área" : locale === "en" ? "Next area" : "Domaine suivant"} <span aria-hidden className="opacity-50">— {next.num}</span>
                 </p>
                 <h3 className="font-serif text-d-1 md:text-d-2 text-balance leading-[0.96]" style={{ fontWeight: 400 }}>
                   {getAreaContent(next, locale).title}

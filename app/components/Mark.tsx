@@ -1,86 +1,52 @@
+"use client";
+
+import Image from "next/image";
+import { useState } from "react";
+
 type MarkProps = {
   size?: number;
   className?: string;
 };
 
-export default function Mark({ size = 44, className = "" }: MarkProps) {
+export default function Mark({ size = 80, className = "" }: MarkProps) {
+  const [failed, setFailed] = useState(false);
+  if (failed) {
+    return (
+      <Wordmark className={`text-[14px] ${className}`} />
+    );
+  }
   return (
     <span
-      className={`relative inline-flex items-center justify-center ${className}`}
-      style={{ width: size, height: size, flexShrink: 0 }}
-      aria-label="Delva y Asociados"
-      role="img"
+      className={`relative inline-block ${className}`}
+      style={{ width: size, height: size }}
+      aria-label="Delva & Asociados"
     >
-      <svg
-        viewBox="0 0 70 70"
-        width={size}
-        height={size}
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden
-      >
-        <path
-          d="M 14 12 L 14 58 L 38 58 C 53 58 60 50 60 35 C 60 20 53 12 38 12 Z"
-          stroke="currentColor"
-          strokeWidth="2.2"
-          fill="none"
-          strokeLinejoin="round"
-          strokeLinecap="round"
-        />
-        <text
-          x="40"
-          y="44"
-          textAnchor="middle"
-          fontFamily="var(--font-instrument-serif), Georgia, serif"
-          fontSize="22"
-          fontWeight="400"
-          fill="currentColor"
-          style={{ letterSpacing: "-0.02em" }}
-        >
-          @
-        </text>
-      </svg>
-    </span>
-  );
-}
-
-export function MarkSigil({ size = 22, className = "" }: MarkProps) {
-  return (
-    <span
-      className={`relative inline-flex items-center justify-center align-middle ${className}`}
-      style={{ width: size, height: size, flexShrink: 0 }}
-      aria-hidden
-    >
-      <svg viewBox="0 0 70 70" width={size} height={size} fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M 14 12 L 14 58 L 38 58 C 53 58 60 50 60 35 C 60 20 53 12 38 12 Z"
-          stroke="currentColor"
-          strokeWidth="2.6"
-          fill="none"
-          strokeLinejoin="round"
-          strokeLinecap="round"
-        />
-        <text
-          x="40"
-          y="45"
-          textAnchor="middle"
-          fontFamily="var(--font-instrument-serif), Georgia, serif"
-          fontSize="22"
-          fontWeight="400"
-          fill="currentColor"
-        >
-          @
-        </text>
-      </svg>
+      <Image
+        src="/logo.png"
+        alt="Delva & Asociados"
+        fill
+        sizes={`${size}px`}
+        className="object-contain"
+        onError={() => setFailed(true)}
+        priority
+      />
     </span>
   );
 }
 
 export function Wordmark({ className = "" }: { className?: string }) {
   return (
-    <span className={`font-sans tracking-[0.18em] uppercase inline-flex items-center ${className}`} style={{ fontWeight: 500 }}>
+    <span
+      className={`font-sans tracking-[0.28em] uppercase inline-flex items-center ${className}`}
+      style={{ fontWeight: 400 }}
+    >
       <span>Delva</span>
-      <MarkSigil size={20} className="mx-[0.6em]" />
+      <span
+        className="mx-[0.8em] font-serif italic tracking-normal"
+        style={{ fontSize: "1.35em", fontWeight: 400 }}
+      >
+        &amp;
+      </span>
       <span>Asociados</span>
     </span>
   );

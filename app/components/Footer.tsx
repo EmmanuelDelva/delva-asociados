@@ -3,18 +3,18 @@
 import Link from "next/link";
 import Mark, { Wordmark } from "./Mark";
 import { useI18n } from "../i18n/I18nProvider";
-import { locales } from "../i18n/dict";
 import { areas, getAreaContent } from "../lib/servicios";
 
-const socials = [
-  { label: "Facebook", href: "https://www.facebook.com/DelvaAsociados/", icon: "f" },
-  { label: "Instagram", href: "https://instagram.com/DelvaAsociados", icon: "Ig" },
-  { label: "LinkedIn", href: "https://linkedin.com/company/delva-asociados", icon: "in" },
-  { label: "X", href: "https://x.com/DelvaAsociados", icon: "X" }
-];
+function FacebookIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor" aria-hidden>
+      <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.099 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.412c0-3.027 1.792-4.7 4.533-4.7 1.313 0 2.686.236 2.686.236v2.97h-1.513c-1.49 0-1.956.93-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.099 24 12.073z" />
+    </svg>
+  );
+}
 
 export default function Footer() {
-  const { t, locale, setLocale } = useI18n();
+  const { t, locale } = useI18n();
 
   return (
     <footer
@@ -24,11 +24,8 @@ export default function Footer() {
       <div className="px-6 md:px-12 lg:px-20">
         <div className="grid grid-cols-12 gap-6 border-t border-ink/15 pt-12">
           <div className="col-span-12 md:col-span-5">
-            <div className="flex items-center gap-3">
-              <Mark size={42} />
-              <Wordmark className="text-[11.5px] md:text-[12.5px]" />
-            </div>
-            <p className="mt-5 max-w-[40ch] font-serif italic text-ink-soft text-lg leading-snug" style={{ fontWeight: 400 }}>
+            <Mark size={140} />
+            <p className="mt-6 max-w-[40ch] font-serif italic text-ink-soft text-lg leading-snug" style={{ fontWeight: 400 }}>
               {t.footer.tagline}
             </p>
 
@@ -36,22 +33,20 @@ export default function Footer() {
               <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute mb-3">
                 {t.footer.social}
               </p>
-              <div className="flex items-center gap-2">
-                {socials.map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={s.label}
-                    className="group inline-flex items-center justify-center w-10 h-10 rounded-full border border-ink/20 hover:border-ink hover:bg-ink hover:text-bone transition-all duration-500"
-                  >
-                    <span className="font-serif italic text-base group-hover:scale-110 transition-transform duration-500" style={{ fontWeight: 400 }}>
-                      {s.icon}
-                    </span>
-                  </a>
-                ))}
-              </div>
+              <a
+                href="https://www.facebook.com/DelvaAsociados/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook — Delva & Asociados"
+                className="group inline-flex items-center gap-3 border border-ink/20 hover:border-ink hover:bg-ink hover:text-bone rounded-full pl-3 pr-5 py-2.5 transition-all duration-500"
+              >
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-ink/8 group-hover:bg-bone/15 transition-colors duration-500">
+                  <FacebookIcon size={14} />
+                </span>
+                <span className="font-mono text-[10.5px] uppercase tracking-[0.22em]">
+                  /DelvaAsociados
+                </span>
+              </a>
             </div>
           </div>
 
@@ -107,26 +102,6 @@ export default function Footer() {
                 <span className="text-ink/70">Guadalajara, Jalisco · México</span>
               </li>
             </ul>
-
-            <div className="mt-6">
-              <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute mb-2">
-                ES · EN · FR
-              </p>
-              <div className="flex gap-1 font-mono text-[11px] uppercase tracking-widest">
-                {locales.map((loc) => (
-                  <button
-                    key={loc}
-                    onClick={() => setLocale(loc)}
-                    aria-pressed={locale === loc}
-                    className={`px-2 py-1 rounded-full transition-all duration-300 uppercase ${
-                      locale === loc ? "bg-ink text-bone" : "text-ink-mute hover:text-ink"
-                    }`}
-                  >
-                    {loc.toUpperCase()}
-                  </button>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
 

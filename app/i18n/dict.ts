@@ -102,7 +102,7 @@ export const dict: Record<Locale, Dict> = {
     },
     hero: {
       eyebrow: "Despacho jurídico digital",
-      title: "Antes de la firma. Durante el caso. Después de tu última sesión.",
+      title: "Antes del prompt. Durante el incidente. Después de tu última sesión.",
       sub: "Asesoramos a personas y empresas en lo que pasa cuando tu vida o tu negocio ocurren en pantallas: cripto, IA, redes, herencia digital, mundos virtuales, eSports y todo lo que aún no tiene nombre legal pero ya tiene consecuencias.",
       ctaPrimary: "Empezar",
       ctaSecondary: "Ver servicios"
@@ -201,7 +201,7 @@ export const dict: Record<Locale, Dict> = {
     },
     hero: {
       eyebrow: "Digital law firm",
-      title: "Before the signature. During the case. After your last session.",
+      title: "Before the prompt. During the incident. After your last session.",
       sub: "We advise people and companies on what happens when your life or business unfolds on screens: crypto, AI, social, digital legacy, virtual worlds, esports and everything that still has no legal name but already has consequences.",
       ctaPrimary: "Get started",
       ctaSecondary: "See services"
@@ -300,7 +300,7 @@ export const dict: Record<Locale, Dict> = {
     },
     hero: {
       eyebrow: "Cabinet juridique numérique",
-      title: "Avant la signature. Pendant l'affaire. Après votre dernière session.",
+      title: "Avant le prompt. Pendant l'incident. Après votre dernière session.",
       sub: "Nous conseillons particuliers et entreprises sur tout ce qui arrive quand votre vie ou votre activité se passe à l'écran : crypto, IA, réseaux, héritage numérique, mondes virtuels, esports et tout ce qui n'a pas encore de nom juridique mais déjà des conséquences.",
       ctaPrimary: "Commencer",
       ctaSecondary: "Voir les services"
