@@ -10,6 +10,7 @@ import { areas, getAreaContent } from "../lib/servicios";
 export default function Nav() {
   const { locale, setLocale, t } = useI18n();
   const [onDark, setOnDark] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState<"servicios" | "mobile" | null>(null);
   const closeTimer = useRef<number | null>(null);
 
@@ -25,6 +26,7 @@ export default function Nav() {
         }
       });
       setOnDark(current === "dark");
+      setScrolled(window.scrollY > 16);
     };
     update();
     window.addEventListener("scroll", update, { passive: true });
@@ -36,10 +38,12 @@ export default function Nav() {
   }, []);
 
   const tone = onDark ? "text-bone" : "text-ink";
-  const pill = onDark
-    ? "bg-forest/55 border border-bone/12 backdrop-blur-xl"
-    : "bg-bone/65 border border-ink/10 backdrop-blur-xl";
-  const panelBg = onDark ? "bg-forest border-bone/12 text-bone" : "bg-bone border-ink/10 text-ink";
+  const banner = onDark
+    ? "bg-forest border-b border-bone/10"
+    : "bg-bone border-b border-ink/10";
+  const panelBg = onDark
+    ? "bg-forest border-bone/12 text-bone"
+    : "bg-bone border-ink/10 text-ink";
 
   const openServicios = () => {
     if (closeTimer.current) window.clearTimeout(closeTimer.current);
@@ -51,8 +55,13 @@ export default function Nav() {
   };
 
   return (
-    <header className={`fixed top-3 md:top-5 left-0 right-0 z-50 px-3 md:px-6 transition-colors duration-700 ease-out ${tone}`} data-nav>
-      <div className={`relative mx-auto flex items-center justify-between gap-2 max-w-[1400px] rounded-full ${pill} pl-3 pr-2 py-2 transition-colors duration-700`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ease-out ${tone} ${banner} ${
+        scrolled ? "shadow-[0_8px_32px_-12px_rgba(0,0,0,0.45)]" : ""
+      }`}
+      data-nav
+    >
+      <div className="relative mx-auto flex items-center justify-between gap-2 max-w-[1500px] pl-4 pr-3 md:pl-7 md:pr-5 py-3 md:py-3.5">
         <Link href="/" className="flex items-center gap-2.5 pl-1 group shrink-0" aria-label="Delva & Asociados — Inicio">
           <span
             style={{ width: 28, height: 28 }}
@@ -158,7 +167,7 @@ export default function Nav() {
       </div>
 
       {open === "mobile" && (
-        <div className={`lg:hidden mt-2 mx-auto max-w-[1400px] rounded-3xl border ${panelBg} p-5 max-h-[80vh] overflow-y-auto`}>
+        <div className={`lg:hidden ${panelBg} border-t border-current/10 px-5 py-5 max-h-[85vh] overflow-y-auto`}>
           <div className="font-mono text-[10px] uppercase tracking-[0.22em] opacity-60 mb-3">
             {t.nav.servicios}
           </div>

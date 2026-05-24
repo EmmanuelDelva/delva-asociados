@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { BrandSigil, Wordmark } from "./Mark";
 import { useI18n } from "../i18n/I18nProvider";
 
-const STAGE_DONE_KEY = "dya.stage.seen.v8";
+const STAGE_DONE_KEY = "dya.stage.seen.v10";
 const PER_LINE = 1.4;
 const TAIL = 2.6;
 
