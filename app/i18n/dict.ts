@@ -108,7 +108,7 @@ export const dict: Record<Locale, Dict> = {
     },
     firma: {
       kicker: "Firmar",
-      title: "Cuando estés listo, hay tres formas de empezar.",
+      title: "Cuando estés listo, hay varias formas de empezar.",
       sub: "El primer diálogo no se cobra. Treinta minutos para entender el caso y decirte qué vemos. Después, tú decides.",
       optionEmail: "Correo",
       optionWhatsapp: "WhatsApp",
@@ -197,7 +197,7 @@ export const dict: Record<Locale, Dict> = {
     },
     firma: {
       kicker: "Engage",
-      title: "When you're ready, there are three ways to start.",
+      title: "When you're ready, there are several ways to start.",
       sub: "The first conversation is on us. Thirty minutes to understand the case and tell you what we see. Then it's your call.",
       optionEmail: "Email",
       optionWhatsapp: "WhatsApp",
@@ -286,7 +286,7 @@ export const dict: Record<Locale, Dict> = {
     },
     firma: {
       kicker: "Engager",
-      title: "Quand vous êtes prêt, trois façons de commencer.",
+      title: "Quand vous êtes prêt, plusieurs façons de commencer.",
       sub: "Le premier échange est offert. Trente minutes pour comprendre l'affaire et vous dire ce que nous voyons. Ensuite, c'est vous qui décidez.",
       optionEmail: "Courriel",
       optionWhatsapp: "WhatsApp",
