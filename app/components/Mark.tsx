@@ -1,5 +1,8 @@
 "use client";
 
+import Image from "next/image";
+import { useState } from "react";
+
 type MarkProps = {
   size?: number;
   className?: string;
@@ -18,6 +21,32 @@ export default function Mark({ size = 96, className = "" }: MarkProps) {
 }
 
 export function BrandSigil({ className = "" }: { className?: string }) {
+  const [failed, setFailed] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+
+  if (failed) {
+    return <BrandSigilSvg className={className} />;
+  }
+
+  return (
+    <span className={`relative block w-full h-full ${className}`}>
+      <Image
+        src="/logo.png"
+        alt="Delva & Asociados"
+        fill
+        sizes="(max-width: 768px) 120px, 200px"
+        className={`object-contain transition-opacity duration-300 ${
+          loaded ? "opacity-100" : "opacity-0"
+        }`}
+        onLoadingComplete={() => setLoaded(true)}
+        onError={() => setFailed(true)}
+        priority
+      />
+    </span>
+  );
+}
+
+function BrandSigilSvg({ className = "" }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 200 200"
