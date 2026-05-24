@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: auto;
+    color-scheme: light;
+  }
+
+  body {
+    @apply bg-bone text-ink font-sans;
+    font-feature-settings: "kern", "liga", "calt", "ss01";
+    overscroll-behavior: none;
+  }
+
+  ::selection {
+    background: oklch(0.715 0.155 55);
+    color: oklch(0.962 0.008 85);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-feature-settings: "ss01", "liga", "kern";
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  .optical-display {
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+
+  .optical-text {
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 14, "SOFT" 50;
+  }
+
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.045;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .hairline-b { border-bottom: 1px solid currentColor; }
+  .hairline-t { border-top: 1px solid currentColor; }
+
+  .reveal-init {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+    transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1), transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal-init.reveal-in {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .clip-reveal-init {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: clip-path;
+  }
+  .clip-reveal-init.reveal-in {
+    clip-path: inset(0 0 0 0);
+  }
+
+  .no-cursor, .no-cursor * { cursor: none !important; }
+}
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }
