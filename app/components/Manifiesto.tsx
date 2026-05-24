@@ -1,67 +1,94 @@
+"use client";
+
+import { useI18n } from "../i18n/I18nProvider";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 export default function Manifiesto() {
+  const { t } = useI18n();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const wordsRef = useRef<(HTMLSpanElement | null)[]>([]);
+
+  useEffect(() => {
+    const words = wordsRef.current.filter(Boolean) as HTMLSpanElement[];
+    if (!words.length || !containerRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        words,
+        { opacity: 0.12 },
+        {
+          opacity: 1,
+          stagger: { each: 0.04, from: "start" },
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 70%",
+            end: "bottom 30%",
+            scrub: 0.8
+          }
+        }
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, [t]);
+
+  const lead = t.manifiesto.lead;
+  const body = t.manifiesto.body.join(" ");
+  const words = body.split(/\s+/);
+
   return (
     <section
       id="manifiesto"
       data-surface="light"
-      className="relative bg-bone text-ink py-32 md:py-48 lg:py-56 overflow-hidden"
+      className="relative bg-bone text-ink py-32 md:py-48 overflow-hidden"
     >
-      <div className="px-6 md:px-10 lg:px-14">
-        <div className="grid grid-cols-12 gap-6">
-          <div className="col-span-12 md:col-span-3">
-            <p className="font-mono text-[10.5px] uppercase tracking-[0.28em] text-ink-mute reveal-init">
-              § I / Manifiesto
-            </p>
-          </div>
+      <div className="px-6 md:px-12 lg:px-20">
+        <p className="font-mono text-[10.5px] uppercase tracking-[0.28em] text-ink-mute mb-10 reveal-init">
+          {t.manifiesto.kicker}
+        </p>
 
-          <div className="col-span-12 md:col-span-9 md:col-start-4">
-            <h2 className="font-serif optical-display text-display-sm md:text-display-md leading-[0.95] tracking-tightest text-balance reveal-init"
-                style={{ fontWeight: 300 }}>
-              El derecho{" "}
-              <span className="italic" style={{ fontWeight: 400 }}>llega tarde</span>{" "}
-              a casi todo lo nuevo. Y cuando llega, lo hace mal.
-            </h2>
-          </div>
+        <div className="max-w-5xl">
+          <h2
+            className="font-serif text-d-2 md:text-d-3 text-balance leading-[0.96] reveal-init"
+            style={{ fontWeight: 400 }}
+          >
+            {lead.split(" ").map((w, i) =>
+              w.toLowerCase() === "tarde." || w.toLowerCase() === "late." || w.toLowerCase() === "retard" ? (
+                <span key={i} className="italic">
+                  {w}{" "}
+                </span>
+              ) : (
+                <span key={i}>{w} </span>
+              )
+            )}
+          </h2>
         </div>
 
-        <div className="grid grid-cols-12 gap-6 mt-20 md:mt-32">
-          <div className="col-span-12 md:col-span-6 md:col-start-4">
-            <div className="space-y-7 font-serif text-[1.15rem] md:text-[1.28rem] leading-[1.55] text-ink-soft optical-text reveal-init">
-              <p>
-                Llega con vocabulario prestado de una economía que ya no existe,
-                con jueces sin contexto técnico, y con reglas escritas para un
-                contrato firmado en papel por dos personas en la misma sala.
-              </p>
-              <p>
-                Tu contrato lo escribió un algoritmo. Tu marca vive en plataformas
-                que cambian sus términos cada trimestre. Tu ingreso cruza tres
-                jurisdicciones antes del desayuno. Tu propiedad puede ser un{" "}
-                <span className="italic">token</span> que solo existe porque la
-                red lo acuerda.
-              </p>
-              <p className="text-ink">
-                Construimos un despacho para esa realidad. No un despacho
-                tradicional con un departamento digital. Un despacho cuya práctica
-                nació en y para la economía digital, y que conoce el código que
-                te exigen firmar.
-              </p>
-            </div>
-          </div>
-
-          <div className="col-span-12 md:col-span-2 md:col-start-11 mt-12 md:mt-0">
-            <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute md:text-right reveal-init">
-              <p className="mb-2">Lectura</p>
-              <p className="text-ink/80">2 min</p>
-              <div className="mt-6 md:ml-auto h-px w-12 bg-ink-mute" />
-              <p className="mt-6 italic font-serif normal-case tracking-normal text-[14px] text-ink/70 leading-snug">
-                &ldquo;Not your keys, not your coins.
-                <br />
-                Not your lawyer, not your protection.&rdquo;
-              </p>
-            </div>
-          </div>
+        <div
+          ref={containerRef}
+          className="mt-16 md:mt-24 max-w-3xl font-serif text-[1.4rem] md:text-[1.85rem] leading-[1.45]"
+          style={{ fontWeight: 400 }}
+        >
+          {words.map((w, i) => (
+            <span
+              key={i}
+              ref={(el) => {
+                wordsRef.current[i] = el;
+              }}
+              className="inline-block mr-[0.22em]"
+            >
+              {w}
+            </span>
+          ))}
         </div>
       </div>
     </section>
   );
 }
-

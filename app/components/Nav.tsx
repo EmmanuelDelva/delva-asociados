@@ -2,22 +2,17 @@
 
 import { useEffect, useState } from "react";
 import Mark, { Wordmark } from "./Mark";
-
-const links = [
-  { label: "Manifiesto", href: "#manifiesto" },
-  { label: "Práctica", href: "#practica" },
-  { label: "Capacidades", href: "#capacidades" },
-  { label: "Despacho", href: "#despacho" },
-  { label: "Diálogo", href: "#dialogo" }
-];
+import { useI18n } from "../i18n/I18nProvider";
+import { locales, type Locale } from "../i18n/dict";
 
 export default function Nav() {
+  const { locale, setLocale, t } = useI18n();
   const [onDark, setOnDark] = useState(true);
 
   useEffect(() => {
     const update = () => {
       const sections = document.querySelectorAll<HTMLElement>("[data-surface]");
-      const midline = window.innerHeight * 0.12;
+      const midline = window.innerHeight * 0.1;
       let current: "dark" | "light" = "dark";
       sections.forEach((s) => {
         const r = s.getBoundingClientRect();
@@ -36,49 +31,68 @@ export default function Nav() {
     };
   }, []);
 
-  const color = onDark ? "text-bone" : "text-ink";
+  const tone = onDark ? "text-bone" : "text-ink";
+  const pill = onDark
+    ? "bg-forest/55 border border-bone/12 backdrop-blur-xl"
+    : "bg-bone/65 border border-ink/10 backdrop-blur-xl";
+
+  const links = [
+    { label: t.nav.practica, href: "#servicios" },
+    { label: t.nav.manifiesto, href: "#manifiesto" },
+    { label: t.nav.conduccion, href: "#despacho" },
+    { label: t.nav.dialogo, href: "#dialogo" }
+  ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-700 ease-out-expo ${color}`}
+      className={`fixed top-4 md:top-5 left-0 right-0 z-50 px-4 md:px-6 transition-colors duration-700 ease-out ${tone}`}
+      data-nav
     >
-      <div className="flex items-center justify-between px-6 md:px-10 lg:px-14 pt-6 md:pt-8">
-        <a href="#top" className="group flex items-center gap-3">
-          <Mark size={36} thin />
-          <Wordmark className="hidden sm:inline text-[15px] md:text-[16px]" />
+      <div className={`mx-auto flex items-center justify-between gap-3 max-w-[1400px] rounded-full ${pill} pl-3 pr-2 py-2 transition-colors duration-700`}>
+        <a href="#top" className="flex items-center gap-2.5 pl-1 group">
+          <Mark size={30} />
+          <Wordmark className="hidden sm:inline text-[11px]" />
         </a>
 
-        <nav className="hidden md:flex items-center gap-1 font-mono text-[11px] uppercase tracking-widest">
+        <nav className="hidden md:flex items-center gap-1 font-mono text-[10.5px] uppercase tracking-[0.2em]">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="px-3 py-2 opacity-70 hover:opacity-100 transition-opacity duration-500"
+              className="px-3 py-1.5 opacity-65 hover:opacity-100 transition-opacity duration-500"
             >
-              <span className="opacity-50 mr-1.5">{String(links.indexOf(l) + 1).padStart(2, "0")}</span>
               {l.label}
             </a>
           ))}
         </nav>
 
-        <a
-          href="#dialogo"
-          className="hidden md:inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest border border-current rounded-full px-4 py-2 hover:bg-current group transition-colors duration-500"
-        >
-          <span className={onDark ? "group-hover:text-forest" : "group-hover:text-bone"}>
-            Reservar diálogo
-          </span>
-          <span className={`inline-block ${onDark ? "group-hover:text-forest" : "group-hover:text-bone"}`}>
-            →
-          </span>
-        </a>
-
-        <a
-          href="#dialogo"
-          className="md:hidden font-mono text-[11px] uppercase tracking-widest border border-current rounded-full px-3 py-1.5"
-        >
-          Diálogo
-        </a>
+        <div className="flex items-center gap-2">
+          <div className="hidden sm:flex items-center gap-0.5 font-mono text-[10px] uppercase tracking-widest opacity-75 px-1">
+            {locales.map((loc) => (
+              <button
+                key={loc}
+                onClick={() => setLocale(loc)}
+                aria-pressed={locale === loc}
+                className={`px-1.5 py-1 rounded-full transition-all duration-300 ${
+                  locale === loc ? "opacity-100 underline underline-offset-4" : "opacity-50 hover:opacity-90"
+                }`}
+              >
+                {loc}
+              </button>
+            ))}
+          </div>
+          <a
+            href="#dialogo"
+            className={`inline-flex items-center gap-1.5 font-mono text-[10.5px] uppercase tracking-[0.18em] rounded-full px-4 py-2 transition-all duration-500 ${
+              onDark
+                ? "bg-bone text-forest hover:bg-ember"
+                : "bg-ink text-bone hover:bg-forest"
+            }`}
+          >
+            {t.nav.cta}
+            <span aria-hidden>→</span>
+          </a>
+        </div>
       </div>
     </header>
   );

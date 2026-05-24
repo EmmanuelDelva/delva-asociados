@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useI18n } from "../i18n/I18nProvider";
 import Mark from "./Mark";
 
 export default function Hero() {
-  const titleRef = useRef<HTMLHeadingElement>(null);
+  const { t } = useI18n();
   const ampRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -13,11 +14,8 @@ export default function Hero() {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
         const y = window.scrollY;
-        if (titleRef.current) {
-          titleRef.current.style.transform = `translate3d(0, ${y * 0.18}px, 0)`;
-        }
         if (ampRef.current) {
-          ampRef.current.style.transform = `translate3d(0, ${y * -0.08}px, 0) rotate(${y * 0.02}deg)`;
+          ampRef.current.style.transform = `translate3d(0, ${y * -0.05}px, 0) rotate(${y * 0.012}deg)`;
         }
       });
     };
@@ -32,90 +30,73 @@ export default function Hero() {
     <section
       id="top"
       data-surface="dark"
-      className="relative bg-forest text-bone overflow-hidden grain"
-      style={{ minHeight: "100vh" }}
+      className="relative bg-forest text-bone overflow-hidden grain min-h-screen flex flex-col"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div
-          className="absolute -top-32 -right-32 w-[60vmin] h-[60vmin] rounded-full opacity-[0.18] blur-[120px]"
-          style={{ background: "oklch(0.345 0.080 150)" }}
+          className="absolute top-1/4 right-[-15%] w-[60vmin] h-[60vmin] rounded-full opacity-20 blur-[140px]"
+          style={{ background: "oklch(0.34 0.080 150)" }}
         />
         <div
-          className="absolute bottom-0 -left-20 w-[40vmin] h-[40vmin] rounded-full opacity-[0.12] blur-[140px]"
-          style={{ background: "oklch(0.715 0.155 55)" }}
+          className="absolute -bottom-32 left-[-10%] w-[50vmin] h-[50vmin] rounded-full opacity-15 blur-[160px]"
+          style={{ background: "oklch(0.72 0.155 50)" }}
         />
       </div>
 
       <span
         ref={ampRef}
         aria-hidden
-        className="pointer-events-none absolute select-none font-serif italic text-forest-soft"
+        className="pointer-events-none absolute select-none font-serif italic text-forest-glow/15"
         style={{
-          right: "-6vw",
-          top: "8vh",
+          right: "-8vw",
+          bottom: "-10vh",
           fontSize: "min(80vh, 80vw)",
           lineHeight: 0.8,
-          opacity: 0.55,
-          fontFeatureSettings: '"ss01"',
-          fontWeight: 300
+          fontWeight: 400
         }}
       >
         &amp;
       </span>
 
-      <div className="relative z-10 flex flex-col min-h-screen px-6 md:px-10 lg:px-14 pt-32 md:pt-40 pb-12">
-        <div className="flex items-center justify-between font-mono text-[10.5px] uppercase tracking-[0.28em] opacity-70">
-          <span>§ 00 / Atrio</span>
-          <span className="hidden sm:inline">
-            Establecido MMXXV · Guadalajara · Práctica internacional
-          </span>
-        </div>
+      <div className="relative z-10 flex-1 flex flex-col px-6 md:px-12 lg:px-20 pt-32 md:pt-40 pb-16">
+        <p className="reveal-init font-mono text-[10.5px] uppercase tracking-[0.28em] opacity-65 mb-10 md:mb-14">
+          {t.hero.eyebrow} <span className="ml-2 opacity-50">— MMXXV · Guadalajara · Internacional</span>
+        </p>
 
-        <div className="flex-1 flex flex-col justify-center mt-8 md:mt-0 max-w-[88%] md:max-w-[78%] lg:max-w-[68%]">
+        <div className="flex-1 flex items-center max-w-6xl">
           <h1
-            ref={titleRef}
-            className="font-serif optical-display text-display-md md:text-display-lg lg:text-display-xl text-balance"
-            style={{ fontWeight: 300 }}
+            className="reveal-init font-serif text-d-2 md:text-d-3 text-balance"
+            style={{ fontWeight: 400 }}
           >
-            Asesoramos lo que el derecho{" "}
-            <span className="italic" style={{ fontWeight: 400 }}>
-              aún
-            </span>{" "}
-            no nombra.
+            {t.hero.title}
           </h1>
         </div>
 
-        <div className="grid grid-cols-12 gap-6 mt-auto pt-12 md:pt-20">
-          <div className="col-span-12 md:col-span-5">
-            <p className="font-sans text-base md:text-lg leading-relaxed text-bone/80 max-w-[42ch] optical-text">
-              Despacho boutique para fundadores Web3, creadores digitales, FinTech
-              y todo proyecto cuyo riesgo legal se mide en líneas de código.
-              Jurisprudencia donde existe; criterio donde aún no.
+        <div className="grid grid-cols-12 gap-6 mt-14 md:mt-20 items-end">
+          <div className="col-span-12 md:col-span-6 reveal-init">
+            <p className="font-sans text-[1.02rem] md:text-[1.12rem] leading-[1.55] text-bone/75 max-w-[48ch]">
+              {t.hero.sub}
             </p>
           </div>
-
-          <div className="col-span-12 md:col-span-4 md:col-start-9 flex flex-col gap-3 md:items-end">
+          <div className="col-span-12 md:col-span-5 md:col-start-8 flex flex-wrap items-center gap-3 md:justify-end reveal-init">
             <a
               href="#dialogo"
-              className="group inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-widest border border-bone/80 rounded-full px-5 py-3 hover:bg-bone hover:text-forest transition-colors duration-500"
+              className="group inline-flex items-center gap-2 bg-bone text-forest font-mono text-[11px] uppercase tracking-[0.2em] rounded-full px-5 py-3 hover:bg-ember transition-colors duration-500"
             >
-              Inicia el diálogo
-              <span aria-hidden className="transition-transform duration-500 group-hover:translate-x-1">
-                →
-              </span>
+              {t.hero.ctaPrimary}
+              <span aria-hidden className="transition-transform duration-500 group-hover:translate-x-1">→</span>
             </a>
             <a
-              href="#practica"
-              className="font-mono text-[11px] uppercase tracking-widest opacity-60 hover:opacity-100 transition-opacity"
+              href="#servicios"
+              className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-bone/75 hover:text-bone transition-colors duration-500 border-b border-bone/30 hover:border-bone pb-1"
             >
-              Ver áreas de práctica
+              {t.hero.ctaSecondary}
             </a>
           </div>
         </div>
 
-        <div className="absolute bottom-6 left-6 md:left-10 lg:left-14 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.28em] opacity-60">
-          <Mark size={22} thin />
-          <span>Scroll · § I a VI</span>
+        <div className="absolute bottom-5 left-6 md:left-12 lg:left-20 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.28em] opacity-50">
+          <Mark size={20} />
         </div>
       </div>
     </section>

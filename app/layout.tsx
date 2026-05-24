@@ -1,44 +1,35 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Inter_Tight, JetBrains_Mono } from "next/font/google";
+import { Instrument_Serif } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
 import Cursor from "./components/Cursor";
+import { I18nProvider } from "./i18n/I18nProvider";
 
-const fraunces = Fraunces({
+const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
-  variable: "--font-fraunces",
-  display: "swap",
-  axes: ["opsz", "SOFT"]
-});
-
-const interTight = Inter_Tight({
-  subsets: ["latin"],
-  variable: "--font-geist-sans",
-  display: "swap"
-});
-
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument-serif",
   display: "swap"
 });
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "oklch(0.158 0.018 155)"
+  themeColor: "oklch(0.14 0.018 155)"
 };
 
 export const metadata: Metadata = {
-  title: "Delva & Asociados — Despacho jurídico para la economía digital",
+  title: "Delva & Asociados — Derecho para todo lo que pasa después de la app.",
   description:
-    "Boutique jurídica para fundadores Web3, creadores digitales, FinTech y todo proyecto cuyo riesgo legal se mide en líneas de código. Guadalajara, internacional.",
+    "Despacho jurídico boutique para usuarios y empresas en lo digital, lo cripto, la inteligencia artificial y los mundos virtuales. Guadalajara, internacional.",
   keywords: [
     "despacho jurídico",
     "abogado web3",
     "derecho blockchain",
-    "abogado cripto México",
-    "derecho digital",
+    "derecho digital México",
     "FinTech legal",
     "IA derecho",
     "creadores digitales legal",
@@ -48,9 +39,8 @@ export const metadata: Metadata = {
   creator: "Delva & Asociados",
   metadataBase: new URL("https://delvayasociados.com"),
   openGraph: {
-    title: "Delva & Asociados — Derecho para todo lo que aún no se nombra",
-    description:
-      "Despacho boutique para Web3, IA, FinTech, gaming, metaverso y economía de creadores.",
+    title: "Delva & Asociados",
+    description: "Derecho para todo lo que pasa después de la app.",
     type: "website",
     locale: "es_MX",
     siteName: "Delva & Asociados"
@@ -58,7 +48,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Delva & Asociados",
-    description: "Derecho diseñado para la próxima década."
+    description: "Derecho para todo lo que pasa después de la app."
   },
   robots: { index: true, follow: true }
 };
@@ -66,13 +56,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
-      lang="es-MX"
-      className={`${fraunces.variable} ${interTight.variable} ${jetbrains.variable}`}
+      lang="es"
+      className={`${instrumentSerif.variable} ${GeistSans.variable} ${GeistMono.variable}`}
     >
       <body className="antialiased no-cursor">
-        <SmoothScroll />
-        <Cursor />
-        {children}
+        <I18nProvider>
+          <SmoothScroll />
+          <Cursor />
+          {children}
+        </I18nProvider>
       </body>
     </html>
   );
