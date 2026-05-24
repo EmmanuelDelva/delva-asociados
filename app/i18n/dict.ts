@@ -109,7 +109,7 @@ export const dict: Record<Locale, Dict> = {
     },
     areas: {
       kicker: "Lo que más resolvemos",
-      title: "Doce áreas. Una pregunta: ¿qué te pasó?",
+      title: "Una pregunta: ¿qué te pasó?",
       sub: "Toca cada área para ver de qué se trata.",
       pick: "Elige un área",
       open: "Entrar al área",
@@ -208,7 +208,7 @@ export const dict: Record<Locale, Dict> = {
     },
     areas: {
       kicker: "What we resolve most",
-      title: "Twelve areas. One question: what happened to you?",
+      title: "One question: what happened to you?",
       sub: "Tap each area to see what it's about.",
       pick: "Choose an area",
       open: "Open area",
@@ -307,7 +307,7 @@ export const dict: Record<Locale, Dict> = {
     },
     areas: {
       kicker: "Là où nous intervenons le plus",
-      title: "Douze domaines. Une question : que vous est-il arrivé ?",
+      title: "Une question : que vous est-il arrivé ?",
       sub: "Touchez chaque domaine pour voir de quoi il s'agit.",
       pick: "Choisir un domaine",
       open: "Ouvrir",

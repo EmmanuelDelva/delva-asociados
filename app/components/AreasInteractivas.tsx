@@ -1,132 +1,241 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import Image from "next/image";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import { useI18n } from "../i18n/I18nProvider";
 import { areas, getAreaContent } from "../lib/servicios";
 import TextScramble from "./TextScramble";
 import ProblemaScene from "./ProblemaScene";
 
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 export default function AreasInteractivas() {
   const { t, locale } = useI18n();
-  const [activeIdx, setActiveIdx] = useState(0);
-  const activeArea = areas[activeIdx];
-  const activeContent = getAreaContent(activeArea, locale);
+  const sectionRef = useRef<HTMLElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<(HTMLAnchorElement | null)[]>([]);
+  const headingRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !sectionRef.current || !trackRef.current) return;
+    const isMobile = window.matchMedia("(max-width: 900px)").matches;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (isMobile || reduce) return;
+
+    const ctx = gsap.context(() => {
+      const track = trackRef.current!;
+      const cards = cardsRef.current.filter(Boolean) as HTMLAnchorElement[];
+      const totalWidth = track.scrollWidth - window.innerWidth;
+
+      const trigger = ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top top",
+        end: () => `+=${totalWidth * 1.35}`,
+        scrub: 0.65,
+        pin: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          if (progressRef.current) {
+            progressRef.current.style.transform = `scaleX(${self.progress})`;
+          }
+          gsap.set(track, { x: -totalWidth * self.progress });
+
+          if (headingRef.current) {
+            const headingFade = Math.max(0, 1 - self.progress * 2.2);
+            headingRef.current.style.opacity = String(headingFade);
+            headingRef.current.style.transform = `translateY(${self.progress * -32}px)`;
+          }
+
+          const focusCenter = window.innerWidth / 2;
+          cards.forEach((card) => {
+            const rect = card.getBoundingClientRect();
+            const cardCenter = rect.left + rect.width / 2;
+            const distance = Math.abs(cardCenter - focusCenter);
+            const proximity = Math.max(0, 1 - distance / (window.innerWidth * 0.45));
+
+            const scale = 0.86 + proximity * 0.22;
+            const opacity = 0.4 + proximity * 0.6;
+            const blur = (1 - proximity) * 3;
+            const yShift = (1 - proximity) * 28;
+            const rotation = (cardCenter - focusCenter) / 200;
+
+            card.style.transform = `translate3d(0, ${yShift}px, 0) scale(${scale}) rotate(${rotation}deg)`;
+            card.style.opacity = String(opacity);
+            card.style.filter = `blur(${blur}px)`;
+            card.style.zIndex = String(Math.round(proximity * 10));
+          });
+        }
+      });
+
+      return () => trigger.kill();
+    }, sectionRef);
+    return () => ctx.revert();
+  }, [locale]);
 
   return (
-    <section
-      id="areas"
-      data-surface="light"
-      className="relative bg-bone text-ink py-16 md:py-24 overflow-hidden"
-    >
-      <div className="px-6 md:px-12 lg:px-20">
-        <div className="grid grid-cols-12 gap-6 mb-8 md:mb-12 items-end">
-          <div className="col-span-12 md:col-span-7 reveal-init">
-            <TextScramble
-              as="p"
-              text={t.areas.kicker}
-              className="block font-mono text-[10.5px] uppercase tracking-[0.28em] text-ink-mute mb-4"
-            />
-            <h2 className="font-serif text-d-2 md:text-d-3 text-balance max-w-4xl leading-[0.95]" style={{ fontWeight: 400 }}>
-              {t.areas.title}
-            </h2>
-          </div>
-          <div className="col-span-12 md:col-span-4 md:col-start-9 md:text-right reveal-init">
-            <Link
-              href="/servicios"
-              className="inline-flex items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.22em] border border-ink/30 rounded-full px-4 py-2.5 hover:bg-ink hover:text-bone transition-colors duration-500"
-            >
-              {t.nav.submenuExplore}
-              <span aria-hidden>→</span>
-            </Link>
-          </div>
+    <>
+      <section
+        ref={sectionRef}
+        id="areas"
+        data-surface="dark"
+        className="relative bg-forest text-bone overflow-hidden grain h-screen hidden md:block"
+      >
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110vmin] h-[65vmin] opacity-12 blur-[180px]" style={{ background: "radial-gradient(ellipse, oklch(0.72 0.155 50) 0%, transparent 65%)" }} />
+          <div className="absolute bottom-[-20%] right-[-10%] w-[40vmin] h-[40vmin] rounded-full opacity-15 blur-[160px]" style={{ background: "oklch(0.34 0.080 150)" }} />
         </div>
 
-        <div className="grid grid-cols-12 gap-3 md:gap-6 items-start">
-          <ol className="col-span-12 md:col-span-7 lg:col-span-7 border-t border-ink/12">
-            {areas.map((a, i) => {
-              const c = getAreaContent(a, locale);
-              const isActive = i === activeIdx;
-              const accentText = a.accent === "ember" ? "text-ember" : a.accent === "gold" ? "text-gold" : "text-forest-glow";
-              return (
-                <li key={a.slug} className="border-b border-ink/12">
-                  <Link
-                    href={`/servicios/${a.slug}`}
-                    onMouseEnter={() => setActiveIdx(i)}
-                    onFocus={() => setActiveIdx(i)}
-                    className={`group block py-2.5 md:py-3 px-1 transition-colors duration-500 ${
-                      isActive ? "bg-bone-soft/70" : "hover:bg-bone-soft/40"
-                    }`}
-                  >
-                    <div className="grid grid-cols-12 gap-2 items-baseline">
-                      <span className={`col-span-2 md:col-span-1 font-mono text-[10px] uppercase tracking-widest ${accentText}`}>
-                        {a.num}
-                      </span>
-                      <span className="col-span-9 md:col-span-10 font-serif text-[1.05rem] md:text-[1.18rem] leading-[1.05] tracking-tight" style={{ fontWeight: 400 }}>
-                        {c.title}
-                      </span>
-                      <span
-                        aria-hidden
-                        className={`col-span-1 text-right font-mono text-[11px] transition-all duration-500 ${
-                          isActive ? "translate-x-1 opacity-100" : "opacity-30 group-hover:opacity-70"
-                        }`}
-                      >
-                        →
-                      </span>
-                    </div>
-                  </Link>
-                </li>
-              );
-            })}
-          </ol>
+        <div
+          ref={headingRef}
+          className="absolute top-16 lg:top-20 left-6 md:left-12 lg:left-20 z-20 max-w-3xl pointer-events-none"
+          style={{ willChange: "transform, opacity" }}
+        >
+          <TextScramble
+            as="p"
+            text={t.areas.kicker}
+            className="block font-mono text-[10.5px] uppercase tracking-[0.32em] text-bone/60 mb-4"
+          />
+          <h2 className="font-serif text-[2.2rem] md:text-[2.9rem] lg:text-[3.4rem] text-balance leading-[0.94]" style={{ fontWeight: 400 }}>
+            {t.areas.title}
+          </h2>
+        </div>
 
-          <div className="col-span-12 md:col-span-5 lg:col-span-5 md:sticky md:top-28 self-start hidden md:block">
-            <div
-              key={activeArea.slug}
-              className="relative rounded-2xl overflow-hidden border border-ink/10 bg-forest text-bone grain min-h-[380px] p-7 lg:p-8 animate-in fade-in duration-500"
-            >
-              <div className="absolute inset-0 pointer-events-none">
-                <div
-                  className="absolute -top-20 -right-20 w-[40vmin] h-[40vmin] rounded-full opacity-30 blur-[120px]"
-                  style={{
-                    background:
-                      activeArea.accent === "ember"
-                        ? "oklch(0.72 0.155 50)"
-                        : activeArea.accent === "gold"
-                        ? "oklch(0.76 0.115 82)"
-                        : "oklch(0.34 0.08 150)"
-                  }}
-                />
-              </div>
-              <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[55%] aspect-square pointer-events-none text-bone/40">
-                <ProblemaScene key={activeArea.slug} scene={activeArea.scene} accent={activeArea.accent} />
-              </div>
-              <div className="relative h-full flex flex-col">
-                <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.24em] text-bone/55">
-                  <span>§ {activeArea.num}</span>
+        <div
+          ref={trackRef}
+          className="flex h-full items-center pl-[42vw] will-change-transform"
+          style={{ width: `${areas.length * 28 + 90}vw` }}
+        >
+          {areas.map((a, i) => {
+            const c = getAreaContent(a, locale);
+            const accentGlow =
+              a.accent === "ember"
+                ? "oklch(0.72 0.155 50)"
+                : a.accent === "gold"
+                ? "oklch(0.76 0.115 82)"
+                : "oklch(0.34 0.080 150)";
+            return (
+              <Link
+                key={a.slug}
+                href={`/servicios/${a.slug}`}
+                ref={(el) => {
+                  cardsRef.current[i] = el;
+                }}
+                className="shrink-0 w-[22vw] lg:w-[19vw] aspect-[3/4] mr-[6vw] lg:mr-[5vw] relative rounded-2xl overflow-hidden border border-bone/12 bg-forest-soft transition-colors duration-500 hover:border-bone/45 will-change-transform group"
+                style={{ transformOrigin: "center" }}
+              >
+                {a.image && (
+                  <div className="absolute inset-0">
+                    <Image
+                      src={a.image}
+                      alt=""
+                      fill
+                      sizes="22vw"
+                      className="object-cover opacity-55 group-hover:opacity-75 transition-opacity duration-700"
+                      priority={i < 4}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-forest/95 via-forest/40 to-forest/15" />
+                  </div>
+                )}
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="absolute -top-20 -right-20 w-[28vmin] h-[28vmin] rounded-full opacity-35 blur-[80px]" style={{ background: accentGlow }} />
                 </div>
-                <h3 className="font-serif text-[1.8rem] lg:text-[2.2rem] mt-5 leading-[1.0] text-balance max-w-[14ch]" style={{ fontWeight: 400 }}>
-                  {activeContent.title}
-                </h3>
-                <p className="mt-3 text-[0.92rem] text-bone/80 leading-snug max-w-[26ch]">
-                  {activeContent.short}
-                </p>
-                <Link
-                  href={`/servicios/${activeArea.slug}`}
-                  className="mt-auto pt-6 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-bone/70 hover:text-bone transition-colors duration-500 self-start border-b border-bone/30 hover:border-bone pb-1"
-                >
-                  {t.areas.open}
-                  <span aria-hidden>→</span>
-                </Link>
-              </div>
-            </div>
-          </div>
+                <div className="absolute right-2 top-2 w-[45%] aspect-square text-bone/35 pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                  <ProblemaScene scene={a.scene} accent={a.accent} />
+                </div>
+                <div className="relative h-full flex flex-col p-5 md:p-6">
+                  <div className="flex items-center justify-between font-mono text-[9.5px] uppercase tracking-[0.28em] text-bone/65">
+                    <span>§ {a.num}</span>
+                  </div>
+                  <h3
+                    className="font-serif mt-auto text-[1.4rem] lg:text-[1.7rem] leading-[1.02] text-balance"
+                    style={{ fontWeight: 400 }}
+                  >
+                    {c.title}
+                  </h3>
+                  <p className="mt-2 text-bone/70 text-[0.82rem] leading-snug max-w-[28ch]">
+                    {c.short}
+                  </p>
+                  <div className="mt-3 flex items-center gap-2 font-mono text-[9.5px] uppercase tracking-[0.24em] text-bone/55 group-hover:text-bone transition-colors duration-500">
+                    <span>{t.areas.open}</span>
+                    <span aria-hidden className="transition-transform duration-500 group-hover:translate-x-1">→</span>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+          <div className="shrink-0 w-[15vw]" />
         </div>
 
-        <p className="mt-10 max-w-3xl font-serif italic text-base md:text-lg text-ink-soft reveal-init" style={{ fontWeight: 400 }}>
-          {t.areas.cta}
-        </p>
-      </div>
-    </section>
+        <div className="absolute bottom-6 left-12 right-12 lg:left-20 lg:right-20 z-10 pointer-events-none">
+          <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.28em] text-bone/55 mb-2">
+            <span>{t.areas.pick}</span>
+            <span>
+              {locale === "es" ? "Desplaza para recorrer las 13 áreas" : locale === "en" ? "Scroll through all 13 areas" : "Faites défiler les 13 domaines"} →
+            </span>
+          </div>
+          <div className="h-px bg-bone/15 overflow-hidden">
+            <div ref={progressRef} className="h-full bg-bone origin-left" style={{ transform: "scaleX(0)" }} />
+          </div>
+        </div>
+      </section>
+
+      <section
+        data-surface="dark"
+        id="areas-mobile"
+        className="md:hidden relative bg-forest text-bone overflow-hidden grain py-14 px-6"
+      >
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-20 right-[-20%] w-[50vmin] h-[50vmin] rounded-full opacity-20 blur-[140px]" style={{ background: "oklch(0.72 0.155 50)" }} />
+        </div>
+        <div className="relative mb-10">
+          <TextScramble
+            as="p"
+            text={t.areas.kicker}
+            className="block font-mono text-[10px] uppercase tracking-[0.28em] text-bone/60 mb-3"
+          />
+          <h2 className="font-serif text-[1.85rem] leading-[1.0] text-balance" style={{ fontWeight: 400 }}>
+            {t.areas.title}
+          </h2>
+        </div>
+        <ul className="relative space-y-3">
+          {areas.map((a) => {
+            const c = getAreaContent(a, locale);
+            const accentGlow =
+              a.accent === "ember"
+                ? "oklch(0.72 0.155 50)"
+                : a.accent === "gold"
+                ? "oklch(0.76 0.115 82)"
+                : "oklch(0.34 0.080 150)";
+            return (
+              <li key={a.slug}>
+                <Link
+                  href={`/servicios/${a.slug}`}
+                  className="block relative border border-bone/15 rounded-2xl p-5 overflow-hidden hover:border-bone/40 transition-colors"
+                >
+                  <div className="absolute -top-12 -right-12 w-[18vmin] h-[18vmin] rounded-full opacity-30 blur-[60px] pointer-events-none" style={{ background: accentGlow }} />
+                  <div className="absolute right-2 top-2 w-[28%] aspect-square text-bone/30 pointer-events-none opacity-80">
+                    <ProblemaScene scene={a.scene} accent={a.accent} />
+                  </div>
+                  <div className="relative">
+                    <div className="font-mono text-[10px] uppercase tracking-widest text-bone/55 mb-3">
+                      <span>§ {a.num}</span>
+                    </div>
+                    <h3 className="font-serif text-[1.45rem] leading-tight max-w-[14ch]" style={{ fontWeight: 400 }}>{c.title}</h3>
+                    <p className="mt-2 text-sm text-bone/70 max-w-[34ch]">{c.short}</p>
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    </>
   );
 }

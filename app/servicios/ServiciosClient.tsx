@@ -173,7 +173,7 @@ export default function ServiciosClient() {
           <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.28em] text-bone/55 mb-2">
             <span>{t.areas.pick}</span>
             <span>
-              {locale === "es" ? "Desplaza para recorrer las 12 áreas" : locale === "en" ? "Scroll through all 12 areas" : "Faites défiler les 12 domaines"} →
+              {locale === "es" ? "Desplaza para recorrer las 13 áreas" : locale === "en" ? "Scroll through all 13 areas" : "Faites défiler les 13 domaines"} →
             </span>
           </div>
           <div className="h-px bg-bone/15 overflow-hidden">
