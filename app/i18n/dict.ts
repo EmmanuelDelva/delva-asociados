@@ -2,7 +2,20 @@ export type Locale = "es" | "en" | "fr";
 
 export const locales: Locale[] = ["es", "en", "fr"];
 
-export const dict = {
+export type Dict = {
+  nav: { practica: string; manifiesto: string; conduccion: string; dialogo: string; cta: string };
+  stage: { kicker: string; problems: string[]; reveal: string; skip: string };
+  hero: { eyebrow: string; title: string; sub: string; ctaPrimary: string; ctaSecondary: string };
+  bento: { kicker: string; title: string; seeAll: string };
+  manifiesto: { kicker: string; lead: string; body: string[] };
+  servicios: { kicker: string; title: string; cta: string; readMore: string };
+  conduccion: { kicker: string; title: string; bio: string[]; label: string };
+  dialogo: { kicker: string; title: string; sub: string; email: string; whatsapp: string; agenda: string; sede: string };
+  footer: { tagline: string; explore: string; contact: string; legal: string; legalLinks: string[]; rights: string };
+  services: { sectionLead: string; problemLabel: string; solutionLabel: string; tagsLabel: string; next: string; back: string; contactCta: string };
+};
+
+export const dict: Record<Locale, Dict> = {
   es: {
     nav: {
       practica: "Práctica",
@@ -258,6 +271,4 @@ export const dict = {
       contactCta: "Discutons de votre cas"
     }
   }
-} as const;
-
-export type Dict = (typeof dict)["es"];
+};
