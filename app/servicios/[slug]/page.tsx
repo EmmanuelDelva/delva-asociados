@@ -13,10 +13,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!s) return { title: "No encontrado · Delva & Asociados" };
   return {
     title: `${s.i18n.es.title} — Delva & Asociados`,
-    description: s.i18n.es.oneliner,
+    description: s.i18n.es.short,
     openGraph: {
       title: s.i18n.es.title,
-      description: s.i18n.es.oneliner
+      description: s.i18n.es.short
     }
   };
 }

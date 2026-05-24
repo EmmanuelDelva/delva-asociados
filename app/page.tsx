@@ -1,11 +1,8 @@
 import Nav from "./components/Nav";
 import Stage from "./components/Stage";
 import Hero from "./components/Hero";
-import Bento from "./components/Bento";
-import Manifiesto from "./components/Manifiesto";
-import ServiciosRail from "./components/ServiciosRail";
-import Despacho from "./components/Despacho";
-import Dialogo from "./components/Dialogo";
+import AreasInteractivas from "./components/AreasInteractivas";
+import FirmaCTA from "./components/FirmaCTA";
 import Footer from "./components/Footer";
 
 export default function Home() {
@@ -14,11 +11,8 @@ export default function Home() {
       <Stage />
       <Nav />
       <Hero />
-      <Bento />
-      <Manifiesto />
-      <ServiciosRail />
-      <Despacho />
-      <Dialogo />
+      <AreasInteractivas />
+      <FirmaCTA />
       <Footer />
     </main>
   );

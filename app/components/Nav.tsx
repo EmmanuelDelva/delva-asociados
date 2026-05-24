@@ -1,13 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import Mark, { Wordmark } from "./Mark";
 import { useI18n } from "../i18n/I18nProvider";
-import { locales, type Locale } from "../i18n/dict";
+import { locales } from "../i18n/dict";
+import { servicios } from "../lib/servicios";
 
 export default function Nav() {
   const { locale, setLocale, t } = useI18n();
   const [onDark, setOnDark] = useState(true);
+  const [open, setOpen] = useState<"practica" | "mobile" | null>(null);
+  const closeTimer = useRef<number | null>(null);
 
   useEffect(() => {
     const update = () => {
@@ -35,65 +39,175 @@ export default function Nav() {
   const pill = onDark
     ? "bg-forest/55 border border-bone/12 backdrop-blur-xl"
     : "bg-bone/65 border border-ink/10 backdrop-blur-xl";
+  const panelBg = onDark ? "bg-forest border-bone/12 text-bone" : "bg-bone border-ink/10 text-ink";
 
-  const links = [
-    { label: t.nav.practica, href: "#servicios" },
-    { label: t.nav.manifiesto, href: "#manifiesto" },
-    { label: t.nav.conduccion, href: "#despacho" },
-    { label: t.nav.dialogo, href: "#dialogo" }
-  ];
+  const openPractica = () => {
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    setOpen("practica");
+  };
+  const closePracticaSoon = () => {
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    closeTimer.current = window.setTimeout(() => setOpen(null), 220);
+  };
 
   return (
-    <header
-      className={`fixed top-4 md:top-5 left-0 right-0 z-50 px-4 md:px-6 transition-colors duration-700 ease-out ${tone}`}
-      data-nav
-    >
-      <div className={`mx-auto flex items-center justify-between gap-3 max-w-[1400px] rounded-full ${pill} pl-3 pr-2 py-2 transition-colors duration-700`}>
-        <a href="#top" className="flex items-center gap-2.5 pl-1 group">
-          <Mark size={30} />
-          <Wordmark className="hidden sm:inline text-[11px]" />
-        </a>
+    <header className={`fixed top-3 md:top-5 left-0 right-0 z-50 px-3 md:px-6 transition-colors duration-700 ease-out ${tone}`} data-nav>
+      <div className={`relative mx-auto flex items-center justify-between gap-2 max-w-[1400px] rounded-full ${pill} pl-3 pr-2 py-2 transition-colors duration-700`}>
+        <Link href="/" className="flex items-center gap-2.5 pl-1 group shrink-0">
+          <Mark size={28} />
+          <Wordmark className="hidden sm:inline text-[10.5px]" />
+        </Link>
 
-        <nav className="hidden md:flex items-center gap-1 font-mono text-[10.5px] uppercase tracking-[0.2em]">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="px-3 py-1.5 opacity-65 hover:opacity-100 transition-opacity duration-500"
+        <nav className="hidden lg:flex items-center gap-0.5 font-mono text-[10.5px] uppercase tracking-[0.2em]">
+          <div className="relative" onMouseEnter={openPractica} onMouseLeave={closePracticaSoon}>
+            <button
+              type="button"
+              className="px-3 py-1.5 opacity-80 hover:opacity-100 transition-opacity duration-300 flex items-center gap-1.5"
+              aria-expanded={open === "practica"}
             >
-              {l.label}
-            </a>
-          ))}
+              {t.nav.practica}
+              <span aria-hidden className="text-[8px] opacity-60">▼</span>
+            </button>
+
+            {open === "practica" && (
+              <div
+                className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[560px] rounded-3xl border ${panelBg} p-5 shadow-2xl`}
+                onMouseEnter={openPractica}
+                onMouseLeave={closePracticaSoon}
+              >
+                <div className="grid grid-cols-2 gap-1">
+                  {servicios.map((s) => (
+                    <Link
+                      key={s.slug}
+                      href={`/servicios/${s.slug}`}
+                      onClick={() => setOpen(null)}
+                      className="group flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-current/5 transition-colors duration-300"
+                    >
+                      <span className="font-mono text-[9.5px] opacity-50 mt-0.5 w-5">{s.num}</span>
+                      <span className="font-serif normal-case tracking-normal text-[14px] leading-tight">
+                        {s.i18n[locale].title}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+                <div className="mt-3 pt-3 border-t border-current/15">
+                  <Link
+                    href="/#areas"
+                    onClick={() => setOpen(null)}
+                    className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.22em] opacity-70 hover:opacity-100 px-3 py-1.5"
+                  >
+                    {t.nav.submenuExplore}
+                    <span aria-hidden>→</span>
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <Link href="/despacho" className="px-3 py-1.5 opacity-80 hover:opacity-100 transition-opacity duration-300">
+            {t.nav.despacho}
+          </Link>
+          <Link href="/manifiesto" className="px-3 py-1.5 opacity-80 hover:opacity-100 transition-opacity duration-300">
+            {t.nav.manifiesto}
+          </Link>
+          <Link href="/#firmar" className="px-3 py-1.5 opacity-80 hover:opacity-100 transition-opacity duration-300">
+            {t.nav.dialogo}
+          </Link>
         </nav>
 
-        <div className="flex items-center gap-2">
-          <div className="hidden sm:flex items-center gap-0.5 font-mono text-[10px] uppercase tracking-widest opacity-75 px-1">
+        <div className="flex items-center gap-1.5">
+          <div className="hidden sm:flex items-center gap-0.5 font-mono text-[10px] uppercase tracking-widest px-1">
             {locales.map((loc) => (
               <button
                 key={loc}
                 onClick={() => setLocale(loc)}
                 aria-pressed={locale === loc}
-                className={`px-1.5 py-1 rounded-full transition-all duration-300 ${
+                className={`px-1.5 py-1 rounded-full transition-all duration-300 uppercase ${
                   locale === loc ? "opacity-100 underline underline-offset-4" : "opacity-50 hover:opacity-90"
                 }`}
               >
-                {loc}
+                {loc.toUpperCase()}
               </button>
             ))}
           </div>
           <a
-            href="#dialogo"
-            className={`inline-flex items-center gap-1.5 font-mono text-[10.5px] uppercase tracking-[0.18em] rounded-full px-4 py-2 transition-all duration-500 ${
-              onDark
-                ? "bg-bone text-forest hover:bg-ember"
-                : "bg-ink text-bone hover:bg-forest"
+            href="#firmar"
+            className={`hidden md:inline-flex items-center gap-1.5 font-mono text-[10.5px] uppercase tracking-[0.18em] rounded-full px-3.5 py-2 transition-all duration-500 ${
+              onDark ? "bg-bone text-forest hover:bg-ember" : "bg-ink text-bone hover:bg-forest"
             }`}
           >
             {t.nav.cta}
             <span aria-hidden>→</span>
           </a>
+          <button
+            type="button"
+            onClick={() => setOpen(open === "mobile" ? null : "mobile")}
+            className={`lg:hidden inline-flex items-center justify-center w-9 h-9 rounded-full border ${
+              onDark ? "border-bone/30" : "border-ink/30"
+            }`}
+            aria-label="Menu"
+          >
+            <span className="font-mono text-[10px]">{open === "mobile" ? "×" : "≡"}</span>
+          </button>
         </div>
       </div>
+
+      {open === "mobile" && (
+        <div className={`lg:hidden mt-2 mx-auto max-w-[1400px] rounded-3xl border ${panelBg} p-5`}>
+          <div className="font-mono text-[10px] uppercase tracking-[0.22em] opacity-60 mb-3">
+            {t.nav.practica}
+          </div>
+          <div className="grid grid-cols-1 gap-0">
+            {servicios.map((s) => (
+              <Link
+                key={s.slug}
+                href={`/servicios/${s.slug}`}
+                onClick={() => setOpen(null)}
+                className="flex items-baseline gap-3 py-3 border-b border-current/10"
+              >
+                <span className="font-mono text-[10px] opacity-50 w-7">{s.num}</span>
+                <span className="font-serif text-[16px] leading-tight">{s.i18n[locale].title}</span>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-5 grid grid-cols-2 gap-3">
+            <Link
+              href="/despacho"
+              onClick={() => setOpen(null)}
+              className="font-mono text-[10.5px] uppercase tracking-[0.2em] py-2.5 rounded-full border border-current/30 text-center"
+            >
+              {t.nav.despacho}
+            </Link>
+            <Link
+              href="/manifiesto"
+              onClick={() => setOpen(null)}
+              className="font-mono text-[10.5px] uppercase tracking-[0.2em] py-2.5 rounded-full border border-current/30 text-center"
+            >
+              {t.nav.manifiesto}
+            </Link>
+          </div>
+          <a
+            href="#firmar"
+            onClick={() => setOpen(null)}
+            className={`mt-3 inline-flex w-full items-center justify-center gap-1.5 font-mono text-[10.5px] uppercase tracking-[0.2em] rounded-full px-4 py-3 ${
+              onDark ? "bg-bone text-forest" : "bg-ink text-bone"
+            }`}
+          >
+            {t.nav.cta} <span aria-hidden>→</span>
+          </a>
+          <div className="mt-4 flex justify-center gap-2 font-mono text-[10px] uppercase tracking-widest">
+            {locales.map((loc) => (
+              <button
+                key={loc}
+                onClick={() => setLocale(loc)}
+                className={`px-2 py-1 rounded-full ${locale === loc ? "bg-current/15" : "opacity-60"}`}
+              >
+                {loc.toUpperCase()}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </header>
   );
 }
