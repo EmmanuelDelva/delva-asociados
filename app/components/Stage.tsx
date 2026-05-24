@@ -2,10 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import Mark, { Wordmark } from "./Mark";
+import { Wordmark } from "./Mark";
 import { useI18n } from "../i18n/I18nProvider";
 
-const STAGE_DONE_KEY = "dya.stage.seen.v3";
+const STAGE_DONE_KEY = "dya.stage.seen.v5";
 
 export default function Stage() {
   const { t } = useI18n();
@@ -137,7 +137,44 @@ export default function Stage() {
               {t.stage.reveal}
             </p>
             <div ref={sigilRef} className="flex justify-center mt-8 md:mt-12">
-              <Mark size={88} />
+              <svg
+                width="92"
+                height="92"
+                viewBox="0 0 92 92"
+                fill="none"
+                aria-hidden="true"
+                className="block"
+              >
+                <circle
+                  cx="46"
+                  cy="46"
+                  r="44"
+                  stroke="currentColor"
+                  strokeOpacity="0.35"
+                  strokeWidth="1"
+                />
+                <circle
+                  cx="46"
+                  cy="46"
+                  r="38"
+                  stroke="currentColor"
+                  strokeOpacity="0.12"
+                  strokeWidth="0.5"
+                />
+                <text
+                  x="46"
+                  y="46"
+                  textAnchor="middle"
+                  dominantBaseline="central"
+                  fontFamily="'Instrument Serif', 'Times New Roman', serif"
+                  fontStyle="italic"
+                  fontSize="58"
+                  fill="currentColor"
+                  fillOpacity="0.95"
+                >
+                  &amp;
+                </text>
+              </svg>
             </div>
             <div ref={wordmarkRef} className="mt-6 md:mt-8">
               <Wordmark className="text-[13px] md:text-[15px]" />
