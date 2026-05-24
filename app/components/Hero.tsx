@@ -1,13 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 import { useI18n } from "../i18n/I18nProvider";
-import Mark from "./Mark";
 import Marquee from "./Marquee";
 import TextScramble from "./TextScramble";
-
-const HERO_IMAGE = "/scenes/hero.jpg";
 
 export default function Hero() {
   const { t } = useI18n();
@@ -63,14 +59,6 @@ export default function Hero() {
       data-surface="dark"
       className="relative bg-forest text-bone overflow-hidden grain min-h-[100svh] flex flex-col"
     >
-      <Image
-        src={HERO_IMAGE}
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-center opacity-35 pointer-events-none"
-      />
       <div className="absolute inset-0 bg-gradient-to-b from-forest/85 via-forest/70 to-forest/95 pointer-events-none" />
       <div ref={gradientRef} className="absolute inset-0 pointer-events-none transition-opacity duration-500" />
 
@@ -139,8 +127,9 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="absolute bottom-5 left-6 md:left-12 lg:left-20 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.28em] opacity-50">
-          <Mark size={26} />
+        <div className="absolute bottom-5 left-6 md:left-12 lg:left-20 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.28em] opacity-55">
+          <span className="font-serif italic text-[18px] text-bone/80" aria-hidden>&amp;</span>
+          <span className="opacity-70">MMXXV</span>
         </div>
       </div>
 

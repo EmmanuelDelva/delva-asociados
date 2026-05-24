@@ -63,7 +63,6 @@ const A_HERENCIA: Area = {
   accent: "gold",
   scene: "estate",
   avatar: "biblioteca",
-  image: "/scenes/herencia.jpg",
   i18n: {
     es: { title: "Herencia y Testamento Digital", short: "Tu vida digital también se hereda. La planeamos antes y la rescatamos después.", intro: "Bitcoin, cuentas de redes, dominios, fotos en la nube, suscripciones, propiedad virtual. Todo eso es patrimonio. Y rara vez está en un testamento." },
     en: { title: "Digital Inheritance & Will", short: "Your digital life is also inherited. We plan it before, and we rescue it after.", intro: "Bitcoin, social accounts, domains, cloud photos, subscriptions, virtual property. All of that is estate. And it's rarely in a will." },
@@ -176,7 +175,7 @@ const A_HERENCIA: Area = {
 };
 
 const A_DISENO_WEB: Area = {
-  slug: "diseno-web", num: "02", accent: "forest", scene: "browser", image: "/scenes/diseno-web.jpg",
+  slug: "diseno-web", num: "02", accent: "forest", scene: "browser",
   i18n: {
     es: { title: "Diseño Web y LegalTech", short: "Construimos tu sitio listo para vender y para cumplir.", intro: "Si tu negocio vive en internet, tu sitio web es tu fachada y tu contrato simultáneamente. Hacemos sitios que venden y que ya cumplen con LFPDPPP, GDPR, T&C reales, cookies y compliance desde origen." },
     en: { title: "Web Design & LegalTech", short: "We build your site ready to sell and ready to comply.", intro: "If your business lives online, your website is both your facade and your contract. We build sites that sell and that comply with data law from day one." },
@@ -246,7 +245,7 @@ const A_DISENO_WEB: Area = {
 };
 
 const A_IA_APLICADA: Area = {
-  slug: "ia-aplicada", num: "03", accent: "ember", scene: "robot", image: "/scenes/ia-aplicada.jpg",
+  slug: "ia-aplicada", num: "03", accent: "ember", scene: "robot",
   i18n: {
     es: { title: "IA Aplicada y Automatizaciones", short: "Implementamos IA en tu negocio con guardrails legales.", intro: "Más allá de la regulación: te ayudamos a usar IA, agentes y automatizaciones para hacer tu negocio más eficiente, sin abrirte a demandas. Capacitamos a tu equipo y armamos los procesos." },
     en: { title: "Applied AI & Automation", short: "We deploy AI in your business with legal guardrails.", intro: "Beyond regulation: we help you use AI, agents and automation to make your business more efficient, without exposing you to lawsuits." },
@@ -327,7 +326,7 @@ const A_IA_APLICADA: Area = {
 };
 
 const A_REDES_REPUTACION: Area = {
-  slug: "redes-reputacion", num: "04", accent: "ember", scene: "broken-chain", avatar: "portrait", image: "/scenes/redes-reputacion.jpg",
+  slug: "redes-reputacion", num: "04", accent: "ember", scene: "broken-chain", avatar: "portrait",
   i18n: {
     es: { title: "Redes Sociales y Reputación Digital", short: "Cuentas robadas, deepfakes, suplantación y limpieza de reputación.", intro: "Tu cuenta con miles de seguidores es patrimonio. Tu rostro circula sin tu permiso. Una nota antigua te persigue. Esto también se resuelve." },
     en: { title: "Social Media & Digital Reputation", short: "Stolen accounts, deepfakes, impersonation and reputation cleanup.", intro: "Your account with thousands of followers is estate. Your face circulates without permission. An old post follows you. This also gets resolved." },
@@ -440,7 +439,7 @@ const A_REDES_REPUTACION: Area = {
 };
 
 const A_IA_DERECHOS: Area = {
-  slug: "inteligencia-artificial", num: "05", accent: "forest", scene: "face", image: "/scenes/ia-derechos.jpg",
+  slug: "inteligencia-artificial", num: "05", accent: "forest", scene: "face",
   i18n: {
     es: { title: "IA y Derechos Digitales", short: "Quién es autor cuando autor también es la máquina.", intro: "La IA cambia todo lo que toca: autoría, responsabilidad, contratos, prueba. Trabajamos con creadores, estudios y empresas para que la IA sea una ventaja, no una demanda." },
     en: { title: "AI & Digital Rights", short: "Who is the author when the author is also the machine.", intro: "AI changes everything it touches: authorship, liability, contracts, evidence. We work with creators, studios and companies so AI becomes an advantage, not a lawsuit." },
@@ -521,7 +520,7 @@ const A_IA_DERECHOS: Area = {
 };
 
 const A_WEB3: Area = {
-  slug: "web3-cripto", num: "06", accent: "ember", scene: "network", avatar: "crypto", image: "/scenes/web3.jpg",
+  slug: "web3-cripto", num: "06", accent: "ember", scene: "network", avatar: "crypto",
   i18n: {
     es: { title: "Web3, Cripto y Tokenización", short: "Tokens, DAOs y smart contracts con cobertura legal real.", intro: "Desde una idea de token hasta una respuesta a la CNBV. Trabajamos con fundadores, fondos, DAOs y plataformas en la frontera donde el código se encuentra con la regulación." },
     en: { title: "Web3, Crypto & Tokenization", short: "Tokens, DAOs and smart contracts with real legal coverage.", intro: "From a token idea to a CNBV response. We work with founders, funds, DAOs and platforms at the border where code meets regulation." },
@@ -634,7 +633,7 @@ const A_WEB3: Area = {
 };
 
 const A_CREADORES: Area = {
-  slug: "creadores", num: "07", accent: "ember", scene: "marketplace", image: "/scenes/creadores.jpg",
+  slug: "creadores", num: "07", accent: "ember", scene: "marketplace",
   i18n: {
     es: { title: "Creadores y Economía Digital", short: "Tu cara, tu marca, tu ingreso, tu propiedad.", intro: "TikTok, OnlyFans, YouTube, Substack, Twitch, Patreon. Tu negocio es tu identidad. Y eso necesita estructura legal específica." },
     en: { title: "Creators & Digital Economy", short: "Your face, your brand, your income, your property.", intro: "TikTok, OnlyFans, YouTube, Substack, Twitch, Patreon. Your business is your identity. That needs specific legal structure." },
@@ -701,7 +700,7 @@ const A_CREADORES: Area = {
 };
 
 const A_PROPIEDAD_INTELECTUAL: Area = {
-  slug: "propiedad-intelectual", num: "08", accent: "forest", scene: "scroll", image: "/scenes/propiedad-intelectual.jpg",
+  slug: "propiedad-intelectual", num: "08", accent: "forest", scene: "scroll",
   i18n: {
     es: { title: "Propiedad Intelectual Digital", short: "Lo que llamas tuyo. Demuéstralo.", intro: "Marca, autor, multimedia, NFT. La PI digital es más rica y más vulnerable que la tradicional. La defendemos y la registramos a la medida de tu modelo." },
     en: { title: "Digital Intellectual Property", short: "What you call yours. Prove it.", intro: "Trademark, copyright, multimedia, NFT. Digital IP is richer and more vulnerable than traditional. We defend and register it to fit your model." },
@@ -768,7 +767,7 @@ const A_PROPIEDAD_INTELECTUAL: Area = {
 };
 
 const A_PRIVACIDAD: Area = {
-  slug: "privacidad-datos", num: "09", accent: "gold", scene: "shield", image: "/scenes/privacidad.jpg",
+  slug: "privacidad-datos", num: "09", accent: "gold", scene: "shield",
   i18n: {
     es: { title: "Privacidad y Protección de Datos", short: "LFPDPPP, GDPR, MiCA, LGPD: cumplimiento real.", intro: "El día que llame el regulador, ya estará todo en orden. Antes, también." },
     en: { title: "Privacy & Data Protection", short: "LFPDPPP, GDPR, MiCA, LGPD: real compliance.", intro: "The day the regulator calls, everything is already in order. Before, too." },
@@ -849,7 +848,7 @@ const A_PRIVACIDAD: Area = {
 };
 
 const A_FINTECH: Area = {
-  slug: "fintech-pagos", num: "10", accent: "gold", scene: "wallet", image: "/scenes/fintech.jpg",
+  slug: "fintech-pagos", num: "10", accent: "gold", scene: "wallet",
   i18n: {
     es: { title: "FinTech y Pagos Digitales", short: "Cuando el dinero se mueve más rápido que la regulación.", intro: "Wallets, ramps, stablecoins, neobancos, procesadores. La línea entre tecnología financiera y servicios regulados es delgada. Trabajamos del lado de los que la cruzan a propósito." },
     en: { title: "FinTech & Digital Payments", short: "When money moves faster than regulation.", intro: "Wallets, ramps, stablecoins, neobanks, processors. The line between fintech and regulated services is thin. We work on the side of those who cross it on purpose." },
@@ -916,7 +915,7 @@ const A_FINTECH: Area = {
 };
 
 const A_GAMING: Area = {
-  slug: "gaming-esports", num: "11", accent: "ember", scene: "trophy", image: "/scenes/gaming.jpg",
+  slug: "gaming-esports", num: "11", accent: "ember", scene: "trophy",
   i18n: {
     es: { title: "Gaming, Metaverso y eSports", short: "Tu economía y tu equipo existen en mundos virtuales. Los regulamos.", intro: "Estudios, jugadores profesionales, equipos eSports, plataformas, casters, propietarios virtuales. Aquí hay derecho — y mucho dinero." },
     en: { title: "Gaming, Metaverse & eSports", short: "Your economy and your team exist in virtual worlds. We regulate them.", intro: "Studios, pro players, eSports teams, platforms, casters, virtual owners. There's law here — and a lot of money." },
@@ -1011,7 +1010,7 @@ const A_GAMING: Area = {
 };
 
 const A_INTERNACIONAL: Area = {
-  slug: "internacional", num: "12", accent: "gold", scene: "globe", avatar: "tmec", image: "/scenes/internacional.jpg",
+  slug: "internacional", num: "12", accent: "gold", scene: "globe", avatar: "tmec",
   i18n: {
     es: { title: "Transfronterizo y Nómadas Digitales", short: "Trabajas en cualquier parte. Lo legalizamos en todas.", intro: "Residencia fiscal, movilidad, T-MEC, OFAC, sanciones, capítulos de inversión. El mundo es la jurisdicción." },
     en: { title: "Cross-Border & Digital Nomads", short: "You work anywhere. We legalize it everywhere.", intro: "Tax residency, mobility, USMCA, OFAC, sanctions, investment chapters. The world is the jurisdiction." },
@@ -1078,7 +1077,7 @@ const A_INTERNACIONAL: Area = {
 };
 
 const A_OTROS: Area = {
-  slug: "otros-casos", num: "13", accent: "ember", scene: "scale", image: "/scenes/otros.jpg",
+  slug: "otros-casos", num: "13", accent: "ember", scene: "scale",
   i18n: {
     es: { title: "Otros Casos Digitales", short: "Lo que cruza varias áreas. Lo que aún no tiene nombre.", intro: "El caso híbrido. La consulta exploratoria. El riesgo que apenas pasó ayer y todavía no tiene nombre legal. Aquí también estamos." },
     en: { title: "Other Digital Cases", short: "What crosses several areas. What still has no name.", intro: "The hybrid case. The exploratory consult. The risk that just emerged yesterday and still has no legal name. We're here for that too." },
