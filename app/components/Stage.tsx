@@ -115,16 +115,16 @@ export default function Stage() {
         <div ref={progressRef} className="origin-left h-full bg-bone" style={{ transform: "scaleX(0)" }} />
       </div>
 
-      <div className="relative z-10 flex h-full min-h-screen items-center justify-center px-6 md:px-12 lg:px-20">
+      <div className="relative z-10 flex h-full min-h-screen items-center justify-center px-4 sm:px-6 md:px-12 lg:px-20">
         <div className="w-full max-w-6xl text-center">
-          <div className="relative h-[28vh] md:h-[34vh] flex items-center justify-center">
+          <div className="relative h-[44vh] sm:h-[36vh] md:h-[34vh] flex items-center justify-center">
             {t.stage.problems.map((p, i) => (
               <span
                 key={i}
                 ref={(el) => {
                   linesRef.current[i] = el;
                 }}
-                className="absolute font-serif text-d-2 md:text-d-3 leading-[0.95] text-balance px-4"
+                className="absolute font-serif text-[clamp(1.85rem,7vw,5.25rem)] md:text-d-3 leading-[0.98] md:leading-[0.95] text-balance px-2 sm:px-4"
                 style={{ fontWeight: 400 }}
               >
                 {p}

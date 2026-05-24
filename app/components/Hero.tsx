@@ -88,8 +88,8 @@ export default function Hero() {
         &amp;
       </span>
 
-      <div className="relative z-10 flex-1 flex flex-col px-6 md:px-12 lg:px-20 pt-32 md:pt-40 pb-16">
-        <p className="reveal-init font-mono text-[10.5px] uppercase tracking-[0.28em] opacity-75 mb-10 md:mb-14 flex flex-wrap items-center gap-3">
+      <div className="relative z-10 flex-1 flex flex-col px-5 sm:px-6 md:px-12 lg:px-20 pt-28 sm:pt-32 md:pt-40 pb-16">
+        <p className="reveal-init font-mono text-[10.5px] uppercase tracking-[0.28em] opacity-75 mb-8 sm:mb-10 md:mb-14 flex flex-wrap items-center gap-3">
           <TextScramble as="span" text={t.hero.eyebrow} trigger="mount" duration={1.6} />
           <span className="opacity-50 hidden sm:inline">— MMXXV · Guadalajara · Internacional</span>
         </p>

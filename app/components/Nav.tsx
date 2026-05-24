@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import Mark, { Wordmark } from "./Mark";
+import { Wordmark } from "./Mark";
 import { useI18n } from "../i18n/I18nProvider";
 import { locales } from "../i18n/dict";
 import { areas, getAreaContent } from "../lib/servicios";
@@ -54,7 +54,7 @@ export default function Nav() {
     <header className={`fixed top-3 md:top-5 left-0 right-0 z-50 px-3 md:px-6 transition-colors duration-700 ease-out ${tone}`} data-nav>
       <div className={`relative mx-auto flex items-center justify-between gap-2 max-w-[1400px] rounded-full ${pill} pl-3 pr-2 py-2 transition-colors duration-700`}>
         <Link href="/" className="flex items-center gap-2.5 pl-2 group shrink-0">
-          <Wordmark className="text-[10.5px] sm:text-[11px]" />
+          <Wordmark className="text-[11px] sm:text-[12px]" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-0.5 font-mono text-[10.5px] uppercase tracking-[0.2em]">

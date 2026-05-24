@@ -110,7 +110,7 @@ export default function AreaClient({ area, next }: { area: Area; next: Area }) {
 
           <div className="grid grid-cols-12 gap-6 items-end">
             <div className="col-span-12 md:col-span-2" data-hero-anim>
-              <span className={`block font-mono text-[16vw] md:text-[6.5rem] leading-[0.85] text-bone/30`} style={{ fontWeight: 400 }}>
+              <span className={`block font-mono text-[clamp(3.5rem,12vw,5.5rem)] md:text-[6.5rem] leading-[0.85] text-bone/30`} style={{ fontWeight: 400 }}>
                 {area.num}
               </span>
             </div>

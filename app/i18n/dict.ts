@@ -89,13 +89,13 @@ export const dict: Record<Locale, Dict> = {
     stage: {
       kicker: "Establecido MMXXV",
       problems: [
-        "Tu ronda seed cruza tres países. Una la prohíbe.",
-        "Heredaste su Bitcoin. Las claves murieron con él.",
         "Te robaron la cuenta con miles de seguidores.",
         "Un deepfake firmó un contrato a tu nombre.",
+        "Heredaste su Bitcoin. Las claves murieron con él.",
         "Tu IA generó algo que es de alguien más.",
         "Tu marca apareció en un NFT que no autorizaste.",
-        "Aún no sabes a quién dejarle tu vida digital."
+        "Aún no sabes a quién dejarle tu vida digital.",
+        "Un avatar tuyo firmó algo en el metaverso."
       ],
       reveal: "Esto es lo que resolvemos. Y mucho más.",
       skip: "Saltar"
@@ -188,13 +188,13 @@ export const dict: Record<Locale, Dict> = {
     stage: {
       kicker: "Established MMXXV",
       problems: [
-        "Your seed round spans three countries. One forbids it.",
-        "You inherited his Bitcoin. The keys died with him.",
         "They stole your account with thousands of followers.",
         "A deepfake signed a contract in your name.",
+        "You inherited his Bitcoin. The keys died with him.",
         "Your AI generated something that belongs to someone else.",
         "Your brand appeared in an NFT you didn't authorize.",
-        "You still don't know who should inherit your digital life."
+        "You still don't know who should inherit your digital life.",
+        "An avatar of yours signed something in the metaverse."
       ],
       reveal: "This is what we resolve. And much more.",
       skip: "Skip"
@@ -287,13 +287,13 @@ export const dict: Record<Locale, Dict> = {
     stage: {
       kicker: "Établi MMXXV",
       problems: [
-        "Votre tour de seed traverse trois pays. Un l'interdit.",
-        "Vous avez hérité son Bitcoin. Les clés sont mortes avec lui.",
         "On vous a volé le compte avec des milliers d'abonnés.",
         "Un deepfake a signé un contrat en votre nom.",
+        "Vous avez hérité son Bitcoin. Les clés sont mortes avec lui.",
         "Votre IA a généré quelque chose qui appartient à quelqu'un d'autre.",
         "Votre marque est apparue dans un NFT que vous n'avez pas autorisé.",
-        "Vous ne savez pas encore à qui léguer votre vie numérique."
+        "Vous ne savez pas encore à qui léguer votre vie numérique.",
+        "Un avatar à vous a signé quelque chose dans le métavers."
       ],
       reveal: "Voilà ce que nous résolvons. Et bien plus.",
       skip: "Passer"

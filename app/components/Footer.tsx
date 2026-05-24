@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Mark, { Wordmark } from "./Mark";
+import { Wordmark } from "./Mark";
 import { useI18n } from "../i18n/I18nProvider";
 import { areas, getAreaContent } from "../lib/servicios";
 
@@ -24,7 +24,32 @@ export default function Footer() {
       <div className="px-6 md:px-12 lg:px-20">
         <div className="grid grid-cols-12 gap-6 border-t border-ink/15 pt-12">
           <div className="col-span-12 md:col-span-5">
-            <Mark size={140} />
+            <Link href="/" className="inline-flex items-center gap-4 group" aria-label="Delva & Asociados">
+              <svg
+                width="68"
+                height="68"
+                viewBox="0 0 92 92"
+                fill="none"
+                aria-hidden
+                className="block shrink-0 text-ink/85 transition-colors duration-500 group-hover:text-ink"
+              >
+                <circle cx="46" cy="46" r="44" stroke="currentColor" strokeOpacity="0.7" strokeWidth="1" />
+                <circle cx="46" cy="46" r="38" stroke="currentColor" strokeOpacity="0.2" strokeWidth="0.5" />
+                <text
+                  x="46"
+                  y="46"
+                  textAnchor="middle"
+                  dominantBaseline="central"
+                  fontFamily="'Instrument Serif', 'Times New Roman', serif"
+                  fontStyle="italic"
+                  fontSize="58"
+                  fill="currentColor"
+                >
+                  &amp;
+                </text>
+              </svg>
+              <Wordmark className="text-[12px] sm:text-[13px]" />
+            </Link>
             <p className="mt-6 max-w-[40ch] font-serif italic text-ink-soft text-lg leading-snug" style={{ fontWeight: 400 }}>
               {t.footer.tagline}
             </p>

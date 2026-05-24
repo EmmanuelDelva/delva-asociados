@@ -111,15 +111,15 @@ export default function ProblemaClient({
         </div>
 
         <div className="relative z-10 px-6 md:px-12 lg:px-20 pt-32 md:pt-40 pb-16 md:pb-24">
-          <nav className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-bone/55 mb-10" data-anim-fade>
+          <nav className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[10px] uppercase tracking-[0.22em] text-bone/55 mb-10 max-w-full" data-anim-fade>
             <Link href="/#areas" className="hover:text-bone transition-colors">
               {t.problemaPage.breadcrumb}
             </Link>
-            <span aria-hidden>/</span>
-            <Link href={`/servicios/${area.slug}`} className="hover:text-bone transition-colors">
+            <span aria-hidden className="opacity-60">/</span>
+            <Link href={`/servicios/${area.slug}`} className="hover:text-bone transition-colors truncate max-w-[60vw] md:max-w-none">
               {areaContent.title}
             </Link>
-            <span aria-hidden>/</span>
+            <span aria-hidden className="opacity-60">/</span>
             <span className={accentText}>{String(area.problematicas.findIndex((p) => p.id === problema.id) + 1).padStart(2, "0")}</span>
           </nav>
 
