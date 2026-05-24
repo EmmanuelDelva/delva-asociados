@@ -1,117 +1,47 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import { useI18n } from "../i18n/I18nProvider";
 import { areas, getAreaContent } from "../lib/servicios";
 import TextScramble from "./TextScramble";
 import ProblemaScene from "./ProblemaScene";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 export default function AreasInteractivas() {
   const { t, locale } = useI18n();
-  const sectionRef = useRef<HTMLElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const progressRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<(HTMLAnchorElement | null)[]>([]);
-  const headingRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (typeof window === "undefined" || !sectionRef.current || !trackRef.current) return;
-    const isMobile = window.matchMedia("(max-width: 900px)").matches;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (isMobile || reduce) return;
-
-    const ctx = gsap.context(() => {
-      const track = trackRef.current!;
-      const cards = cardsRef.current.filter(Boolean) as HTMLAnchorElement[];
-      const totalWidth = track.scrollWidth - window.innerWidth;
-
-      const trigger = ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: "top top",
-        end: () => `+=${totalWidth * 1.35}`,
-        scrub: 0.65,
-        pin: true,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        onUpdate: (self) => {
-          if (progressRef.current) {
-            progressRef.current.style.transform = `scaleX(${self.progress})`;
-          }
-          gsap.set(track, { x: -totalWidth * self.progress });
-
-          if (headingRef.current) {
-            const headingFade = Math.max(0, 1 - self.progress * 2.2);
-            headingRef.current.style.opacity = String(headingFade);
-            headingRef.current.style.transform = `translateY(${self.progress * -32}px)`;
-          }
-
-          const focusCenter = window.innerWidth / 2;
-          cards.forEach((card) => {
-            const rect = card.getBoundingClientRect();
-            const cardCenter = rect.left + rect.width / 2;
-            const distance = Math.abs(cardCenter - focusCenter);
-            const proximity = Math.max(0, 1 - distance / (window.innerWidth * 0.45));
-
-            const scale = 0.86 + proximity * 0.22;
-            const opacity = 0.4 + proximity * 0.6;
-            const blur = (1 - proximity) * 3;
-            const yShift = (1 - proximity) * 28;
-            const rotation = (cardCenter - focusCenter) / 200;
-
-            card.style.transform = `translate3d(0, ${yShift}px, 0) scale(${scale}) rotate(${rotation}deg)`;
-            card.style.opacity = String(opacity);
-            card.style.filter = `blur(${blur}px)`;
-            card.style.zIndex = String(Math.round(proximity * 10));
-          });
-        }
-      });
-
-      return () => trigger.kill();
-    }, sectionRef);
-    return () => ctx.revert();
-  }, [locale]);
 
   return (
-    <>
-      <section
-        ref={sectionRef}
-        id="areas"
-        data-surface="dark"
-        className="relative bg-forest text-bone overflow-hidden grain h-screen hidden md:block"
-      >
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110vmin] h-[65vmin] opacity-12 blur-[180px]" style={{ background: "radial-gradient(ellipse, oklch(0.72 0.155 50) 0%, transparent 65%)" }} />
-          <div className="absolute bottom-[-20%] right-[-10%] w-[40vmin] h-[40vmin] rounded-full opacity-15 blur-[160px]" style={{ background: "oklch(0.34 0.080 150)" }} />
-        </div>
-
+    <section
+      id="areas"
+      data-surface="dark"
+      className="relative bg-forest text-bone overflow-hidden grain py-16 md:py-24 lg:py-28"
+    >
+      <div className="absolute inset-0 pointer-events-none">
         <div
-          ref={headingRef}
-          className="absolute top-16 lg:top-20 left-6 md:left-12 lg:left-20 z-20 max-w-3xl pointer-events-none"
-          style={{ willChange: "transform, opacity" }}
-        >
+          className="absolute top-1/4 right-[-15%] w-[55vmin] h-[55vmin] rounded-full opacity-18 blur-[160px]"
+          style={{ background: "oklch(0.72 0.155 50)" }}
+        />
+        <div
+          className="absolute bottom-[-10%] left-[-15%] w-[45vmin] h-[45vmin] rounded-full opacity-15 blur-[180px]"
+          style={{ background: "oklch(0.34 0.080 150)" }}
+        />
+      </div>
+
+      <div className="relative z-10 px-5 sm:px-6 md:px-12 lg:px-20">
+        <div className="mb-10 md:mb-14 max-w-4xl">
           <TextScramble
             as="p"
             text={t.areas.kicker}
             className="block font-mono text-[10.5px] uppercase tracking-[0.32em] text-bone/60 mb-4"
           />
-          <h2 className="font-serif text-[2.2rem] md:text-[2.9rem] lg:text-[3.4rem] text-balance leading-[0.94]" style={{ fontWeight: 400 }}>
+          <h2
+            className="font-serif text-[2.1rem] sm:text-[2.6rem] md:text-d-2 lg:text-d-3 text-balance leading-[0.95]"
+            style={{ fontWeight: 400 }}
+          >
             {t.areas.title}
           </h2>
         </div>
 
-        <div
-          ref={trackRef}
-          className="flex h-full items-center pl-[42vw] will-change-transform"
-          style={{ width: `${areas.length * 28 + 90}vw` }}
-        >
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5">
           {areas.map((a, i) => {
             const c = getAreaContent(a, locale);
             const accentGlow =
@@ -120,122 +50,65 @@ export default function AreasInteractivas() {
                 : a.accent === "gold"
                 ? "oklch(0.76 0.115 82)"
                 : "oklch(0.34 0.080 150)";
-            return (
-              <Link
-                key={a.slug}
-                href={`/servicios/${a.slug}`}
-                ref={(el) => {
-                  cardsRef.current[i] = el;
-                }}
-                className="shrink-0 w-[22vw] lg:w-[19vw] aspect-[3/4] mr-[6vw] lg:mr-[5vw] relative rounded-2xl overflow-hidden border border-bone/12 bg-forest-soft transition-colors duration-500 hover:border-bone/45 will-change-transform group"
-                style={{ transformOrigin: "center" }}
-              >
-                {a.image && (
-                  <div className="absolute inset-0">
-                    <Image
-                      src={a.image}
-                      alt=""
-                      fill
-                      sizes="22vw"
-                      className="object-cover opacity-55 group-hover:opacity-75 transition-opacity duration-700"
-                      priority={i < 4}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-forest/95 via-forest/40 to-forest/15" />
-                  </div>
-                )}
-                <div className="absolute inset-0 pointer-events-none">
-                  <div className="absolute -top-20 -right-20 w-[28vmin] h-[28vmin] rounded-full opacity-35 blur-[80px]" style={{ background: accentGlow }} />
-                </div>
-                <div className="absolute right-2 top-2 w-[45%] aspect-square text-bone/35 pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity duration-500">
-                  <ProblemaScene scene={a.scene} accent={a.accent} />
-                </div>
-                <div className="relative h-full flex flex-col p-5 md:p-6">
-                  <div className="flex items-center justify-between font-mono text-[9.5px] uppercase tracking-[0.28em] text-bone/65">
-                    <span>§ {a.num}</span>
-                  </div>
-                  <h3
-                    className="font-serif mt-auto text-[1.4rem] lg:text-[1.7rem] leading-[1.02] text-balance"
-                    style={{ fontWeight: 400 }}
-                  >
-                    {c.title}
-                  </h3>
-                  <p className="mt-2 text-bone/70 text-[0.82rem] leading-snug max-w-[28ch]">
-                    {c.short}
-                  </p>
-                  <div className="mt-3 flex items-center gap-2 font-mono text-[9.5px] uppercase tracking-[0.24em] text-bone/55 group-hover:text-bone transition-colors duration-500">
-                    <span>{t.areas.open}</span>
-                    <span aria-hidden className="transition-transform duration-500 group-hover:translate-x-1">→</span>
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
-          <div className="shrink-0 w-[15vw]" />
-        </div>
-
-        <div className="absolute bottom-6 left-12 right-12 lg:left-20 lg:right-20 z-10 pointer-events-none">
-          <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.28em] text-bone/55 mb-2">
-            <span>{t.areas.pick}</span>
-            <span>
-              {locale === "es" ? "Desplaza para recorrer las 13 áreas" : locale === "en" ? "Scroll through all 13 areas" : "Faites défiler les 13 domaines"} →
-            </span>
-          </div>
-          <div className="h-px bg-bone/15 overflow-hidden">
-            <div ref={progressRef} className="h-full bg-bone origin-left" style={{ transform: "scaleX(0)" }} />
-          </div>
-        </div>
-      </section>
-
-      <section
-        data-surface="dark"
-        id="areas-mobile"
-        className="md:hidden relative bg-forest text-bone overflow-hidden grain py-14 px-6"
-      >
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-20 right-[-20%] w-[50vmin] h-[50vmin] rounded-full opacity-20 blur-[140px]" style={{ background: "oklch(0.72 0.155 50)" }} />
-        </div>
-        <div className="relative mb-10">
-          <TextScramble
-            as="p"
-            text={t.areas.kicker}
-            className="block font-mono text-[10px] uppercase tracking-[0.28em] text-bone/60 mb-3"
-          />
-          <h2 className="font-serif text-[1.85rem] leading-[1.0] text-balance" style={{ fontWeight: 400 }}>
-            {t.areas.title}
-          </h2>
-        </div>
-        <ul className="relative space-y-3">
-          {areas.map((a) => {
-            const c = getAreaContent(a, locale);
-            const accentGlow =
+            const accentText =
               a.accent === "ember"
-                ? "oklch(0.72 0.155 50)"
+                ? "text-ember"
                 : a.accent === "gold"
-                ? "oklch(0.76 0.115 82)"
-                : "oklch(0.34 0.080 150)";
+                ? "text-gold"
+                : "text-forest-glow";
             return (
               <li key={a.slug}>
                 <Link
                   href={`/servicios/${a.slug}`}
-                  className="block relative border border-bone/15 rounded-2xl p-5 overflow-hidden hover:border-bone/40 transition-colors"
+                  className="group relative block h-full overflow-hidden rounded-2xl border border-bone/12 bg-forest-soft/60 hover:bg-forest-soft hover:border-bone/40 transition-all duration-500 p-5 md:p-6"
+                  style={{ transitionDelay: `${Math.min(i * 30, 240)}ms` }}
                 >
-                  <div className="absolute -top-12 -right-12 w-[18vmin] h-[18vmin] rounded-full opacity-30 blur-[60px] pointer-events-none" style={{ background: accentGlow }} />
-                  <div className="absolute right-2 top-2 w-[28%] aspect-square text-bone/30 pointer-events-none opacity-80">
+                  <div className="absolute inset-0 pointer-events-none">
+                    <div
+                      className="absolute -top-16 -right-16 w-[22vmin] h-[22vmin] rounded-full opacity-30 group-hover:opacity-55 blur-[60px] transition-opacity duration-700"
+                      style={{ background: accentGlow }}
+                    />
+                  </div>
+
+                  <div className="absolute right-3 top-3 w-[38%] aspect-square text-bone/35 pointer-events-none opacity-80 group-hover:opacity-100 group-hover:text-bone/60 transition-all duration-700">
                     <ProblemaScene scene={a.scene} accent={a.accent} />
                   </div>
-                  <div className="relative">
-                    <div className="font-mono text-[10px] uppercase tracking-widest text-bone/55 mb-3">
-                      <span>§ {a.num}</span>
+
+                  <div className="relative h-full flex flex-col min-h-[260px] md:min-h-[300px]">
+                    <div className="flex items-center justify-between font-mono text-[9.5px] uppercase tracking-[0.28em] text-bone/60">
+                      <span className={accentText}>§ {a.num}</span>
                     </div>
-                    <h3 className="font-serif text-[1.45rem] leading-tight max-w-[14ch]" style={{ fontWeight: 400 }}>{c.title}</h3>
-                    <p className="mt-2 text-sm text-bone/70 max-w-[34ch]">{c.short}</p>
+
+                    <h3
+                      className="font-serif mt-auto text-[1.5rem] md:text-[1.7rem] leading-[1.04] text-balance max-w-[16ch]"
+                      style={{ fontWeight: 400 }}
+                    >
+                      {c.title}
+                    </h3>
+                    <p className="mt-2.5 text-bone/70 text-[0.92rem] md:text-[0.95rem] leading-snug max-w-[30ch]">
+                      {c.short}
+                    </p>
+
+                    <div className="mt-4 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.24em] text-bone/60 group-hover:text-bone transition-colors duration-500">
+                      <span>{t.areas.open}</span>
+                      <span
+                        aria-hidden
+                        className="transition-transform duration-500 group-hover:translate-x-1.5"
+                      >
+                        →
+                      </span>
+                    </div>
                   </div>
                 </Link>
               </li>
             );
           })}
         </ul>
-      </section>
-    </>
+
+        <p className="mt-12 md:mt-16 max-w-2xl font-serif italic text-base md:text-lg text-bone/70 leading-snug" style={{ fontWeight: 400 }}>
+          {t.areas.cta}
+        </p>
+      </div>
+    </section>
   );
 }

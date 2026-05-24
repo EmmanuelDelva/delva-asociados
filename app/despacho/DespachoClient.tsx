@@ -79,12 +79,12 @@ export default function DespachoClient() {
                   {t.nav.submenuExplore}
                   <span aria-hidden>→</span>
                 </Link>
-                <a
-                  href="/#firmar"
+                <Link
+                  href="/contacto"
                   className="inline-flex items-center gap-2 border border-ink/40 font-mono text-[11px] uppercase tracking-[0.2em] rounded-full px-5 py-3 hover:bg-ink hover:text-bone transition-colors duration-500"
                 >
                   {t.nosotrosPage.credCta}
-                </a>
+                </Link>
               </div>
             </div>
           </div>

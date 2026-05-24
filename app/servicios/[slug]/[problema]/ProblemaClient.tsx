@@ -231,13 +231,13 @@ export default function ProblemaClient({
               </ul>
 
               <div className="mt-10 reveal-init">
-                <a
-                  href="/#firmar"
+                <Link
+                  href="/contacto"
                   className="inline-flex items-center gap-2 bg-ink text-bone font-mono text-[11px] uppercase tracking-[0.2em] rounded-full px-5 py-3 hover:bg-forest transition-colors duration-500 group"
                 >
                   {t.problemaPage.ctaButton}
                   <span aria-hidden className="transition-transform duration-500 group-hover:translate-x-1">→</span>
-                </a>
+                </Link>
                 <p className="mt-3 font-mono text-[10.5px] uppercase tracking-[0.22em] text-ink-mute">
                   {t.problemaPage.ctaSub}
                 </p>

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { useI18n } from "../i18n/I18nProvider";
 import Marquee from "./Marquee";
@@ -110,14 +111,14 @@ export default function Hero() {
             </p>
           </div>
           <div className="col-span-12 md:col-span-4 md:col-start-9 flex flex-wrap items-center gap-3 md:justify-end reveal-init">
-            <a
-              href="#firmar"
+            <Link
+              href="/contacto"
               data-magnetic
               className="group inline-flex items-center gap-2 bg-bone text-forest font-mono text-[11px] uppercase tracking-[0.2em] rounded-full px-5 py-3 hover:bg-ember transition-colors duration-500"
             >
               {t.hero.ctaPrimary}
               <span aria-hidden className="transition-transform duration-500 group-hover:translate-x-1">→</span>
-            </a>
+            </Link>
             <a
               href="#areas"
               className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-bone/75 hover:text-bone transition-colors duration-500 border-b border-bone/30 hover:border-bone pb-1"

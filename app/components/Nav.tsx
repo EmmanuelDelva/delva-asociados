@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Wordmark } from "./Mark";
+import { BrandSigil, Wordmark } from "./Mark";
 import { useI18n } from "../i18n/I18nProvider";
 import { locales } from "../i18n/dict";
 import { areas, getAreaContent } from "../lib/servicios";
@@ -53,7 +53,13 @@ export default function Nav() {
   return (
     <header className={`fixed top-3 md:top-5 left-0 right-0 z-50 px-3 md:px-6 transition-colors duration-700 ease-out ${tone}`} data-nav>
       <div className={`relative mx-auto flex items-center justify-between gap-2 max-w-[1400px] rounded-full ${pill} pl-3 pr-2 py-2 transition-colors duration-700`}>
-        <Link href="/" className="flex items-center gap-2.5 pl-2 group shrink-0">
+        <Link href="/" className="flex items-center gap-2.5 pl-1 group shrink-0" aria-label="Delva & Asociados — Inicio">
+          <span
+            style={{ width: 28, height: 28 }}
+            className="block shrink-0 opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+          >
+            <BrandSigil />
+          </span>
           <Wordmark className="text-[11px] sm:text-[12px]" />
         </Link>
 
@@ -109,7 +115,7 @@ export default function Nav() {
           <Link href="/despacho" className="px-3 py-1.5 opacity-80 hover:opacity-100 transition-opacity duration-300">
             {t.nav.nosotros}
           </Link>
-          <Link href="/#firmar" className="px-3 py-1.5 opacity-80 hover:opacity-100 transition-opacity duration-300">
+          <Link href="/contacto" className="px-3 py-1.5 opacity-80 hover:opacity-100 transition-opacity duration-300">
             {t.nav.contacto}
           </Link>
         </nav>
@@ -129,15 +135,15 @@ export default function Nav() {
               </button>
             ))}
           </div>
-          <a
-            href="#firmar"
+          <Link
+            href="/contacto"
             className={`hidden md:inline-flex items-center gap-1.5 font-mono text-[10.5px] uppercase tracking-[0.18em] rounded-full px-3.5 py-2 transition-all duration-500 ${
               onDark ? "bg-bone text-forest hover:bg-ember" : "bg-ink text-bone hover:bg-forest"
             }`}
           >
             {t.nav.cta}
             <span aria-hidden>→</span>
-          </a>
+          </Link>
           <button
             type="button"
             onClick={() => setOpen(open === "mobile" ? null : "mobile")}
@@ -172,31 +178,38 @@ export default function Nav() {
               );
             })}
           </div>
-          <div className="mt-5 grid grid-cols-2 gap-3">
+          <div className="mt-5 grid grid-cols-3 gap-2">
             <Link
               href="/despacho"
               onClick={() => setOpen(null)}
-              className="font-mono text-[10.5px] uppercase tracking-[0.2em] py-2.5 rounded-full border border-current/30 text-center"
+              className="font-mono text-[10px] uppercase tracking-[0.2em] py-2.5 rounded-full border border-current/30 text-center"
             >
               {t.nav.nosotros}
             </Link>
             <Link
+              href="/contacto"
+              onClick={() => setOpen(null)}
+              className="font-mono text-[10px] uppercase tracking-[0.2em] py-2.5 rounded-full border border-current/30 text-center"
+            >
+              {t.nav.contacto}
+            </Link>
+            <Link
               href="/manifiesto"
               onClick={() => setOpen(null)}
-              className="font-mono text-[10.5px] uppercase tracking-[0.2em] py-2.5 rounded-full border border-current/30 text-center"
+              className="font-mono text-[10px] uppercase tracking-[0.2em] py-2.5 rounded-full border border-current/30 text-center"
             >
               {t.footer.manifiesto}
             </Link>
           </div>
-          <a
-            href="#firmar"
+          <Link
+            href="/contacto"
             onClick={() => setOpen(null)}
             className={`mt-3 inline-flex w-full items-center justify-center gap-1.5 font-mono text-[10.5px] uppercase tracking-[0.2em] rounded-full px-4 py-3 ${
               onDark ? "bg-bone text-forest" : "bg-ink text-bone"
             }`}
           >
             {t.nav.cta} <span aria-hidden>→</span>
-          </a>
+          </Link>
           <div className="mt-4 flex justify-center gap-2 font-mono text-[10px] uppercase tracking-widest">
             {locales.map((loc) => (
               <button

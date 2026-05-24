@@ -2,10 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { Wordmark } from "./Mark";
+import { BrandSigil, Wordmark } from "./Mark";
 import { useI18n } from "../i18n/I18nProvider";
 
-const STAGE_DONE_KEY = "dya.stage.seen.v5";
+const STAGE_DONE_KEY = "dya.stage.seen.v7";
 
 export default function Stage() {
   const { t } = useI18n();
@@ -137,44 +137,14 @@ export default function Stage() {
               {t.stage.reveal}
             </p>
             <div ref={sigilRef} className="flex justify-center mt-8 md:mt-12">
-              <svg
-                width="92"
-                height="92"
-                viewBox="0 0 92 92"
-                fill="none"
-                aria-hidden="true"
-                className="block"
-              >
-                <circle
-                  cx="46"
-                  cy="46"
-                  r="44"
-                  stroke="currentColor"
-                  strokeOpacity="0.35"
-                  strokeWidth="1"
-                />
-                <circle
-                  cx="46"
-                  cy="46"
-                  r="38"
-                  stroke="currentColor"
-                  strokeOpacity="0.12"
-                  strokeWidth="0.5"
-                />
-                <text
-                  x="46"
-                  y="46"
-                  textAnchor="middle"
-                  dominantBaseline="central"
-                  fontFamily="'Instrument Serif', 'Times New Roman', serif"
-                  fontStyle="italic"
-                  fontSize="58"
-                  fill="currentColor"
-                  fillOpacity="0.95"
-                >
-                  &amp;
-                </text>
-              </svg>
+              <span style={{ width: 120, height: 120 }} className="block">
+                <BrandSigil />
+              </span>
+            </div>
+            <div className="mt-5 flex items-center justify-center gap-2 opacity-50">
+              <span className="block w-10 h-px bg-bone" />
+              <span className="block w-1 h-1 rounded-full bg-bone" />
+              <span className="block w-10 h-px bg-bone" />
             </div>
             <div ref={wordmarkRef} className="mt-6 md:mt-8">
               <Wordmark className="text-[13px] md:text-[15px]" />
