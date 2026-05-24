@@ -71,10 +71,10 @@ export default function Hero() {
           </span>
         </div>
 
-        <div className="flex-1 flex flex-col justify-center mt-12 md:mt-0 max-w-[19ch]">
+        <div className="flex-1 flex flex-col justify-center mt-8 md:mt-0 max-w-[88%] md:max-w-[78%] lg:max-w-[68%]">
           <h1
             ref={titleRef}
-            className="font-serif optical-display text-display-lg md:text-display-xl text-balance"
+            className="font-serif optical-display text-display-md md:text-display-lg lg:text-display-xl text-balance"
             style={{ fontWeight: 300 }}
           >
             Asesoramos lo que el derecho{" "}

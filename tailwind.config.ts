@@ -35,11 +35,11 @@ const config: Config = {
         mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"]
       },
       fontSize: {
-        "display-xs": ["clamp(2.5rem, 6vw, 4rem)", { lineHeight: "0.95", letterSpacing: "-0.03em" }],
-        "display-sm": ["clamp(3.5rem, 8vw, 6rem)", { lineHeight: "0.92", letterSpacing: "-0.035em" }],
-        "display-md": ["clamp(5rem, 12vw, 10rem)", { lineHeight: "0.88", letterSpacing: "-0.04em" }],
-        "display-lg": ["clamp(7rem, 18vw, 16rem)", { lineHeight: "0.85", letterSpacing: "-0.045em" }],
-        "display-xl": ["clamp(9rem, 22vw, 22rem)", { lineHeight: "0.82", letterSpacing: "-0.05em" }]
+        "display-xs": ["clamp(2.25rem, 5vw, 3.5rem)", { lineHeight: "0.98", letterSpacing: "-0.025em" }],
+        "display-sm": ["clamp(2.75rem, 6.5vw, 5rem)", { lineHeight: "0.95", letterSpacing: "-0.03em" }],
+        "display-md": ["clamp(3.5rem, 9vw, 7.5rem)", { lineHeight: "0.92", letterSpacing: "-0.035em" }],
+        "display-lg": ["clamp(4.5rem, 11vw, 10.5rem)", { lineHeight: "0.88", letterSpacing: "-0.04em" }],
+        "display-xl": ["clamp(3.25rem, 8vw, 8.5rem)", { lineHeight: "0.92", letterSpacing: "-0.035em" }]
       },
       letterSpacing: {
         tightest: "-0.05em",
