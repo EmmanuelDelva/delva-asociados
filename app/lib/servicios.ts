@@ -1079,11 +1079,28 @@ const A_INTERNACIONAL: Area = {
 const A_OTROS: Area = {
   slug: "otros-casos", num: "13", accent: "ember", scene: "scale",
   i18n: {
-    es: { title: "Otros Casos Digitales", short: "Lo que cruza varias áreas. Lo que aún no tiene nombre.", intro: "El caso híbrido. La consulta exploratoria. El riesgo que apenas pasó ayer y todavía no tiene nombre legal. Aquí también estamos." },
-    en: { title: "Other Digital Cases", short: "What crosses several areas. What still has no name.", intro: "The hybrid case. The exploratory consult. The risk that just emerged yesterday and still has no legal name. We're here for that too." },
-    fr: { title: "Autres Cas Numériques", short: "Ce qui croise plusieurs domaines. Ce qui n'a pas encore de nom.", intro: "L'affaire hybride. La consultation exploratoire. Le risque apparu hier." }
+    es: { title: "Otros Casos Emergentes", short: "Nichos nuevos. Casos que cruzan áreas. Lo que aún no tiene nombre.", intro: "El médico cuya cesárea cobra a medias. El caso híbrido entre cuatro materias. El riesgo que apenas surgió ayer y todavía no tiene precedente. Aquí también estamos." },
+    en: { title: "Other Emerging Cases", short: "New niches. Cases that cross areas. What still has no name.", intro: "The doctor whose c-section gets half-paid. The hybrid case across four matters. The risk that emerged yesterday and still has no precedent. We're here for that too." },
+    fr: { title: "Autres Cas Émergents", short: "Nouveaux niches. Affaires qui croisent. Ce qui n'a pas encore de nom.", intro: "Le médecin dont la césarienne est payée à moitié. L'affaire hybride. Le risque apparu hier sans précédent. Nous sommes là aussi." }
   },
   problematicas: [
+    {
+      id: "honorarios-medicos-seguro", scene: "regulation",
+      i18n: {
+        es: { title: "Soy médico y mi paciente solo paga lo que cubre el seguro", hook: "Pactaste $20,000 por la cesárea. El seguro cubre $6,000. Tu paciente, ya operada, dice que no había nada más.",
+          examples: ["Cobras $20,000 por una cesárea programada y el seguro de gastos médicos solo paga $6,000. La paciente se niega a cubrir los $14,000 de diferencia porque 'ya está operada'.", "Tu carta-compromiso es de palabra o un mensaje de WhatsApp. Cuando llega la factura, el paciente dice que el contrato solo incluye lo que cobra el seguro.", "Eres anestesiólogo, cirujano o especialista privado y tus honorarios quedan en zona gris frente a la aseguradora; cobrar el saldo se vuelve un litigio individual con cada paciente."],
+          consequence: "Una vez hecho el procedimiento, el paciente sabe que ya no puedes echarte atrás. Sin contrato bien redactado antes, te conviertes en quien depende de su buena fe para cobrar lo tuyo.",
+          solution: ["Contrato de prestación de servicios médicos firmado ANTES del procedimiento, con desglose claro de honorarios profesionales separados del paquete hospitalario y los deducibles.", "Cláusula expresa del saldo a cargo del paciente cuando la aseguradora cubre solo parcialmente, con reconocimiento de adeudo y consentimiento informado financiero.", "Pagaré o garantía que respalda la diferencia, exigible en vía mercantil si el paciente no paga.", "Cobranza extrajudicial estructurada y, cuando ya no hay opción, juicio oral mercantil para recuperar honorarios."] },
+        en: { title: "I'm a doctor and my patient only pays what insurance covers", hook: "You agreed $20,000 for the c-section. Insurance paid $6,000. Your already-operated patient says there was nothing more.",
+          examples: ["You charge $20,000 for a scheduled c-section and the medical expense insurance only pays $6,000. The patient refuses the $14,000 difference because 'she's already operated'.", "Your engagement letter is verbal or a WhatsApp message. When the invoice arrives, the patient says the contract only covers what insurance pays.", "You're an anesthesiologist, surgeon or private specialist, and your fees fall in a gray zone vis-à-vis the insurer; collecting the balance turns into individual litigation patient by patient."],
+          consequence: "Once the procedure is done, the patient knows you can't go back. Without a properly drafted contract beforehand, you become dependent on their good faith to collect what's yours.",
+          solution: ["Medical services agreement signed BEFORE the procedure, with clear breakdown of professional fees separate from the hospital package and deductibles.", "Express clause on the patient-borne balance when the insurer covers only partially, with debt acknowledgment and financial informed consent.", "Promissory note or guarantee backing the difference, enforceable through commercial proceedings.", "Structured out-of-court collection and, when there's no option, oral commercial trial to recover fees."] },
+        fr: { title: "Je suis médecin et mon patient ne paie que ce que l'assurance couvre", hook: "Vous avez convenu 20 000 $ pour la césarienne. L'assurance en paie 6 000. Votre patiente déjà opérée dit qu'il n'y avait rien de plus.",
+          examples: ["Vous facturez 20 000 $ pour une césarienne programmée et l'assurance ne paie que 6 000. La patiente refuse les 14 000 de différence car 'elle est déjà opérée'.", "Votre engagement est verbal ou par WhatsApp. À la facture, le patient dit que le contrat ne couvre que ce que paie l'assurance.", "Vous êtes anesthésiste, chirurgien ou spécialiste privé et vos honoraires tombent en zone grise face à l'assureur."],
+          consequence: "Une fois la procédure faite, le patient sait que vous ne pouvez plus revenir. Sans contrat bien rédigé avant, vous dépendez de sa bonne foi pour percevoir ce qui vous revient.",
+          solution: ["Contrat de prestation de services médicaux signé AVANT la procédure, avec décomposition claire des honoraires et franchises.", "Clause expresse du solde à charge du patient quand l'assureur couvre partiellement.", "Billet à ordre ou garantie pour la différence, exigible en voie commerciale.", "Recouvrement extrajudiciaire structuré et, à défaut, procès oral commercial."] }
+      }
+    },
     {
       id: "caso-cruza-varias-areas", scene: "network",
       i18n: {
