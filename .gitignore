@@ -14,3 +14,6 @@ Thumbs.db
 next-env.d.ts
 .idea
 .vscode
+
+# Lighthouse local reports
+lighthouse-*.json

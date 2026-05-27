@@ -8,7 +8,15 @@ export const metadata: Metadata = {
   title: "Términos de Uso — Delva & Asociados",
   description:
     "Términos y Condiciones de Uso del sitio delvayasociados.com. Disclaimer profesional, propiedad intelectual, jurisdicción de Guadalajara.",
-  alternates: { canonical: "/terminos" },
+  alternates: {
+    canonical: "/terminos",
+    languages: {
+      es: "/terminos",
+      en: "/en/terminos",
+      fr: "/fr/terminos",
+      "x-default": "/terminos"
+    }
+  },
   openGraph: {
     title: "Términos de Uso — Delva & Asociados",
     description:

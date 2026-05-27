@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import { dict, type Dict, type Locale, locales } from "./dict";
 
 type I18nContextValue = {
@@ -12,10 +13,32 @@ type I18nContextValue = {
 const I18nContext = createContext<I18nContextValue | null>(null);
 const STORAGE_KEY = "dya.locale";
 
+/**
+ * Lee el primer segmento de la URL. Si es "en" o "fr" devuelve ese locale.
+ * Si no, devuelve null (default ES por contexto raíz).
+ */
+function pathToLocale(pathname: string): Locale | null {
+  const seg = pathname.split("/").filter(Boolean)[0];
+  if (seg === "en" || seg === "fr") return seg;
+  return null;
+}
+
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("es");
+  const pathname = usePathname() || "/";
+  const pathLocale = pathToLocale(pathname);
+  const [locale, setLocaleState] = useState<Locale>(pathLocale || "es");
 
   useEffect(() => {
+    // 1) Si la URL declara explícitamente locale (ej. /en/...), gana sobre todo lo demás.
+    if (pathLocale) {
+      setLocaleState(pathLocale);
+      try {
+        document.documentElement.lang = pathLocale;
+        window.localStorage.setItem(STORAGE_KEY, pathLocale);
+      } catch {}
+      return;
+    }
+    // 2) Rutas en raíz: fallback a la preferencia guardada o navegador.
     try {
       const stored = window.localStorage.getItem(STORAGE_KEY) as Locale | null;
       if (stored && locales.includes(stored)) {
@@ -29,7 +52,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
         document.documentElement.lang = nav;
       }
     } catch {}
-  }, []);
+  }, [pathname, pathLocale]);
 
   const setLocale = (l: Locale) => {
     setLocaleState(l);

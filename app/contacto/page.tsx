@@ -4,7 +4,16 @@ import ContactoClient from "./ContactoClient";
 export const metadata: Metadata = {
   title: "Contacto — Delva & Asociados",
   description:
-    "El primer diálogo no se cobra. Treinta minutos para entender tu caso. Correo, WhatsApp, agenda o reunión en metaverso."
+    "El primer diálogo no se cobra. Treinta minutos para entender tu caso. Correo, WhatsApp, agenda o reunión en metaverso.",
+  alternates: {
+    canonical: "/contacto",
+    languages: {
+      es: "/contacto",
+      en: "/en/contacto",
+      fr: "/fr/contacto",
+      "x-default": "/contacto"
+    }
+  }
 };
 
 export default function ContactoPage() {
