@@ -66,7 +66,7 @@ export default function PrivacidadPage() {
         actividad empresarial y profesional, actuando bajo la denominación
         comercial <strong>Delva & Asociados</strong>, con domicilio en
         Guadalajara, Jalisco, Estados Unidos Mexicanos, y correo electrónico
-        de contacto <code>emmanueldelva@gmail.com</code> (en adelante, el{" "}
+        de contacto <code>contacto@delvayasociados.com</code> (en adelante, el{" "}
         <strong>“Responsable”</strong>), es el sujeto regulado que decide
         sobre el tratamiento de los datos personales recabados a través del
         sitio <code>https://delvayasociados.com</code> (en adelante, el{" "}
@@ -185,7 +185,7 @@ export default function PrivacidadPage() {
       </p>
       <p>
         Para ejercer estos derechos, deberá presentar solicitud por escrito
-        al correo <code>emmanueldelva@gmail.com</code>, acompañando: (i)
+        al correo <code>contacto@delvayasociados.com</code>, acompañando: (i)
         nombre completo y medio para comunicarle la respuesta; (ii) documento
         que acredite su identidad y, en su caso, la personalidad de su
         representante; (iii) descripción clara de los datos respecto de los

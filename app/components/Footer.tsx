@@ -94,8 +94,8 @@ export default function Footer() {
             </p>
             <ul className="space-y-2 font-sans text-sm text-ink-soft">
               <li>
-                <a href="mailto:emmanueldelva@gmail.com" className="hover:text-ink transition-colors break-words">
-                  emmanueldelva@gmail.com
+                <a href="mailto:contacto@delvayasociados.com" className="hover:text-ink transition-colors break-words">
+                  contacto@delvayasociados.com
                 </a>
               </li>
               <li>

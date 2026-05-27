@@ -50,8 +50,8 @@ export default function FirmaCTA() {
     {
       Icon: IconMail,
       label: t.firma.optionEmail,
-      value: "emmanueldelva@gmail.com",
-      href: "mailto:emmanueldelva@gmail.com?subject=Delva%20%26%20Asociados"
+      value: "contacto@delvayasociados.com",
+      href: "mailto:contacto@delvayasociados.com?subject=Delva%20%26%20Asociados"
     },
     {
       Icon: IconWhatsapp,
@@ -69,7 +69,7 @@ export default function FirmaCTA() {
       Icon: IconMetaverse,
       label: t.firma.optionMetaverso,
       value: "Immersed · Workrooms",
-      href: "mailto:emmanueldelva@gmail.com?subject=Reunion%20en%20metaverso"
+      href: "mailto:contacto@delvayasociados.com?subject=Reunion%20en%20metaverso"
     }
   ];
 
