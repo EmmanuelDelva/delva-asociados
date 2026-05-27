@@ -62,12 +62,10 @@ export default function FirmaCTA() {
     {
       Icon: IconCalendar,
       label: t.firma.optionAgenda,
-      value: "Agendar 30 min",
-      // TODO: cuando Emmanuel active Cal.com, cambiar a algo como
-      // "https://cal.com/dr-emmanuel-delva/30min" (gratis, sincroniza
-      // con Google Calendar nativamente). Mientras tanto, abre un
-      // mailto para que el visitante pida sesión.
-      href: "mailto:contacto@delvayasociados.com?subject=Quiero%20agendar%2030%20min%20-%20Delva%20%26%20Asociados&body=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20sesi%C3%B3n%20de%2030%20minutos%20para%20hablar%20sobre%20mi%20caso.%20Me%20funcionan%20los%20siguientes%20horarios%3A%0A%0A1.%20%0A2.%20%0A3.%20%0A%0AGracias."
+      value: "Cal.com · 30 min",
+      // Cal.com (gratis) sincronizado con Google Calendar de Emmanuel.
+      // Auto-confirma, manda recordatorios, agrega Google Meet automatico.
+      href: "https://cal.com/emmanuel-delva/30min"
     },
     {
       Icon: IconMetaverse,
