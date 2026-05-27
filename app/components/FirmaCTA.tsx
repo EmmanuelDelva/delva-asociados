@@ -62,7 +62,7 @@ export default function FirmaCTA() {
     {
       Icon: IconCalendar,
       label: t.firma.optionAgenda,
-      value: "Calendly · 30 min",
+      value: "Google Calendar · 30 min",
       href: "https://calendar.google.com/calendar/u/0/r/eventedit?text=Delva+%26+Asociados+%E2%80%94+Dialogo"
     },
     {
