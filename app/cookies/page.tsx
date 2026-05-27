@@ -178,7 +178,7 @@ export default function CookiesPage() {
         El visitante puede ejercer sus derechos ARCO (acceso, rectificación,
         cancelación, oposición), revocar el consentimiento y limitar el uso o
         divulgación escribiendo al correo{" "}
-        <code>emmanueldelva@gmail.com</code>, conforme al{" "}
+        <code>contacto@delvayasociados.com</code>, conforme al{" "}
         <Link href="/privacidad">Aviso de Privacidad Integral</Link>.
       </p>
 

@@ -244,7 +244,7 @@ export default function TerminosPage() {
       </p>
 
       <p style={{ marginTop: "2.5rem", fontSize: "0.85rem", color: "#6b6b6b" }}>
-        Contacto: <code>emmanueldelva@gmail.com</code>.
+        Contacto: <code>contacto@delvayasociados.com</code>.
       </p>
     </main>
   );
