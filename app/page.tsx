@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Nav from "./components/Nav";
 import Stage from "./components/Stage";
 import Hero from "./components/Hero";
-import AreasShowcase from "./components/AreasShowcase";
-import AreasInteractivas from "./components/AreasInteractivas";
-import Dominios from "./components/Dominios";
-import FirmaCTA from "./components/FirmaCTA";
-import Footer from "./components/Footer";
+
+// Below-the-fold: lazy-loaded para reducir JS inicial (LCP/TBT win).
+// SSR sigue activo para SEO (Google ve el HTML pre-renderizado).
+const AreasShowcase = dynamic(() => import("./components/AreasShowcase"));
+const AreasInteractivas = dynamic(() => import("./components/AreasInteractivas"));
+const Dominios = dynamic(() => import("./components/Dominios"));
+const FirmaCTA = dynamic(() => import("./components/FirmaCTA"));
+const Footer = dynamic(() => import("./components/Footer"));
 
 export const metadata: Metadata = {
   alternates: {

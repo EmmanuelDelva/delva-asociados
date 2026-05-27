@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { BrandSigil, Wordmark } from "./Mark";
+import { Wordmark } from "./Mark";
 import { useI18n } from "../i18n/I18nProvider";
 import { locales, type Locale } from "../i18n/dict";
 import { areas, getAreaContent } from "../lib/servicios";
@@ -100,14 +100,12 @@ export default function Nav() {
       data-nav
     >
       <div className="relative mx-auto flex items-center justify-between gap-2 max-w-[1500px] pl-4 pr-3 md:pl-7 md:pr-5 py-3 md:py-3.5">
-        <Link href="/" className="flex items-center gap-3 pl-1 group shrink-0" aria-label="Delva & Asociados — Inicio">
-          <span
-            style={{ width: 40, height: 40 }}
-            className="block shrink-0 opacity-95 group-hover:opacity-100 transition-opacity duration-500"
-          >
-            <BrandSigil />
-          </span>
-          <Wordmark className="text-[11px] sm:text-[12px]" />
+        <Link
+          href="/"
+          className="flex items-center pl-1 group shrink-0"
+          aria-label="Delva & Asociados — Inicio"
+        >
+          <Wordmark className="text-[11px] sm:text-[12px] opacity-95 group-hover:opacity-100 transition-opacity duration-500" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-0.5 font-mono text-[10.5px] uppercase tracking-[0.2em]">
