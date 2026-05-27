@@ -45,7 +45,7 @@
       ],
       "sameAs": [
         "https://www.facebook.com/DelvaAsociados/",
-        "https://mx.linkedin.com/in/juan-emmanuel-delva-benavides-088006111"
+        "https://www.linkedin.com/in/dr-emmanuel-delva/"
       ],
       "priceRange": "$$",
       "knowsAbout": [
@@ -90,31 +90,14 @@
       "hasCredential": [
         {
           "@type": "EducationalOccupationalCredential",
-          "name": "Doctor en Derecho",
+          "name": "Doctorado en Derecho",
           "credentialCategory": "degree",
-          "educationalLevel": "Doctorate",
-          "recognizedBy": {
-            "@type": "EducationalOrganization",
-            "name": "Universidad Abierta de Tlaxcala"
-          }
+          "educationalLevel": "Doctorate"
         },
         {
           "@type": "EducationalOccupationalCredential",
-          "name": "Cédula profesional 8979269",
-          "credentialCategory": "license",
-          "recognizedBy": {
-            "@type": "GovernmentOrganization",
-            "name": "Dirección General de Profesiones, SEP"
-          }
-        },
-        {
-          "@type": "EducationalOccupationalCredential",
-          "name": "Sistema Nacional de Investigadoras e Investigadores Nivel I",
-          "credentialCategory": "certification",
-          "recognizedBy": {
-            "@type": "GovernmentOrganization",
-            "name": "Secihti / Conahcyt"
-          }
+          "name": "Sistema Nacional de Investigadoras e Investigadores",
+          "credentialCategory": "certification"
         }
       ],
       "knowsLanguage": ["es", "en", "fr"],
@@ -128,14 +111,13 @@
         "Herencia digital"
       ],
       "memberOf": [
-        { "@type": "Organization", "name": "Universidad de Guadalajara · CUCEA" },
+        { "@type": "Organization", "name": "Universidad de Guadalajara" },
         { "@type": "Organization", "name": "Cuerpo Académico UDEGCA-1236 Derecho y Tecnología" }
       ],
       "sameAs": [
         "https://orcid.org/0000-0002-2859-378X",
         "https://scholar.google.com/citations?user=AKJalMwAAAAJ",
-        "https://mx.linkedin.com/in/juan-emmanuel-delva-benavides-088006111",
-        "https://investigacion.cucea.udg.mx/investigadores/JUAN-EMMANUEL-DELVA-BENAVIDES"
+        "https://www.linkedin.com/in/dr-emmanuel-delva/"
       ]
     },
     {

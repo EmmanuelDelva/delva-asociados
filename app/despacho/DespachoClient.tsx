@@ -74,30 +74,24 @@ export default function DespachoClient() {
               {/* Credenciales y trust signals — visibles para clientes + crawlers */}
               <dl className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-soft">
                 <div>
-                  <dt className="text-ink-mute">Doctorado en Derecho</dt>
+                  <dt className="text-ink-mute">Formación</dt>
                   <dd className="text-ink mt-0.5 normal-case tracking-normal font-sans text-[12px]">
-                    Universidad Abierta de Tlaxcala
+                    Doctorado en Derecho
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-ink-mute">Cédula profesional</dt>
+                  <dt className="text-ink-mute">Reconocimiento</dt>
                   <dd className="text-ink mt-0.5 normal-case tracking-normal font-sans text-[12px]">
-                    8979269 · SEP
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-ink-mute">SNII</dt>
-                  <dd className="text-ink mt-0.5 normal-case tracking-normal font-sans text-[12px]">
-                    Nivel I · Secihti / Conahcyt
+                    SNI
                   </dd>
                 </div>
                 <div>
                   <dt className="text-ink-mute">Adscripción</dt>
                   <dd className="text-ink mt-0.5 normal-case tracking-normal font-sans text-[12px]">
-                    CUCEA · Universidad de Guadalajara
+                    Universidad de Guadalajara
                   </dd>
                 </div>
-                <div className="sm:col-span-2">
+                <div>
                   <dt className="text-ink-mute">Cuerpo académico</dt>
                   <dd className="text-ink mt-0.5 normal-case tracking-normal font-sans text-[12px]">
                     UDEGCA-1236 · Derecho y Tecnología
@@ -124,20 +118,12 @@ export default function DespachoClient() {
                   Google Scholar <span aria-hidden>↗</span>
                 </a>
                 <a
-                  href="https://mx.linkedin.com/in/juan-emmanuel-delva-benavides-088006111"
+                  href="https://www.linkedin.com/in/dr-emmanuel-delva/"
                   target="_blank"
                   rel="noopener noreferrer me"
                   className="inline-flex items-center gap-1.5 border border-ink/25 rounded-full px-3 py-2 hover:border-ink hover:bg-ink hover:text-bone transition-colors"
                 >
                   LinkedIn <span aria-hidden>↗</span>
-                </a>
-                <a
-                  href="https://investigacion.cucea.udg.mx/investigadores/JUAN-EMMANUEL-DELVA-BENAVIDES"
-                  target="_blank"
-                  rel="noopener noreferrer me"
-                  className="inline-flex items-center gap-1.5 border border-ink/25 rounded-full px-3 py-2 hover:border-ink hover:bg-ink hover:text-bone transition-colors"
-                >
-                  Perfil CUCEA <span aria-hidden>↗</span>
                 </a>
               </div>
 
