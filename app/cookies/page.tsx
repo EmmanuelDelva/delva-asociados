@@ -8,7 +8,15 @@ export const metadata: Metadata = {
   title: "Política de Cookies — Delva & Asociados",
   description:
     "Política de Cookies del sitio delvayasociados.com conforme a la nueva LFPDPPP (DOF 20-mar-2025), RGPD y CPRA. Analítica sin cookies.",
-  alternates: { canonical: "/cookies" },
+  alternates: {
+    canonical: "/cookies",
+    languages: {
+      es: "/cookies",
+      en: "/en/cookies",
+      fr: "/fr/cookies",
+      "x-default": "/cookies"
+    }
+  },
   openGraph: {
     title: "Política de Cookies — Delva & Asociados",
     description:

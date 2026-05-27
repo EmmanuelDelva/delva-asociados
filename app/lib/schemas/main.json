@@ -43,7 +43,10 @@
           "availableLanguage": ["es", "en", "fr"]
         }
       ],
-      "sameAs": ["https://www.facebook.com/DelvaAsociados/"],
+      "sameAs": [
+        "https://www.facebook.com/DelvaAsociados/",
+        "https://mx.linkedin.com/in/juan-emmanuel-delva-benavides-088006111"
+      ],
       "priceRange": "$$",
       "knowsAbout": [
         "Herencia y Testamento Digital",
@@ -127,6 +130,12 @@
       "memberOf": [
         { "@type": "Organization", "name": "Universidad de Guadalajara · CUCEA" },
         { "@type": "Organization", "name": "Cuerpo Académico UDEGCA-1236 Derecho y Tecnología" }
+      ],
+      "sameAs": [
+        "https://orcid.org/0000-0002-2859-378X",
+        "https://scholar.google.com/citations?user=AKJalMwAAAAJ",
+        "https://mx.linkedin.com/in/juan-emmanuel-delva-benavides-088006111",
+        "https://investigacion.cucea.udg.mx/investigadores/JUAN-EMMANUEL-DELVA-BENAVIDES"
       ]
     },
     {

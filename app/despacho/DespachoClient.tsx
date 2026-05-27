@@ -71,6 +71,76 @@ export default function DespachoClient() {
                 ))}
               </div>
 
+              {/* Credenciales y trust signals — visibles para clientes + crawlers */}
+              <dl className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-soft">
+                <div>
+                  <dt className="text-ink-mute">Doctorado en Derecho</dt>
+                  <dd className="text-ink mt-0.5 normal-case tracking-normal font-sans text-[12px]">
+                    Universidad Abierta de Tlaxcala
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-ink-mute">Cédula profesional</dt>
+                  <dd className="text-ink mt-0.5 normal-case tracking-normal font-sans text-[12px]">
+                    8979269 · SEP
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-ink-mute">SNII</dt>
+                  <dd className="text-ink mt-0.5 normal-case tracking-normal font-sans text-[12px]">
+                    Nivel I · Secihti / Conahcyt
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-ink-mute">Adscripción</dt>
+                  <dd className="text-ink mt-0.5 normal-case tracking-normal font-sans text-[12px]">
+                    CUCEA · Universidad de Guadalajara
+                  </dd>
+                </div>
+                <div className="sm:col-span-2">
+                  <dt className="text-ink-mute">Cuerpo académico</dt>
+                  <dd className="text-ink mt-0.5 normal-case tracking-normal font-sans text-[12px]">
+                    UDEGCA-1236 · Derecho y Tecnología
+                  </dd>
+                </div>
+              </dl>
+
+              {/* Perfiles públicos verificables */}
+              <div className="mt-8 flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-[0.22em]">
+                <a
+                  href="https://orcid.org/0000-0002-2859-378X"
+                  target="_blank"
+                  rel="noopener noreferrer me"
+                  className="inline-flex items-center gap-1.5 border border-ink/25 rounded-full px-3 py-2 hover:border-ink hover:bg-ink hover:text-bone transition-colors"
+                >
+                  ORCID <span aria-hidden>↗</span>
+                </a>
+                <a
+                  href="https://scholar.google.com/citations?user=AKJalMwAAAAJ"
+                  target="_blank"
+                  rel="noopener noreferrer me"
+                  className="inline-flex items-center gap-1.5 border border-ink/25 rounded-full px-3 py-2 hover:border-ink hover:bg-ink hover:text-bone transition-colors"
+                >
+                  Google Scholar <span aria-hidden>↗</span>
+                </a>
+                <a
+                  href="https://mx.linkedin.com/in/juan-emmanuel-delva-benavides-088006111"
+                  target="_blank"
+                  rel="noopener noreferrer me"
+                  className="inline-flex items-center gap-1.5 border border-ink/25 rounded-full px-3 py-2 hover:border-ink hover:bg-ink hover:text-bone transition-colors"
+                >
+                  LinkedIn <span aria-hidden>↗</span>
+                </a>
+                <a
+                  href="https://investigacion.cucea.udg.mx/investigadores/JUAN-EMMANUEL-DELVA-BENAVIDES"
+                  target="_blank"
+                  rel="noopener noreferrer me"
+                  className="inline-flex items-center gap-1.5 border border-ink/25 rounded-full px-3 py-2 hover:border-ink hover:bg-ink hover:text-bone transition-colors"
+                >
+                  Perfil CUCEA <span aria-hidden>↗</span>
+                </a>
+              </div>
+
               <div className="mt-10 flex flex-wrap gap-3">
                 <Link
                   href="/#areas"

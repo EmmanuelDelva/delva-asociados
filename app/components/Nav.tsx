@@ -2,13 +2,51 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { BrandSigil, Wordmark } from "./Mark";
 import { useI18n } from "../i18n/I18nProvider";
-import { locales } from "../i18n/dict";
+import { locales, type Locale } from "../i18n/dict";
 import { areas, getAreaContent } from "../lib/servicios";
+
+// Rutas que tienen variantes /en y /fr (las institucionales + legales).
+// /servicios/* sigue solo en ES por ahora — postpone migración trilingüe.
+const I18N_PATHS = new Set([
+  "",
+  "despacho",
+  "manifiesto",
+  "contacto",
+  "privacidad",
+  "terminos",
+  "cookies"
+]);
+
+function stripLocalePrefix(pathname: string): string {
+  const parts = pathname.split("/").filter(Boolean);
+  if (parts[0] === "en" || parts[0] === "fr") parts.shift();
+  return "/" + parts.join("/");
+}
+
+function applyLocaleToPath(pathname: string, locale: Locale): string {
+  const cleanPath = stripLocalePrefix(pathname);
+  const firstSeg = cleanPath.split("/").filter(Boolean)[0] || "";
+  // Solo aplicar prefix de locale si la ruta tiene variante traducida.
+  // Si es /servicios/... o similar, mantener ES (sin prefix).
+  if (!I18N_PATHS.has(firstSeg)) return cleanPath;
+  if (locale === "es") return cleanPath === "" ? "/" : cleanPath;
+  return `/${locale}${cleanPath === "/" ? "" : cleanPath}`;
+}
 
 export default function Nav() {
   const { locale, setLocale, t } = useI18n();
+  const pathname = usePathname() || "/";
+  const router = useRouter();
+
+  const switchLocale = (newLoc: Locale) => {
+    const newPath = applyLocaleToPath(pathname, newLoc);
+    setLocale(newLoc);
+    if (newPath !== pathname) router.push(newPath);
+  };
+
   const [onDark, setOnDark] = useState(true);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState<"servicios" | "mobile" | null>(null);
@@ -134,7 +172,7 @@ export default function Nav() {
             {locales.map((loc) => (
               <button
                 key={loc}
-                onClick={() => setLocale(loc)}
+                onClick={() => switchLocale(loc)}
                 aria-pressed={locale === loc}
                 className={`px-1.5 py-1 rounded-full transition-all duration-300 uppercase ${
                   locale === loc ? "opacity-100 underline underline-offset-4" : "opacity-50 hover:opacity-90"
@@ -223,7 +261,7 @@ export default function Nav() {
             {locales.map((loc) => (
               <button
                 key={loc}
-                onClick={() => setLocale(loc)}
+                onClick={() => switchLocale(loc)}
                 className={`px-2 py-1 rounded-full ${locale === loc ? "bg-current/15" : "opacity-60"}`}
               >
                 {loc.toUpperCase()}
