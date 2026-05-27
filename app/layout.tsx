@@ -3,6 +3,7 @@ import { Instrument_Serif } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import SmoothScroll from "./components/SmoothScroll";
 import Cursor from "./components/Cursor";
 import CookieBanner from "./components/CookieBanner";
@@ -75,6 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Cursor />
           {children}
           <CloudflareAnalytics />
+          <SpeedInsights />
           <CookieBanner />
         </I18nProvider>
       </body>
