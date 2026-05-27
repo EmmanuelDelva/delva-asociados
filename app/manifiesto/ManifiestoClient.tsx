@@ -76,9 +76,10 @@ export default function ManifiestoClient() {
                 ref={(el) => {
                   wordsRef.current[i] = el;
                 }}
-                className="inline-block mr-[0.22em]"
+                className="inline-block"
               >
                 {w}
+                {i < words.length - 1 ? " " : ""}
               </span>
             ))}
           </div>

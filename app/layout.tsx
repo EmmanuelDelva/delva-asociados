@@ -7,6 +7,8 @@ import SmoothScroll from "./components/SmoothScroll";
 import Cursor from "./components/Cursor";
 import CookieBanner from "./components/CookieBanner";
 import CloudflareAnalytics from "./components/CloudflareAnalytics";
+import SchemaJsonLd from "./components/SchemaJsonLd";
+import schemaMain from "./lib/schemas/main.json";
 import { I18nProvider } from "./i18n/I18nProvider";
 
 const instrumentSerif = Instrument_Serif({
@@ -52,6 +54,9 @@ export const metadata: Metadata = {
     title: "Delva & Asociados",
     description: "Derecho para todo lo que pasa después de la app."
   },
+  alternates: {
+    canonical: "/"
+  },
   robots: { index: true, follow: true }
 };
 
@@ -61,6 +66,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="es"
       className={`${instrumentSerif.variable} ${GeistSans.variable} ${GeistMono.variable}`}
     >
+      <head>
+        <SchemaJsonLd data={schemaMain} id="schema-main" />
+      </head>
       <body className="antialiased no-cursor">
         <I18nProvider>
           <SmoothScroll />

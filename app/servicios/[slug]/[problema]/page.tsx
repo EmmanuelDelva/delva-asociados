@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { areas, getProblematica } from "../../../lib/servicios";
 import ProblemaClient from "./ProblemaClient";
+import SchemaJsonLd from "../../../components/SchemaJsonLd";
+import schemaFaqs from "../../../lib/schemas/faqs.json";
 
 export function generateStaticParams() {
   const params: { slug: string; problema: string }[] = [];
@@ -25,6 +27,7 @@ export async function generateMetadata({
   return {
     title: `${pc.title} — Delva & Asociados`,
     description: pc.hook,
+    alternates: { canonical: `/servicios/${slug}/${problema}` },
     openGraph: {
       title: pc.title,
       description: pc.hook
@@ -44,6 +47,12 @@ export default async function ProblemaPage({
   const { area, problema: prob } = found;
   const index = area.problematicas.findIndex((p) => p.id === prob.id);
   const next = area.problematicas[(index + 1) % area.problematicas.length];
+  const faqSchema = (schemaFaqs as Record<string, unknown>)[area.slug];
 
-  return <ProblemaClient area={area} problema={prob} next={next} />;
+  return (
+    <>
+      {faqSchema ? <SchemaJsonLd data={faqSchema} id={`schema-faq-${area.slug}`} /> : null}
+      <ProblemaClient area={area} problema={prob} next={next} />
+    </>
+  );
 }

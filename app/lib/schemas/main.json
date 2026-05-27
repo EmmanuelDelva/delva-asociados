@@ -1,0 +1,141 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LegalService",
+      "@id": "https://delvayasociados.com/#organization",
+      "name": "Delva & Asociados",
+      "alternateName": ["Delva y Asociados", "D&A"],
+      "url": "https://delvayasociados.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://delvayasociados.com/logo.png",
+        "width": 1254,
+        "height": 1254
+      },
+      "image": "https://delvayasociados.com/opengraph-image",
+      "description": "Despacho jurídico boutique para usuarios y empresas en lo digital, lo cripto, la inteligencia artificial y los mundos virtuales. Guadalajara, internacional.",
+      "slogan": "Derecho diseñado para la próxima década.",
+      "foundingDate": "2025-01-01",
+      "founder": { "@id": "https://delvayasociados.com/#founder" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Guadalajara",
+        "addressRegion": "Jalisco",
+        "addressCountry": "MX"
+      },
+      "areaServed": [
+        { "@type": "Country", "name": "México" },
+        { "@type": "Country", "name": "Estados Unidos" },
+        { "@type": "Country", "name": "Suiza" },
+        { "@type": "Country", "name": "Singapur" },
+        { "@type": "Country", "name": "El Salvador" },
+        { "@type": "Place", "name": "Unión Europea" }
+      ],
+      "telephone": "+52-33-1213-6004",
+      "email": "emmanueldelva@gmail.com",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+52-33-1213-6004",
+          "contactType": "customer service",
+          "areaServed": ["MX", "US", "UE"],
+          "availableLanguage": ["es", "en", "fr"]
+        }
+      ],
+      "sameAs": ["https://www.facebook.com/DelvaAsociados/"],
+      "priceRange": "$$",
+      "knowsAbout": [
+        "Herencia y Testamento Digital",
+        "Diseño Web y LegalTech",
+        "IA Aplicada y Automatizaciones",
+        "Redes Sociales y Reputación Digital",
+        "IA y Derechos Digitales",
+        "Web3, Cripto y Tokenización",
+        "Creadores y Economía Digital",
+        "Propiedad Intelectual Digital",
+        "Privacidad y Protección de Datos",
+        "FinTech y Pagos Digitales",
+        "Gaming, Metaverso y eSports",
+        "Transfronterizo y Nómadas Digitales",
+        "Otros Casos Emergentes"
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "13:00"
+        }
+      ]
+    },
+    {
+      "@type": "Attorney",
+      "@id": "https://delvayasociados.com/#founder",
+      "name": "Juan Emmanuel Delva Benavides",
+      "givenName": "Juan Emmanuel",
+      "familyName": "Delva Benavides",
+      "honorificPrefix": "Dr.",
+      "jobTitle": "Socio fundador",
+      "worksFor": { "@id": "https://delvayasociados.com/#organization" },
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Doctor en Derecho",
+          "credentialCategory": "degree",
+          "educationalLevel": "Doctorate",
+          "recognizedBy": {
+            "@type": "EducationalOrganization",
+            "name": "Universidad Abierta de Tlaxcala"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Cédula profesional 8979269",
+          "credentialCategory": "license",
+          "recognizedBy": {
+            "@type": "GovernmentOrganization",
+            "name": "Dirección General de Profesiones, SEP"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Sistema Nacional de Investigadoras e Investigadores Nivel I",
+          "credentialCategory": "certification",
+          "recognizedBy": {
+            "@type": "GovernmentOrganization",
+            "name": "Secihti / Conahcyt"
+          }
+        }
+      ],
+      "knowsLanguage": ["es", "en", "fr"],
+      "knowsAbout": [
+        "Derecho y tecnología",
+        "Web3 y blockchain",
+        "Inteligencia artificial",
+        "Protección de datos",
+        "FinTech",
+        "Propiedad intelectual digital",
+        "Herencia digital"
+      ],
+      "memberOf": [
+        { "@type": "Organization", "name": "Universidad de Guadalajara · CUCEA" },
+        { "@type": "Organization", "name": "Cuerpo Académico UDEGCA-1236 Derecho y Tecnología" }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://delvayasociados.com/#website",
+      "url": "https://delvayasociados.com",
+      "name": "Delva & Asociados",
+      "publisher": { "@id": "https://delvayasociados.com/#organization" },
+      "inLanguage": ["es-MX", "en", "fr"]
+    }
+  ]
+}
