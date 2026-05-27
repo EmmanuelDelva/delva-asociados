@@ -124,8 +124,18 @@ export default function Footer() {
           <span>© MMXXV — Delva &amp; Asociados · {t.footer.rights}</span>
           <div className="flex flex-wrap gap-4">
             {t.footer.legalLinks.map((l) => (
-              <span key={l} className="hover:text-ink transition-colors">{l}</span>
+              <Link key={l.href} href={l.href} className="hover:text-ink transition-colors">
+                {l.label}
+              </Link>
             ))}
+            <button
+              type="button"
+              data-cookie-manager
+              className="hover:text-ink transition-colors uppercase tracking-[0.28em] cursor-pointer"
+              aria-label={t.footer.cookieManager}
+            >
+              {t.footer.cookieManager}
+            </button>
           </div>
         </div>
       </div>
