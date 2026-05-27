@@ -1,0 +1,301 @@
+{
+  "herencia-digital": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://delvayasociados.com/servicios/herencia-digital#service",
+    "name": "Herencia y Testamento Digital",
+    "description": "Bitcoin, cuentas de redes, dominios, fotos en la nube, suscripciones, propiedad virtual. Todo eso es patrimonio. Y rara vez está en un testamento.",
+    "alternateName": "Tu vida digital también se hereda. La planeamos antes y la rescatamos después.",
+    "provider": { "@id": "https://delvayasociados.com/#organization" },
+    "serviceType": "Legal service",
+    "url": "https://delvayasociados.com/servicios/herencia-digital",
+    "category": "Herencia y Testamento Digital",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Casos resueltos en Herencia y Testamento Digital",
+      "itemListElement": [
+        { "@type": "Offer", "name": "Mi papá falleció y dejó cripto, cuentas y fotos. No podemos entrar a nada.", "description": "Las claves murieron con él. Ahora viene la parte legal — y la emocional.", "url": "https://delvayasociados.com/servicios/herencia-digital/papa-fallecio-cripto" },
+        { "@type": "Offer", "name": "No quiero esperar a viejo. Quiero dejar todo en orden ahora.", "description": "Tienes 35 años, una wallet seria, dos hijos. Si mañana no estás, ¿qué pasa?", "url": "https://delvayasociados.com/servicios/herencia-digital/planear-ahora-no-anciano" },
+        { "@type": "Offer", "name": "Mi negocio digital depende de mí. ¿Qué pasa si no estoy?", "description": "Tu canal, tu tienda, tu agencia: todo eso vale mucho. Si depende de un correo personal, vale cero el día que falles.", "url": "https://delvayasociados.com/servicios/herencia-digital/negocio-digital-sucesion" },
+        { "@type": "Offer", "name": "Recuperar las cuentas y memorias de un familiar fallecido", "description": "Facebook no responde. El correo bloqueado. Las fotos atrapadas adentro.", "url": "https://delvayasociados.com/servicios/herencia-digital/cuentas-redes-fallecido" },
+        { "@type": "Offer", "name": "Quiero que mi familia pueda acceder a la cripto solo bajo ciertas condiciones", "description": "Ni en vida con acceso total. Ni en muerte sin acceso ninguno. Algo en medio, escrito.", "url": "https://delvayasociados.com/servicios/herencia-digital/wallet-multifirma-familia" },
+        { "@type": "Offer", "name": "Hay saldos atrapados en PayPal, Mercado Libre, exchanges, plataformas", "description": "El dinero está. Pero alguien decidió que no es tuyo hasta probar lo contrario.", "url": "https://delvayasociados.com/servicios/herencia-digital/saldos-atrapados" }
+      ]
+    }
+  },
+  "diseno-web": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://delvayasociados.com/servicios/diseno-web#service",
+    "name": "Diseño Web y LegalTech",
+    "description": "Si tu negocio vive en internet, tu sitio web es tu fachada y tu contrato simultáneamente. Hacemos sitios que venden y que ya cumplen con LFPDPPP, GDPR, T&C reales, cookies y compliance desde origen.",
+    "alternateName": "Construimos tu sitio listo para vender y para cumplir.",
+    "provider": { "@id": "https://delvayasociados.com/#organization" },
+    "serviceType": "Legal service",
+    "url": "https://delvayasociados.com/servicios/diseno-web",
+    "category": "Diseño Web y LegalTech",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Casos resueltos en Diseño Web y LegalTech",
+      "itemListElement": [
+        { "@type": "Offer", "name": "Necesito un sitio web profesional para mi negocio digital", "description": "No quieres un sitio bonito que te demanden. Quieres uno que venda y proteja.", "url": "https://delvayasociados.com/servicios/diseno-web/sitio-listo-cumplir" },
+        { "@type": "Offer", "name": "Mis términos y condiciones son una plantilla genérica", "description": "El día que tengas un problema, esa plantilla no te va a defender.", "url": "https://delvayasociados.com/servicios/diseno-web/terminos-reales" },
+        { "@type": "Offer", "name": "Mi e-commerce vende a varios países y no sé qué reglas seguir", "description": "Cada país tiene su consumer law. Y todos quieren ser jurisdicción.", "url": "https://delvayasociados.com/servicios/diseno-web/ecommerce-multi-juris" },
+        { "@type": "Offer", "name": "Necesito un banner de cookies que sí funcione legalmente", "description": "El banner de cookies es lo primero que ve tu cliente. Y lo primero que audita el regulador.", "url": "https://delvayasociados.com/servicios/diseno-web/cookies-consent" }
+      ]
+    }
+  },
+  "ia-aplicada": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://delvayasociados.com/servicios/ia-aplicada#service",
+    "name": "IA Aplicada y Automatizaciones",
+    "description": "Más allá de la regulación: te ayudamos a usar IA, agentes y automatizaciones para hacer tu negocio más eficiente, sin abrirte a demandas. Capacitamos a tu equipo y armamos los procesos.",
+    "alternateName": "Implementamos IA en tu negocio con guardrails legales.",
+    "provider": { "@id": "https://delvayasociados.com/#organization" },
+    "serviceType": "Legal service",
+    "url": "https://delvayasociados.com/servicios/ia-aplicada",
+    "category": "IA Aplicada y Automatizaciones",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Casos resueltos en IA Aplicada y Automatizaciones",
+      "itemListElement": [
+        { "@type": "Offer", "name": "Quiero capacitar a mi equipo en uso responsable de IA", "description": "Tu equipo ya usa ChatGPT. La pregunta es si lo hace sin filtrar datos confidenciales.", "url": "https://delvayasociados.com/servicios/ia-aplicada/capacitacion-ia-equipo" },
+        { "@type": "Offer", "name": "Quiero implementar IA en mis operaciones sin meterme en problemas", "description": "Hay un caso de uso real. Hay un modelo. Falta el envoltorio legal y operativo.", "url": "https://delvayasociados.com/servicios/ia-aplicada/implementar-ia-empresa" },
+        { "@type": "Offer", "name": "Necesito automatizar procesos repetitivos en mi negocio", "description": "Cada hora ahorrada en operación es una hora más para vender.", "url": "https://delvayasociados.com/servicios/ia-aplicada/automatizaciones-workflow" },
+        { "@type": "Offer", "name": "Quiero un agente IA que atienda a mis clientes", "description": "El agente puede atender 24/7. Pero también puede decir tonterías legalmente costosas.", "url": "https://delvayasociados.com/servicios/ia-aplicada/agente-ia-cliente" },
+        { "@type": "Offer", "name": "Ya uso IA y quiero saber si estoy expuesto", "description": "Si llevas más de un año usando IA y nunca lo revisaste, hay deuda técnica-legal.", "url": "https://delvayasociados.com/servicios/ia-aplicada/auditoria-ia-actual" }
+      ]
+    }
+  },
+  "redes-reputacion": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://delvayasociados.com/servicios/redes-reputacion#service",
+    "name": "Redes Sociales y Reputación Digital",
+    "description": "Tu cuenta con miles de seguidores es patrimonio. Tu rostro circula sin tu permiso. Una nota antigua te persigue. Esto también se resuelve.",
+    "alternateName": "Cuentas robadas, deepfakes, suplantación y limpieza de reputación.",
+    "provider": { "@id": "https://delvayasociados.com/#organization" },
+    "serviceType": "Legal service",
+    "url": "https://delvayasociados.com/servicios/redes-reputacion",
+    "category": "Redes Sociales y Reputación Digital",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Casos resueltos en Redes Sociales y Reputación Digital",
+      "itemListElement": [
+        { "@type": "Offer", "name": "Me robaron la cuenta de Instagram / TikTok con miles de seguidores", "description": "Tu cuenta es patrimonio. Cuando la roban, no se pierde solo el acceso — se pierde el negocio.", "url": "https://delvayasociados.com/servicios/redes-reputacion/cuenta-robada-seguidores" },
+        { "@type": "Offer", "name": "Hicieron un deepfake conmigo y necesito que baje YA", "description": "Necesitas que ese video desaparezca antes del lunes. Lo entendemos.", "url": "https://delvayasociados.com/servicios/redes-reputacion/deepfake-takedown" },
+        { "@type": "Offer", "name": "Alguien creó perfiles falsos con mi identidad", "description": "Tu nombre, tus fotos, tu vida — usadas por alguien más para estafar.", "url": "https://delvayasociados.com/servicios/redes-reputacion/suplantacion-identidad" },
+        { "@type": "Offer", "name": "Hay contenido difamatorio sobre mí que no se va", "description": "Una nota mentirosa. Un thread viral. Un foro que no modera. Todo eso es manejable.", "url": "https://delvayasociados.com/servicios/redes-reputacion/contenido-difamatorio" },
+        { "@type": "Offer", "name": "Bajar fotos/videos íntimos publicados sin consentimiento", "description": "Revenge porn, sextorsión, contenido íntimo filtrado. Hay vías legales — y son urgentes.", "url": "https://delvayasociados.com/servicios/redes-reputacion/fotos-comprometedoras" },
+        { "@type": "Offer", "name": "Quiero negociar la recuperación de una cuenta que vendieron sin mi consentimiento", "description": "Tu cuenta fue tomada y revendida. Sí hay forma de recuperarla — incluso negociando.", "url": "https://delvayasociados.com/servicios/redes-reputacion/negociacion-cuenta" }
+      ]
+    }
+  },
+  "inteligencia-artificial": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://delvayasociados.com/servicios/inteligencia-artificial#service",
+    "name": "IA y Derechos Digitales",
+    "description": "La IA cambia todo lo que toca: autoría, responsabilidad, contratos, prueba. Trabajamos con creadores, estudios y empresas para que la IA sea una ventaja, no una demanda.",
+    "alternateName": "Quién es autor cuando autor también es la máquina.",
+    "provider": { "@id": "https://delvayasociados.com/#organization" },
+    "serviceType": "Legal service",
+    "url": "https://delvayasociados.com/servicios/inteligencia-artificial",
+    "category": "IA y Derechos Digitales",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Casos resueltos en IA y Derechos Digitales",
+      "itemListElement": [
+        { "@type": "Offer", "name": "Una IA generó algo demasiado parecido a lo mío", "description": "Tu estilo es identificable. Y ahora cualquiera lo puede replicar con un prompt.", "url": "https://delvayasociados.com/servicios/inteligencia-artificial/ia-genero-mi-contenido" },
+        { "@type": "Offer", "name": "Mi empresa usa IA y tengo miedo de que nos demanden", "description": "Generaste con IA. ¿Quién es dueño? ¿Y si el output infringe?", "url": "https://delvayasociados.com/servicios/inteligencia-artificial/uso-empresa-ia" },
+        { "@type": "Offer", "name": "Hice algo con IA y quiero protegerlo legalmente", "description": "IMPI e INPI no registran obras hechas por máquinas. Pero hay vías.", "url": "https://delvayasociados.com/servicios/inteligencia-artificial/autoria-ia" },
+        { "@type": "Offer", "name": "Quiero denunciar penalmente un deepfake en mi contra", "description": "No solo bajar el contenido. Que haya consecuencias para quien lo hizo.", "url": "https://delvayasociados.com/servicios/inteligencia-artificial/denuncia-deepfake" },
+        { "@type": "Offer", "name": "Mi empresa va a usar IA seriamente y necesita compliance", "description": "El AI Act europeo y los marcos análogos llegan. Mejor preparados que sorprendidos.", "url": "https://delvayasociados.com/servicios/inteligencia-artificial/regulacion-ia-empresa" }
+      ]
+    }
+  },
+  "web3-cripto": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://delvayasociados.com/servicios/web3-cripto#service",
+    "name": "Web3, Cripto y Tokenización",
+    "description": "Desde una idea de token hasta una respuesta a la CNBV. Trabajamos con fundadores, fondos, DAOs y plataformas en la frontera donde el código se encuentra con la regulación.",
+    "alternateName": "Tokens, DAOs y smart contracts con cobertura legal real.",
+    "provider": { "@id": "https://delvayasociados.com/#organization" },
+    "serviceType": "Legal service",
+    "url": "https://delvayasociados.com/servicios/web3-cripto",
+    "category": "Web3, Cripto y Tokenización",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Casos resueltos en Web3, Cripto y Tokenización",
+      "itemListElement": [
+        { "@type": "Offer", "name": "Quieres lanzar un token y no sabes si es security", "description": "Tres jurisdicciones, dos legislaciones, una ronda al borde.", "url": "https://delvayasociados.com/servicios/web3-cripto/lanzamiento-token" },
+        { "@type": "Offer", "name": "Tu DAO necesita firmar contratos y abrir cuentas", "description": "La red gobierna, pero alguien tiene que poder ir a tribunales.", "url": "https://delvayasociados.com/servicios/web3-cripto/dao-personalidad" },
+        { "@type": "Offer", "name": "Tu smart contract tuvo un bug y un usuario perdió dinero", "description": "Cuando el código falla, el código fuente no es eximente.", "url": "https://delvayasociados.com/servicios/web3-cripto/smart-contract-bug" },
+        { "@type": "Offer", "name": "La CNBV o el regulador te identificó como VASP", "description": "Te llegó un oficio. Tienes 15 días.", "url": "https://delvayasociados.com/servicios/web3-cripto/vasp-regulador" },
+        { "@type": "Offer", "name": "Quieres tokenizar un activo real (inmueble, arte, fondo)", "description": "El activo es físico. El comprobante es un token. Y entre ambos vive el derecho.", "url": "https://delvayasociados.com/servicios/web3-cripto/tokenizacion-rwa" },
+        { "@type": "Offer", "name": "Tu proyecto cripto opera en Europa y aplica MiCA", "description": "Si tu mercado es europeo, MiCA es tu nuevo lenguaje.", "url": "https://delvayasociados.com/servicios/web3-cripto/mica-cumplimiento" }
+      ]
+    }
+  },
+  "creadores": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://delvayasociados.com/servicios/creadores#service",
+    "name": "Creadores y Economía Digital",
+    "description": "TikTok, OnlyFans, YouTube, Substack, Twitch, Patreon. Tu negocio es tu identidad. Y eso necesita estructura legal específica.",
+    "alternateName": "Tu cara, tu marca, tu ingreso, tu propiedad.",
+    "provider": { "@id": "https://delvayasociados.com/#organization" },
+    "serviceType": "Legal service",
+    "url": "https://delvayasociados.com/servicios/creadores",
+    "category": "Creadores y Economía Digital",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Casos resueltos en Creadores y Economía Digital",
+      "itemListElement": [
+        { "@type": "Offer", "name": "Quiero estructurarme como empresa pero sigo siendo yo", "description": "Cobras como persona física y pierdes la mitad. Hay forma legal de no perderla.", "url": "https://delvayasociados.com/servicios/creadores/estructura-creator" },
+        { "@type": "Offer", "name": "Una marca me ofreció un deal con un contrato trampa", "description": "Exclusividad de 5 años. Cesión perpetua de imagen. Lo viste por encima.", "url": "https://delvayasociados.com/servicios/creadores/deal-marca-trampa" },
+        { "@type": "Offer", "name": "Me están reposteando contenido sin permiso", "description": "Cuentas grandes lo bajan en horas. Las pequeñas pueden tomar meses.", "url": "https://delvayasociados.com/servicios/creadores/robo-contenido" },
+        { "@type": "Offer", "name": "Mi contenido es +18 y la fiscalización está complicada", "description": "Bancos cierran. SAT audita. Plataformas exigen W-8BEN. Pasa.", "url": "https://delvayasociados.com/servicios/creadores/onlyfans-fiscal" }
+      ]
+    }
+  },
+  "propiedad-intelectual": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://delvayasociados.com/servicios/propiedad-intelectual#service",
+    "name": "Propiedad Intelectual Digital",
+    "description": "Marca, autor, multimedia, NFT. La PI digital es más rica y más vulnerable que la tradicional. La defendemos y la registramos a la medida de tu modelo.",
+    "alternateName": "Lo que llamas tuyo. Demuéstralo.",
+    "provider": { "@id": "https://delvayasociados.com/#organization" },
+    "serviceType": "Legal service",
+    "url": "https://delvayasociados.com/servicios/propiedad-intelectual",
+    "category": "Propiedad Intelectual Digital",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Casos resueltos en Propiedad Intelectual Digital",
+      "itemListElement": [
+        { "@type": "Offer", "name": "Alguien registró mi marca antes que yo", "description": "Tu marca lleva años en redes. Hoy aparece registrada por otro.", "url": "https://delvayasociados.com/servicios/propiedad-intelectual/marca-tomada" },
+        { "@type": "Offer", "name": "Quiero registrar algo que no es 'marca tradicional'", "description": "Sonido. Color. Movimiento. NFT. El IMPI lo permite — si sabes pedirlo.", "url": "https://delvayasociados.com/servicios/propiedad-intelectual/registro-multimedia" },
+        { "@type": "Offer", "name": "Encontré mi trabajo en otro lado", "description": "Tu diseño en una camiseta. Tu foto en un anuncio. Tu canción en TikTok.", "url": "https://delvayasociados.com/servicios/propiedad-intelectual/uso-no-autorizado" },
+        { "@type": "Offer", "name": "Quiero minar mi obra como NFT (o ya lo hicieron sin mí)", "description": "Mintear no es lo mismo que tener derechos. Y a veces alguien mintea lo tuyo.", "url": "https://delvayasociados.com/servicios/propiedad-intelectual/nft-derecho-autor" }
+      ]
+    }
+  },
+  "privacidad-datos": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://delvayasociados.com/servicios/privacidad-datos#service",
+    "name": "Privacidad y Protección de Datos",
+    "description": "El día que llame el regulador, ya estará todo en orden. Antes, también.",
+    "alternateName": "LFPDPPP, GDPR, MiCA, LGPD: cumplimiento real.",
+    "provider": { "@id": "https://delvayasociados.com/#organization" },
+    "serviceType": "Legal service",
+    "url": "https://delvayasociados.com/servicios/privacidad-datos",
+    "category": "Privacidad y Protección de Datos",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Casos resueltos en Privacidad y Protección de Datos",
+      "itemListElement": [
+        { "@type": "Offer", "name": "Tuve una fuga de datos", "description": "El reloj corre. 72 horas para notificar.", "url": "https://delvayasociados.com/servicios/privacidad-datos/fuga-datos" },
+        { "@type": "Offer", "name": "Mi aviso de privacidad es genérico y peligroso", "description": "Copia y pega de hace 5 años. No cubre lo que haces hoy.", "url": "https://delvayasociados.com/servicios/privacidad-datos/aviso-privacidad" },
+        { "@type": "Offer", "name": "Necesito cumplir LFPDPPP en serio (no en papel)", "description": "La ley mexicana es exigente. Y el INAI ya audita en serio.", "url": "https://delvayasociados.com/servicios/privacidad-datos/lfpdppp-mexicana" },
+        { "@type": "Offer", "name": "Vendo en Europa y necesito GDPR de verdad", "description": "GDPR no es una checklist. Es un sistema operativo.", "url": "https://delvayasociados.com/servicios/privacidad-datos/gdpr-europa" },
+        { "@type": "Offer", "name": "Operamos en varios países y cumplimiento se ramificó", "description": "GDPR, LGPD, LFPDPPP, CCPA. Diferentes reglas, mismo cliente.", "url": "https://delvayasociados.com/servicios/privacidad-datos/multi-pais-datos" }
+      ]
+    }
+  },
+  "fintech-pagos": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://delvayasociados.com/servicios/fintech-pagos#service",
+    "name": "FinTech y Pagos Digitales",
+    "description": "Wallets, ramps, stablecoins, neobancos, procesadores. La línea entre tecnología financiera y servicios regulados es delgada. Trabajamos del lado de los que la cruzan a propósito.",
+    "alternateName": "Cuando el dinero se mueve más rápido que la regulación.",
+    "provider": { "@id": "https://delvayasociados.com/#organization" },
+    "serviceType": "Legal service",
+    "url": "https://delvayasociados.com/servicios/fintech-pagos",
+    "category": "FinTech y Pagos Digitales",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Casos resueltos en FinTech y Pagos Digitales",
+      "itemListElement": [
+        { "@type": "Offer", "name": "Mi app de pagos creció y ahora aplica Ley Fintech", "description": "Pasaste los umbrales sin darte cuenta. Eres ITF, IFPE o ambos.", "url": "https://delvayasociados.com/servicios/fintech-pagos/ley-fintech-aplica" },
+        { "@type": "Offer", "name": "Me congelaron una cuenta (banco, exchange, procesador)", "description": "Alguien decidió y tú no. Esto se pelea.", "url": "https://delvayasociados.com/servicios/fintech-pagos/cuentas-congeladas" },
+        { "@type": "Offer", "name": "Quiero operar un on/off-ramp cripto-fiat", "description": "La parte técnica está. La parte legal cambia cada trimestre.", "url": "https://delvayasociados.com/servicios/fintech-pagos/ramp-cripto-fiat" },
+        { "@type": "Offer", "name": "Quiero emitir una stablecoin local", "description": "MXN-pegged, ARS-pegged, COP-pegged: el reto no es técnico.", "url": "https://delvayasociados.com/servicios/fintech-pagos/stablecoin-emision" }
+      ]
+    }
+  },
+  "gaming-esports": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://delvayasociados.com/servicios/gaming-esports#service",
+    "name": "Gaming, Metaverso y eSports",
+    "description": "Estudios, jugadores profesionales, equipos eSports, plataformas, casters, propietarios virtuales. Aquí hay derecho — y mucho dinero.",
+    "alternateName": "Tu economía y tu equipo existen en mundos virtuales. Los regulamos.",
+    "provider": { "@id": "https://delvayasociados.com/#organization" },
+    "serviceType": "Legal service",
+    "url": "https://delvayasociados.com/servicios/gaming-esports",
+    "category": "Gaming, Metaverso y eSports",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Casos resueltos en Gaming, Metaverso y eSports",
+      "itemListElement": [
+        { "@type": "Offer", "name": "Conflicto sobre propiedad virtual", "description": "El terreno es código. El derecho no lo es. Sí hay forma.", "url": "https://delvayasociados.com/servicios/gaming-esports/propiedad-virtual" },
+        { "@type": "Offer", "name": "Soy jugador profesional y me pasan un contrato", "description": "Hay cláusulas estándar en eSports que son tóxicas para el jugador.", "url": "https://delvayasociados.com/servicios/gaming-esports/contrato-jugador-esports" },
+        { "@type": "Offer", "name": "Tengo un equipo eSports y necesito proteger la marca", "description": "Tu logo, tu jersey, tu roster: todo eso es valor que se protege.", "url": "https://delvayasociados.com/servicios/gaming-esports/marca-equipo-esports" },
+        { "@type": "Offer", "name": "Estoy negociando un patrocinio (como equipo o jugador)", "description": "Los sponsors eSports vienen con expectativas que no siempre son razonables.", "url": "https://delvayasociados.com/servicios/gaming-esports/patrocinios-esports" },
+        { "@type": "Offer", "name": "Quiero lanzar economía dentro de mi juego", "description": "Loot boxes, mercados secundarios, tokens. Cada cosa con regla distinta.", "url": "https://delvayasociados.com/servicios/gaming-esports/economia-in-game" },
+        { "@type": "Offer", "name": "Mi app de AR captura rostros sin consentimiento explícito", "description": "Apuntas la cámara. Identifica. Sube datos. Hay regla para todo eso.", "url": "https://delvayasociados.com/servicios/gaming-esports/ar-imagen-consentimiento" }
+      ]
+    }
+  },
+  "internacional": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://delvayasociados.com/servicios/internacional#service",
+    "name": "Transfronterizo y Nómadas Digitales",
+    "description": "Residencia fiscal, movilidad, T-MEC, OFAC, sanciones, capítulos de inversión. El mundo es la jurisdicción.",
+    "alternateName": "Trabajas en cualquier parte. Lo legalizamos en todas.",
+    "provider": { "@id": "https://delvayasociados.com/#organization" },
+    "serviceType": "Legal service",
+    "url": "https://delvayasociados.com/servicios/internacional",
+    "category": "Transfronterizo y Nómadas Digitales",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Casos resueltos en Transfronterizo y Nómadas Digitales",
+      "itemListElement": [
+        { "@type": "Offer", "name": "No sé dónde soy residente fiscal y todos quieren cobrarme", "description": "Y los tres países que crees, te quieren clasificar.", "url": "https://delvayasociados.com/servicios/internacional/residencia-fiscal" },
+        { "@type": "Offer", "name": "Mi ronda seed cruza varios países y uno la prohíbe", "description": "Inversionistas USA, fundadores LatAm, vehículo Caymans. Y un país lo prohíbe.", "url": "https://delvayasociados.com/servicios/internacional/ronda-transfronteriza" },
+        { "@type": "Offer", "name": "Necesito o soy un visado de talento", "description": "O-1, EB-1, Talento mexicano, golden visa Portugal. Cada uno con su trampa.", "url": "https://delvayasociados.com/servicios/internacional/visado-talento" },
+        { "@type": "Offer", "name": "Mi negocio cruza T-MEC y hay disputa", "description": "Cuando el tratado opera, sabe operar a tu favor.", "url": "https://delvayasociados.com/servicios/internacional/tmec-comercio" }
+      ]
+    }
+  },
+  "otros-casos": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://delvayasociados.com/servicios/otros-casos#service",
+    "name": "Otros Casos Emergentes",
+    "description": "El médico cuya cesárea cobra a medias. El caso híbrido entre cuatro materias. El riesgo que apenas surgió ayer y todavía no tiene precedente. Aquí también estamos.",
+    "alternateName": "Nichos nuevos. Casos que cruzan áreas. Lo que aún no tiene nombre.",
+    "provider": { "@id": "https://delvayasociados.com/#organization" },
+    "serviceType": "Legal service",
+    "url": "https://delvayasociados.com/servicios/otros-casos",
+    "category": "Otros Casos Emergentes",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Casos resueltos en Otros Casos Emergentes",
+      "itemListElement": [
+        { "@type": "Offer", "name": "Soy médico y mi paciente solo paga lo que cubre el seguro", "description": "Pactaste $20,000 por la cesárea. El seguro cubre $6,000. Tu paciente, ya operada, dice que no había nada más.", "url": "https://delvayasociados.com/servicios/otros-casos/honorarios-medicos-seguro" },
+        { "@type": "Offer", "name": "Mi caso cruza varias áreas y nadie quiere tomarlo entero", "description": "Un mismo asunto: cripto, datos, IA, marca y herencia. Y cada despacho te pasa con otro.", "url": "https://delvayasociados.com/servicios/otros-casos/caso-cruza-varias-areas" },
+        { "@type": "Offer", "name": "Surgió un problema nuevo que nadie ha resuelto antes", "description": "La regla no existe. El precedente tampoco. Pero el caso es real y urgente.", "url": "https://delvayasociados.com/servicios/otros-casos/problema-emergente-nuevo" },
+        { "@type": "Offer", "name": "Tengo un proyecto raro que necesita asesoría exploratoria", "description": "Antes de gastar 200 mil dólares en desarrollo, quieres saber si es viable legalmente.", "url": "https://delvayasociados.com/servicios/otros-casos/proyecto-exploratorio" },
+        { "@type": "Offer", "name": "Necesito una segunda opinión jurídica especializada en tech", "description": "Tu despacho actual te dio una opinión. Antes de actuar, quieres una segunda mirada.", "url": "https://delvayasociados.com/servicios/otros-casos/segunda-opinion" },
+        { "@type": "Offer", "name": "Esto va a ser problema en 6 meses, lo quiero prevenir", "description": "Ves venir el regulador, el competidor, la disputa. Quieres llegar antes.", "url": "https://delvayasociados.com/servicios/otros-casos/asesoria-prospectiva" }
+      ]
+    }
+  }
+}

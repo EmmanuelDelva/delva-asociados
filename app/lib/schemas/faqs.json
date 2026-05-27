@@ -1,0 +1,171 @@
+{
+  "herencia-digital": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://delvayasociados.com/servicios/herencia-digital#faqpage",
+    "url": "https://delvayasociados.com/servicios/herencia-digital",
+    "mainEntity": [
+      { "@type": "Question", "name": "Mi papá falleció y dejó cripto, cuentas y fotos. No podemos entrar a nada.", "acceptedAnswer": { "@type": "Answer", "text": "Las claves murieron con él. Ahora viene la parte legal — y la emocional. En el área Herencia y Testamento Digital, abordamos este caso con: Investigación forense de claves y wallets a partir de evidencia parcial. Acreditación sucesoria internacional. Gestión con exchanges para liberación de fondos a herederos." } },
+      { "@type": "Question", "name": "No quiero esperar a viejo. Quiero dejar todo en orden ahora.", "acceptedAnswer": { "@type": "Answer", "text": "Tienes 35 años, una wallet seria, dos hijos. Si mañana no estás, ¿qué pasa? En el área Herencia y Testamento Digital, abordamos este caso con: Testamento digital con anexo técnico custodiado. Estructura de multi-firma con liberación condicional verificable. Fideicomiso de operación para activos digitales productivos." } },
+      { "@type": "Question", "name": "Mi negocio digital depende de mí. ¿Qué pasa si no estoy?", "acceptedAnswer": { "@type": "Answer", "text": "Tu canal, tu tienda, tu agencia: todo eso vale mucho. Si depende de un correo personal, vale cero el día que falles. En el área Herencia y Testamento Digital, abordamos este caso con: Estructura corporativa que sobreviva al fundador. Sucesión documentada con poderes de continuidad. Vault operativo con accesos críticos custodiados." } },
+      { "@type": "Question", "name": "Recuperar las cuentas y memorias de un familiar fallecido", "acceptedAnswer": { "@type": "Answer", "text": "Facebook no responde. El correo bloqueado. Las fotos atrapadas adentro. En el área Herencia y Testamento Digital, abordamos este caso con: Solicitudes formales a Meta, Google, Apple, X con paquete legal certificado. Acta sucesoria internacional cuando aplique. Memorialization o cierre digno de cuentas." } },
+      { "@type": "Question", "name": "Quiero que mi familia pueda acceder a la cripto solo bajo ciertas condiciones", "acceptedAnswer": { "@type": "Answer", "text": "Ni en vida con acceso total. Ni en muerte sin acceso ninguno. Algo en medio, escrito. En el área Herencia y Testamento Digital, abordamos este caso con: Custodia jurídica multi-firma profesional. Dead-man switch con verificación periódica. Liberación condicional verificable." } },
+      { "@type": "Question", "name": "Hay saldos atrapados en PayPal, Mercado Libre, exchanges, plataformas", "acceptedAnswer": { "@type": "Answer", "text": "El dinero está. Pero alguien decidió que no es tuyo hasta probar lo contrario. En el área Herencia y Testamento Digital, abordamos este caso con: Paquete legal específico por plataforma. Negociación documental y técnica con cumplimiento KYC póstumo. Escalado a regulador cuando aplica." } }
+    ]
+  },
+  "diseno-web": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://delvayasociados.com/servicios/diseno-web#faqpage",
+    "url": "https://delvayasociados.com/servicios/diseno-web",
+    "mainEntity": [
+      { "@type": "Question", "name": "Necesito un sitio web profesional para mi negocio digital", "acceptedAnswer": { "@type": "Answer", "text": "No quieres un sitio bonito que te demanden. Quieres uno que venda y proteja. En el área Diseño Web y LegalTech, abordamos este caso con: Diseño y desarrollo del sitio (Next.js + Vercel). Aviso de privacidad redactado al modelo. Términos y condiciones reales, no plantilla." } },
+      { "@type": "Question", "name": "Mis términos y condiciones son una plantilla genérica", "acceptedAnswer": { "@type": "Answer", "text": "El día que tengas un problema, esa plantilla no te va a defender. En el área Diseño Web y LegalTech, abordamos este caso con: Auditoría de T&C actuales contra tu operación real. Redacción a la medida del modelo. Política de privacidad alineada a flujo de datos real." } },
+      { "@type": "Question", "name": "Mi e-commerce vende a varios países y no sé qué reglas seguir", "acceptedAnswer": { "@type": "Answer", "text": "Cada país tiene su consumer law. Y todos quieren ser jurisdicción. En el área Diseño Web y LegalTech, abordamos este caso con: Estructura multi-juris de T&C y privacidad. Plan de cumplimiento fiscal y de consumo. Plantillas de respuesta a reclamos por mercado." } },
+      { "@type": "Question", "name": "Necesito un banner de cookies que sí funcione legalmente", "acceptedAnswer": { "@type": "Answer", "text": "El banner de cookies es lo primero que ve tu cliente. Y lo primero que audita el regulador. En el área Diseño Web y LegalTech, abordamos este caso con: CMP con categorías reales. Mapeo técnico de scripts vs categorías. Logs de consentimiento por usuario." } }
+    ]
+  },
+  "ia-aplicada": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://delvayasociados.com/servicios/ia-aplicada#faqpage",
+    "url": "https://delvayasociados.com/servicios/ia-aplicada",
+    "mainEntity": [
+      { "@type": "Question", "name": "Quiero capacitar a mi equipo en uso responsable de IA", "acceptedAnswer": { "@type": "Answer", "text": "Tu equipo ya usa ChatGPT. La pregunta es si lo hace sin filtrar datos confidenciales. En el área IA Aplicada y Automatizaciones, abordamos este caso con: Capacitación in-house por área. Política interna por rol. Setup técnico enterprise." } },
+      { "@type": "Question", "name": "Quiero implementar IA en mis operaciones sin meterme en problemas", "acceptedAnswer": { "@type": "Answer", "text": "Hay un caso de uso real. Hay un modelo. Falta el envoltorio legal y operativo. En el área IA Aplicada y Automatizaciones, abordamos este caso con: Diseño del caso de uso con compliance integrado. Selección de vendor con due diligence. Guardrails técnicos y legales." } },
+      { "@type": "Question", "name": "Necesito automatizar procesos repetitivos en mi negocio", "acceptedAnswer": { "@type": "Answer", "text": "Cada hora ahorrada en operación es una hora más para vender. En el área IA Aplicada y Automatizaciones, abordamos este caso con: Diagnóstico de procesos. Diseño con n8n, Make, Zapier o stack custom. Integración con sistemas existentes." } },
+      { "@type": "Question", "name": "Quiero un agente IA que atienda a mis clientes", "acceptedAnswer": { "@type": "Answer", "text": "El agente puede atender 24/7. Pero también puede decir tonterías legalmente costosas. En el área IA Aplicada y Automatizaciones, abordamos este caso con: Diseño del scope del agente. Guardrails y disclaimers efectivos. Log de conversaciones para auditoría." } },
+      { "@type": "Question", "name": "Ya uso IA y quiero saber si estoy expuesto", "acceptedAnswer": { "@type": "Answer", "text": "Si llevas más de un año usando IA y nunca lo revisaste, hay deuda técnica-legal. En el área IA Aplicada y Automatizaciones, abordamos este caso con: Auditoría de uso actual por proceso. Mapa de riesgos legales y operativos. Plan de remediación priorizado." } }
+    ]
+  },
+  "redes-reputacion": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://delvayasociados.com/servicios/redes-reputacion#faqpage",
+    "url": "https://delvayasociados.com/servicios/redes-reputacion",
+    "mainEntity": [
+      { "@type": "Question", "name": "Me robaron la cuenta de Instagram / TikTok con miles de seguidores", "acceptedAnswer": { "@type": "Answer", "text": "Tu cuenta es patrimonio. Cuando la roban, no se pierde solo el acceso — se pierde el negocio. En el área Redes Sociales y Reputación Digital, abordamos este caso con: Reporte urgente y escalado a contactos directos en Meta, TikTok, Google. Paquete legal de propiedad de la cuenta. Negociación con el atacante cuando hay vía." } },
+      { "@type": "Question", "name": "Hicieron un deepfake conmigo y necesito que baje YA", "acceptedAnswer": { "@type": "Answer", "text": "Necesitas que ese video desaparezca antes del lunes. Lo entendemos. En el área Redes Sociales y Reputación Digital, abordamos este caso con: Takedown urgente plataforma por plataforma. Denuncia ante INAI, FGR y autoridades análogas. Medidas de protección y orden de no acercamiento." } },
+      { "@type": "Question", "name": "Alguien creó perfiles falsos con mi identidad", "acceptedAnswer": { "@type": "Answer", "text": "Tu nombre, tus fotos, tu vida — usadas por alguien más para estafar. En el área Redes Sociales y Reputación Digital, abordamos este caso con: Takedown coordinado multi-plataforma. Investigación de origen. Denuncia penal por usurpación." } },
+      { "@type": "Question", "name": "Hay contenido difamatorio sobre mí que no se va", "acceptedAnswer": { "@type": "Answer", "text": "Una nota mentirosa. Un thread viral. Un foro que no modera. Todo eso es manejable. En el área Redes Sociales y Reputación Digital, abordamos este caso con: Cease and desist al autor y a la plataforma. Demanda civil por daño moral. SEO inverso y derecho al olvido." } },
+      { "@type": "Question", "name": "Bajar fotos/videos íntimos publicados sin consentimiento", "acceptedAnswer": { "@type": "Answer", "text": "Revenge porn, sextorsión, contenido íntimo filtrado. Hay vías legales — y son urgentes. En el área Redes Sociales y Reputación Digital, abordamos este caso con: Takedown urgente vía protocolos especializados (NCII, StopNCII). Denuncia penal (Ley Olimpia y análogas). Medidas cautelares y protección." } },
+      { "@type": "Question", "name": "Quiero negociar la recuperación de una cuenta que vendieron sin mi consentimiento", "acceptedAnswer": { "@type": "Answer", "text": "Tu cuenta fue tomada y revendida. Sí hay forma de recuperarla — incluso negociando. En el área Redes Sociales y Reputación Digital, abordamos este caso con: Negociación documentada con quien tiene posesión. Reporte coordinado a plataforma con evidencia de origen. Acción civil y penal según corresponda." } }
+    ]
+  },
+  "inteligencia-artificial": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://delvayasociados.com/servicios/inteligencia-artificial#faqpage",
+    "url": "https://delvayasociados.com/servicios/inteligencia-artificial",
+    "mainEntity": [
+      { "@type": "Question", "name": "Una IA generó algo demasiado parecido a lo mío", "acceptedAnswer": { "@type": "Answer", "text": "Tu estilo es identificable. Y ahora cualquiera lo puede replicar con un prompt. En el área IA y Derechos Digitales, abordamos este caso con: Notificación formal a plataforma y entrenador. Cease-and-desist técnico y legal. Registro defensivo de estilo, voz y marca asociada." } },
+      { "@type": "Question", "name": "Mi empresa usa IA y tengo miedo de que nos demanden", "acceptedAnswer": { "@type": "Answer", "text": "Generaste con IA. ¿Quién es dueño? ¿Y si el output infringe? En el área IA y Derechos Digitales, abordamos este caso con: Política de uso de IA por rol. Contratos de licencia e indemnización con vendors. Due diligence técnica-legal de modelos." } },
+      { "@type": "Question", "name": "Hice algo con IA y quiero protegerlo legalmente", "acceptedAnswer": { "@type": "Answer", "text": "IMPI e INPI no registran obras hechas por máquinas. Pero hay vías. En el área IA y Derechos Digitales, abordamos este caso con: Estrategia de autoría híbrida documentada. Registro de la parte humana (proceso, selecciones, edits). Contratos de cesión y co-autoría." } },
+      { "@type": "Question", "name": "Quiero denunciar penalmente un deepfake en mi contra", "acceptedAnswer": { "@type": "Answer", "text": "No solo bajar el contenido. Que haya consecuencias para quien lo hizo. En el área IA y Derechos Digitales, abordamos este caso con: Investigación forense del origen. Denuncia penal con narrativa técnica. Coordinación con autoridades cibernéticas." } },
+      { "@type": "Question", "name": "Mi empresa va a usar IA seriamente y necesita compliance", "acceptedAnswer": { "@type": "Answer", "text": "El AI Act europeo y los marcos análogos llegan. Mejor preparados que sorprendidos. En el área IA y Derechos Digitales, abordamos este caso con: Mapeo AI Act / marcos análogos por jurisdicción. Clasificación de riesgo del sistema. Documentación técnica obligatoria y registro." } }
+    ]
+  },
+  "web3-cripto": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://delvayasociados.com/servicios/web3-cripto#faqpage",
+    "url": "https://delvayasociados.com/servicios/web3-cripto",
+    "mainEntity": [
+      { "@type": "Question", "name": "Quieres lanzar un token y no sabes si es security", "acceptedAnswer": { "@type": "Answer", "text": "Tres jurisdicciones, dos legislaciones, una ronda al borde. En el área Web3, Cripto y Tokenización, abordamos este caso con: Análisis Howey/Reves del token específico. Estructura corporativa multi-juris. Opinión legal de no-security firmada." } },
+      { "@type": "Question", "name": "Tu DAO necesita firmar contratos y abrir cuentas", "acceptedAnswer": { "@type": "Answer", "text": "La red gobierna, pero alguien tiene que poder ir a tribunales. En el área Web3, Cripto y Tokenización, abordamos este caso con: Vehículo legal por encima del protocolo. Estatutos espejo de la gobernanza on-chain. Setup operativo: bancos, contabilidad, contratos laborales." } },
+      { "@type": "Question", "name": "Tu smart contract tuvo un bug y un usuario perdió dinero", "acceptedAnswer": { "@type": "Answer", "text": "Cuando el código falla, el código fuente no es eximente. En el área Web3, Cripto y Tokenización, abordamos este caso con: Defensa contractual y deslinde técnico-legal. Plan de comunicación pública. Gestión escalonada de reclamos." } },
+      { "@type": "Question", "name": "La CNBV o el regulador te identificó como VASP", "acceptedAnswer": { "@type": "Answer", "text": "Te llegó un oficio. Tienes 15 días. En el área Web3, Cripto y Tokenización, abordamos este caso con: Análisis y respuesta formal en plazo. Plan de regularización. Programa AML/KYC proporcional." } },
+      { "@type": "Question", "name": "Quieres tokenizar un activo real (inmueble, arte, fondo)", "acceptedAnswer": { "@type": "Answer", "text": "El activo es físico. El comprobante es un token. Y entre ambos vive el derecho. En el área Web3, Cripto y Tokenización, abordamos este caso con: Diseño legal-financiero de la tokenización. Vehículo SPV con respaldo registral o fiduciario. Smart contract de gobernanza y derechos." } },
+      { "@type": "Question", "name": "Tu proyecto cripto opera en Europa y aplica MiCA", "acceptedAnswer": { "@type": "Answer", "text": "Si tu mercado es europeo, MiCA es tu nuevo lenguaje. En el área Web3, Cripto y Tokenización, abordamos este caso con: Análisis de aplicabilidad MiCA por servicio. Estructura de entidad europea y licencia CASP. Whitepaper conforme + reportes de transparencia." } }
+    ]
+  },
+  "creadores": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://delvayasociados.com/servicios/creadores#faqpage",
+    "url": "https://delvayasociados.com/servicios/creadores",
+    "mainEntity": [
+      { "@type": "Question", "name": "Quiero estructurarme como empresa pero sigo siendo yo", "acceptedAnswer": { "@type": "Answer", "text": "Cobras como persona física y pierdes la mitad. Hay forma legal de no perderla. En el área Creadores y Economía Digital, abordamos este caso con: Estructura corporativa optimizada (LLC, S de RL, holding). Planeación fiscal lícita. Tratados de doble tributación aplicados." } },
+      { "@type": "Question", "name": "Una marca me ofreció un deal con un contrato trampa", "acceptedAnswer": { "@type": "Answer", "text": "Exclusividad de 5 años. Cesión perpetua de imagen. Lo viste por encima. En el área Creadores y Economía Digital, abordamos este caso con: Revisión y renegociación del contrato. Contraoferta de términos justos. Defensa post-firma si ya firmaste." } },
+      { "@type": "Question", "name": "Me están reposteando contenido sin permiso", "acceptedAnswer": { "@type": "Answer", "text": "Cuentas grandes lo bajan en horas. Las pequeñas pueden tomar meses. En el área Creadores y Economía Digital, abordamos este caso con: DMCA estratégico. Takedowns plataforma por plataforma. Demandas cuando aplica." } },
+      { "@type": "Question", "name": "Mi contenido es +18 y la fiscalización está complicada", "acceptedAnswer": { "@type": "Answer", "text": "Bancos cierran. SAT audita. Plataformas exigen W-8BEN. Pasa. En el área Creadores y Economía Digital, abordamos este caso con: Estructura fiscal específica para creators +18. Defensa bancaria documentada. Defensa SAT con narrativa de servicios." } }
+    ]
+  },
+  "propiedad-intelectual": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://delvayasociados.com/servicios/propiedad-intelectual#faqpage",
+    "url": "https://delvayasociados.com/servicios/propiedad-intelectual",
+    "mainEntity": [
+      { "@type": "Question", "name": "Alguien registró mi marca antes que yo", "acceptedAnswer": { "@type": "Answer", "text": "Tu marca lleva años en redes. Hoy aparece registrada por otro. En el área Propiedad Intelectual Digital, abordamos este caso con: Oposición y nulidad ante IMPI/INPI. Prueba de uso anterior documentada. Recuperación o transacción estratégica." } },
+      { "@type": "Question", "name": "Quiero registrar algo que no es 'marca tradicional'", "acceptedAnswer": { "@type": "Answer", "text": "Sonido. Color. Movimiento. NFT. El IMPI lo permite — si sabes pedirlo. En el área Propiedad Intelectual Digital, abordamos este caso con: Estrategia de registro multimedia. Marcas no tradicionales (sonora, tridimensional, movimiento). Derecho de autor combinado." } },
+      { "@type": "Question", "name": "Encontré mi trabajo en otro lado", "acceptedAnswer": { "@type": "Answer", "text": "Tu diseño en una camiseta. Tu foto en un anuncio. Tu canción en TikTok. En el área Propiedad Intelectual Digital, abordamos este caso con: Cease and desist. Licenciamiento retroactivo cuando hay vía. Demanda civil con cálculo de daños." } },
+      { "@type": "Question", "name": "Quiero minar mi obra como NFT (o ya lo hicieron sin mí)", "acceptedAnswer": { "@type": "Answer", "text": "Mintear no es lo mismo que tener derechos. Y a veces alguien mintea lo tuyo. En el área Propiedad Intelectual Digital, abordamos este caso con: Smart-contract de royalties propio. Takedown OpenSea/Rarible/Magic Eden. Plan de minteo defensivo." } }
+    ]
+  },
+  "privacidad-datos": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://delvayasociados.com/servicios/privacidad-datos#faqpage",
+    "url": "https://delvayasociados.com/servicios/privacidad-datos",
+    "mainEntity": [
+      { "@type": "Question", "name": "Tuve una fuga de datos", "acceptedAnswer": { "@type": "Answer", "text": "El reloj corre. 72 horas para notificar. En el área Privacidad y Protección de Datos, abordamos este caso con: Plan de respuesta inmediato. Notificación INAI o regulador análogo. Comunicación con afectados." } },
+      { "@type": "Question", "name": "Mi aviso de privacidad es genérico y peligroso", "acceptedAnswer": { "@type": "Answer", "text": "Copia y pega de hace 5 años. No cubre lo que haces hoy. En el área Privacidad y Protección de Datos, abordamos este caso con: Aviso correcto y específico al flujo real. Mapa de transferencias. DPAs con proveedores." } },
+      { "@type": "Question", "name": "Necesito cumplir LFPDPPP en serio (no en papel)", "acceptedAnswer": { "@type": "Answer", "text": "La ley mexicana es exigente. Y el INAI ya audita en serio. En el área Privacidad y Protección de Datos, abordamos este caso con: Programa integral LFPDPPP documentado. DPO o equivalente designado. Política, avisos, DPAs, registros." } },
+      { "@type": "Question", "name": "Vendo en Europa y necesito GDPR de verdad", "acceptedAnswer": { "@type": "Answer", "text": "GDPR no es una checklist. Es un sistema operativo. En el área Privacidad y Protección de Datos, abordamos este caso con: Programa GDPR end-to-end. Representante UE cuando aplica. DPAs con sub-procesadores." } },
+      { "@type": "Question", "name": "Operamos en varios países y cumplimiento se ramificó", "acceptedAnswer": { "@type": "Answer", "text": "GDPR, LGPD, LFPDPPP, CCPA. Diferentes reglas, mismo cliente. En el área Privacidad y Protección de Datos, abordamos este caso con: Política unificada multi-juris. Roles y responsabilidades documentados. Transferencias internacionales con marco legal." } }
+    ]
+  },
+  "fintech-pagos": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://delvayasociados.com/servicios/fintech-pagos#faqpage",
+    "url": "https://delvayasociados.com/servicios/fintech-pagos",
+    "mainEntity": [
+      { "@type": "Question", "name": "Mi app de pagos creció y ahora aplica Ley Fintech", "acceptedAnswer": { "@type": "Answer", "text": "Pasaste los umbrales sin darte cuenta. Eres ITF, IFPE o ambos. En el área FinTech y Pagos Digitales, abordamos este caso con: Análisis de modelo y umbrales. Registro IFPE/ITF o estructura alternativa. Programa AML/KYC operativo." } },
+      { "@type": "Question", "name": "Me congelaron una cuenta (banco, exchange, procesador)", "acceptedAnswer": { "@type": "Answer", "text": "Alguien decidió y tú no. Esto se pelea. En el área FinTech y Pagos Digitales, abordamos este caso con: Defensa documental. Escalado interno y a compliance. Denuncia regulatoria cuando aplica." } },
+      { "@type": "Question", "name": "Quiero operar un on/off-ramp cripto-fiat", "acceptedAnswer": { "@type": "Answer", "text": "La parte técnica está. La parte legal cambia cada trimestre. En el área FinTech y Pagos Digitales, abordamos este caso con: Estructura multi-juris. Compliance KYC/AML proporcional. Registro y operación coordinada." } },
+      { "@type": "Question", "name": "Quiero emitir una stablecoin local", "acceptedAnswer": { "@type": "Answer", "text": "MXN-pegged, ARS-pegged, COP-pegged: el reto no es técnico. En el área FinTech y Pagos Digitales, abordamos este caso con: Estructura legal de reserva. Opinión regulatoria. Autorización CNBV/Banxico cuando aplica." } }
+    ]
+  },
+  "gaming-esports": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://delvayasociados.com/servicios/gaming-esports#faqpage",
+    "url": "https://delvayasociados.com/servicios/gaming-esports",
+    "mainEntity": [
+      { "@type": "Question", "name": "Conflicto sobre propiedad virtual", "acceptedAnswer": { "@type": "Answer", "text": "El terreno es código. El derecho no lo es. Sí hay forma. En el área Gaming, Metaverso y eSports, abordamos este caso con: Reclamación contractual a plataforma. Defensa de propiedad virtual con evidencia técnica. Recuperación negociada o judicial." } },
+      { "@type": "Question", "name": "Soy jugador profesional y me pasan un contrato", "acceptedAnswer": { "@type": "Answer", "text": "Hay cláusulas estándar en eSports que son tóxicas para el jugador. En el área Gaming, Metaverso y eSports, abordamos este caso con: Revisión exhaustiva del contrato. Renegociación de cláusulas tóxicas. Estructura de ingresos (sueldo, premios, sponsors, streaming)." } },
+      { "@type": "Question", "name": "Tengo un equipo eSports y necesito proteger la marca", "acceptedAnswer": { "@type": "Answer", "text": "Tu logo, tu jersey, tu roster: todo eso es valor que se protege. En el área Gaming, Metaverso y eSports, abordamos este caso con: Registro de marca por clases relevantes. Contratos de imagen con jugadores. Protección internacional vía Madrid." } },
+      { "@type": "Question", "name": "Estoy negociando un patrocinio (como equipo o jugador)", "acceptedAnswer": { "@type": "Answer", "text": "Los sponsors eSports vienen con expectativas que no siempre son razonables. En el área Gaming, Metaverso y eSports, abordamos este caso con: Revisión y negociación del acuerdo. Estructura de pagos (fijo, performance, bonos). Cláusulas de salida y de incumplimiento." } },
+      { "@type": "Question", "name": "Quiero lanzar economía dentro de mi juego", "acceptedAnswer": { "@type": "Answer", "text": "Loot boxes, mercados secundarios, tokens. Cada cosa con regla distinta. En el área Gaming, Metaverso y eSports, abordamos este caso con: Diseño legal de la economía in-game. Opinión multi-juris. T&C robustos y AML proporcional." } },
+      { "@type": "Question", "name": "Mi app de AR captura rostros sin consentimiento explícito", "acceptedAnswer": { "@type": "Answer", "text": "Apuntas la cámara. Identifica. Sube datos. Hay regla para todo eso. En el área Gaming, Metaverso y eSports, abordamos este caso con: Aviso específico biométrico. Consentimiento granular. Limitación de uso y plazos." } }
+    ]
+  },
+  "internacional": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://delvayasociados.com/servicios/internacional#faqpage",
+    "url": "https://delvayasociados.com/servicios/internacional",
+    "mainEntity": [
+      { "@type": "Question", "name": "No sé dónde soy residente fiscal y todos quieren cobrarme", "acceptedAnswer": { "@type": "Answer", "text": "Y los tres países que crees, te quieren clasificar. En el área Transfronterizo y Nómadas Digitales, abordamos este caso con: Análisis CDI por país. Certificados de residencia. Defensa fiscal proactiva." } },
+      { "@type": "Question", "name": "Mi ronda seed cruza varios países y uno la prohíbe", "acceptedAnswer": { "@type": "Answer", "text": "Inversionistas USA, fundadores LatAm, vehículo Caymans. Y un país lo prohíbe. En el área Transfronterizo y Nómadas Digitales, abordamos este caso con: Estructuración cap table multi-juris. Opinión OFAC y sanciones. Vehículos limpios." } },
+      { "@type": "Question", "name": "Necesito o soy un visado de talento", "acceptedAnswer": { "@type": "Answer", "text": "O-1, EB-1, Talento mexicano, golden visa Portugal. Cada uno con su trampa. En el área Transfronterizo y Nómadas Digitales, abordamos este caso con: Estrategia migratoria por perfil. Recopilación de evidencia metodológica. Vehículo legal de soporte (empresa, contrato, sponsor)." } },
+      { "@type": "Question", "name": "Mi negocio cruza T-MEC y hay disputa", "acceptedAnswer": { "@type": "Answer", "text": "Cuando el tratado opera, sabe operar a tu favor. En el área Transfronterizo y Nómadas Digitales, abordamos este caso con: Litigio T-MEC. Análisis arancelario y de contenido regional. Defensa comercial coordinada." } }
+    ]
+  },
+  "otros-casos": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://delvayasociados.com/servicios/otros-casos#faqpage",
+    "url": "https://delvayasociados.com/servicios/otros-casos",
+    "mainEntity": [
+      { "@type": "Question", "name": "Soy médico y mi paciente solo paga lo que cubre el seguro", "acceptedAnswer": { "@type": "Answer", "text": "Pactaste $20,000 por la cesárea. El seguro cubre $6,000. Tu paciente, ya operada, dice que no había nada más. En el área Otros Casos Emergentes, abordamos este caso con: Contrato de prestación de servicios médicos firmado ANTES del procedimiento, con desglose claro de honorarios profesionales separados del paquete hospitalario y los deducibles. Cláusula expresa del saldo a cargo del paciente cuando la aseguradora cubre solo parcialmente, con reconocimiento de adeudo y consentimiento informado financiero. Pagaré o garantía que respalda la diferencia, exigible en vía mercantil si el paciente no paga." } },
+      { "@type": "Question", "name": "Mi caso cruza varias áreas y nadie quiere tomarlo entero", "acceptedAnswer": { "@type": "Answer", "text": "Un mismo asunto: cripto, datos, IA, marca y herencia. Y cada despacho te pasa con otro. En el área Otros Casos Emergentes, abordamos este caso con: Mapa integral del caso y todos sus frentes. Coordinación de especialistas internos y corresponsales. Un solo interlocutor y un solo cronograma." } },
+      { "@type": "Question", "name": "Surgió un problema nuevo que nadie ha resuelto antes", "acceptedAnswer": { "@type": "Answer", "text": "La regla no existe. El precedente tampoco. Pero el caso es real y urgente. En el área Otros Casos Emergentes, abordamos este caso con: Análisis de derecho comparado y soft-law aplicable. Estrategia jurídica de vanguardia documentada. Coordinación con academia y reguladores cuando aplica." } },
+      { "@type": "Question", "name": "Tengo un proyecto raro que necesita asesoría exploratoria", "acceptedAnswer": { "@type": "Answer", "text": "Antes de gastar 200 mil dólares en desarrollo, quieres saber si es viable legalmente. En el área Otros Casos Emergentes, abordamos este caso con: Feasibility legal del modelo de negocio. Mapa regulatorio multi-juris. Identificación temprana de bloqueadores." } },
+      { "@type": "Question", "name": "Necesito una segunda opinión jurídica especializada en tech", "acceptedAnswer": { "@type": "Answer", "text": "Tu despacho actual te dio una opinión. Antes de actuar, quieres una segunda mirada. En el área Otros Casos Emergentes, abordamos este caso con: Revisión independiente con criterio especializado. Opinión escrita formal cuando se requiere. Recomendación clara: confirmar, ajustar o disentir." } },
+      { "@type": "Question", "name": "Esto va a ser problema en 6 meses, lo quiero prevenir", "acceptedAnswer": { "@type": "Answer", "text": "Ves venir el regulador, el competidor, la disputa. Quieres llegar antes. En el área Otros Casos Emergentes, abordamos este caso con: Monitoreo regulatorio activo del vertical. Plan de adaptación pre-vigencia. Defensas preparadas y archivos respaldados." } }
+    ]
+  }
+}

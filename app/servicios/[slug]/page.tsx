@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { areas, getArea } from "../../lib/servicios";
 import AreaClient from "./AreaClient";
+import SchemaJsonLd from "../../components/SchemaJsonLd";
+import schemaServicios from "../../lib/schemas/servicios.json";
 
 export function generateStaticParams() {
   return areas.map((a) => ({ slug: a.slug }));
@@ -14,6 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${a.i18n.es!.title} — Delva & Asociados`,
     description: a.i18n.es!.short,
+    alternates: { canonical: `/servicios/${a.slug}` },
     openGraph: {
       title: a.i18n.es!.title,
       description: a.i18n.es!.short
@@ -27,5 +30,11 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
   if (!area) notFound();
   const index = areas.findIndex((a) => a.slug === slug);
   const next = areas[(index + 1) % areas.length];
-  return <AreaClient area={area} next={next} />;
+  const servicioSchema = (schemaServicios as Record<string, unknown>)[area.slug];
+  return (
+    <>
+      {servicioSchema ? <SchemaJsonLd data={servicioSchema} id={`schema-servicio-${area.slug}`} /> : null}
+      <AreaClient area={area} next={next} />
+    </>
+  );
 }
