@@ -36,7 +36,8 @@ export type Dict = {
     explore: string;
     contact: string;
     legal: string;
-    legalLinks: string[];
+    legalLinks: { label: string; href: string }[];
+    cookieManager: string;
     rights: string;
     social: string;
     manifiesto: string;
@@ -130,7 +131,12 @@ export const dict: Record<Locale, Dict> = {
       explore: "Servicios",
       contact: "Contacto",
       legal: "Aviso",
-      legalLinks: ["Política de privacidad", "Términos de uso", "Cookies"],
+      legalLinks: [
+        { label: "Política de privacidad", href: "/privacidad" },
+        { label: "Términos de uso", href: "/terminos" },
+        { label: "Cookies", href: "/cookies" }
+      ],
+      cookieManager: "Gestionar cookies",
       rights: "Todos los derechos reservados.",
       social: "Síguenos",
       manifiesto: "Manifiesto"
@@ -229,7 +235,12 @@ export const dict: Record<Locale, Dict> = {
       explore: "Services",
       contact: "Contact",
       legal: "Legal",
-      legalLinks: ["Privacy policy", "Terms of use", "Cookies"],
+      legalLinks: [
+        { label: "Privacy policy", href: "/privacidad" },
+        { label: "Terms of use", href: "/terminos" },
+        { label: "Cookies", href: "/cookies" }
+      ],
+      cookieManager: "Manage cookies",
       rights: "All rights reserved.",
       social: "Follow us",
       manifiesto: "Manifesto"
@@ -328,7 +339,12 @@ export const dict: Record<Locale, Dict> = {
       explore: "Services",
       contact: "Contact",
       legal: "Mentions",
-      legalLinks: ["Politique de confidentialité", "Conditions d'utilisation", "Cookies"],
+      legalLinks: [
+        { label: "Politique de confidentialité", href: "/privacidad" },
+        { label: "Conditions d'utilisation", href: "/terminos" },
+        { label: "Cookies", href: "/cookies" }
+      ],
+      cookieManager: "Gérer les cookies",
       rights: "Tous droits réservés.",
       social: "Suivez-nous",
       manifiesto: "Manifeste"

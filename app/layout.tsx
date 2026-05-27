@@ -5,6 +5,8 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
 import Cursor from "./components/Cursor";
+import CookieBanner from "./components/CookieBanner";
+import CloudflareAnalytics from "./components/CloudflareAnalytics";
 import { I18nProvider } from "./i18n/I18nProvider";
 
 const instrumentSerif = Instrument_Serif({
@@ -64,6 +66,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <SmoothScroll />
           <Cursor />
           {children}
+          <CloudflareAnalytics />
+          <CookieBanner />
         </I18nProvider>
       </body>
     </html>
