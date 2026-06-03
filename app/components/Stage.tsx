@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
 import { BrandSigil, Wordmark } from "./Mark";
 import { useI18n } from "../i18n/I18nProvider";
 
@@ -16,6 +15,7 @@ export default function Stage() {
   const sigilRef = useRef<HTMLDivElement>(null);
   const wordmarkRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
+  const gsapRef = useRef<any>(null);
   const [active, setActive] = useState<boolean | null>(null);
 
   useEffect(() => {
@@ -48,34 +48,51 @@ export default function Stage() {
   useEffect(() => {
     if (!active) return;
 
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    let cancelled = false;
+    let tl: { kill(): void } | null = null;
 
-    const lines = linesRef.current.filter(Boolean) as HTMLSpanElement[];
+    // GSAP se carga de forma diferida (sale del bundle inicial). Si no carga,
+    // salimos de la intro para no dejar el overlay bloqueando el sitio.
+    import("gsap")
+      .then(({ default: gsap }) => {
+        if (cancelled) return;
+        gsapRef.current = gsap;
 
-    gsap.set(lines, { opacity: 0, y: 24, filter: "blur(8px)" });
-    gsap.set(revealRef.current, { opacity: 0, y: 16 });
-    gsap.set(sigilRef.current, { opacity: 0, scale: 0.9 });
-    gsap.set(wordmarkRef.current, { opacity: 0, y: 10 });
+        const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+        tl = timeline;
 
-    const per = 1.05;
-    const totalSec = lines.length * per + 2.2;
+        const lines = linesRef.current.filter(Boolean) as HTMLSpanElement[];
 
-    tl.to(progressRef.current, { scaleX: 1, duration: totalSec - 0.3, ease: "none" }, 0);
+        gsap.set(lines, { opacity: 0, y: 24, filter: "blur(8px)" });
+        gsap.set(revealRef.current, { opacity: 0, y: 16 });
+        gsap.set(sigilRef.current, { opacity: 0, scale: 0.9 });
+        gsap.set(wordmarkRef.current, { opacity: 0, y: 10 });
 
-    lines.forEach((el, i) => {
-      tl.to(el, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.65 }, i * per);
-      tl.to(el, { opacity: 0, y: -16, filter: "blur(6px)", duration: 0.45 }, i * per + 0.7);
-    });
+        const per = 1.05;
+        const totalSec = lines.length * per + 2.2;
 
-    const after = lines.length * per;
-    tl.to(revealRef.current, { opacity: 1, y: 0, duration: 0.8 }, after - 0.15)
-      .to(sigilRef.current, { opacity: 1, scale: 1, duration: 1.0, ease: "expo.out" }, after + 0.05)
-      .to(wordmarkRef.current, { opacity: 1, y: 0, duration: 0.7 }, after + 0.45)
-      .to(stageRef.current, { opacity: 0, duration: 0.7, ease: "power2.inOut" }, after + 1.55)
-      .add(() => exit(true), after + 2.2);
+        timeline.to(progressRef.current, { scaleX: 1, duration: totalSec - 0.3, ease: "none" }, 0);
+
+        lines.forEach((el, i) => {
+          timeline.to(el, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.65 }, i * per);
+          timeline.to(el, { opacity: 0, y: -16, filter: "blur(6px)", duration: 0.45 }, i * per + 0.7);
+        });
+
+        const after = lines.length * per;
+        timeline
+          .to(revealRef.current, { opacity: 1, y: 0, duration: 0.8 }, after - 0.15)
+          .to(sigilRef.current, { opacity: 1, scale: 1, duration: 1.0, ease: "expo.out" }, after + 0.05)
+          .to(wordmarkRef.current, { opacity: 1, y: 0, duration: 0.7 }, after + 0.45)
+          .to(stageRef.current, { opacity: 0, duration: 0.7, ease: "power2.inOut" }, after + 1.55)
+          .add(() => exit(true), after + 2.2);
+      })
+      .catch(() => {
+        if (!cancelled) exit(true);
+      });
 
     return () => {
-      tl.kill();
+      cancelled = true;
+      tl?.kill();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
@@ -94,6 +111,11 @@ export default function Stage() {
   };
 
   const skip = () => {
+    const gsap = gsapRef.current;
+    if (!gsap) {
+      exit(true);
+      return;
+    }
     gsap.to(stageRef.current, {
       opacity: 0,
       duration: 0.45,
@@ -150,18 +172,18 @@ export default function Stage() {
                   linesRef.current[i] = el;
                 }}
                 className="absolute font-serif text-[clamp(1.85rem,7vw,5.25rem)] md:text-d-3 leading-[0.98] md:leading-[0.95] text-balance px-2 sm:px-4"
-                style={{ fontWeight: 400 }}
+                style={{ fontWeight: 400, opacity: 0 }}
               >
                 {p}
               </span>
             ))}
           </div>
 
-          <div ref={revealRef} className="mt-12 md:mt-20">
+          <div ref={revealRef} className="mt-12 md:mt-20" style={{ opacity: 0 }}>
             <p className="font-mono text-[11px] uppercase tracking-[0.32em] opacity-65">
               {t.stage.reveal}
             </p>
-            <div ref={sigilRef} className="flex justify-center mt-8 md:mt-12">
+            <div ref={sigilRef} className="flex justify-center mt-8 md:mt-12" style={{ opacity: 0 }}>
               <span style={{ width: 120, height: 120 }} className="block">
                 <BrandSigil />
               </span>
@@ -171,7 +193,7 @@ export default function Stage() {
               <span className="block w-1 h-1 rounded-full bg-bone" />
               <span className="block w-10 h-px bg-bone" />
             </div>
-            <div ref={wordmarkRef} className="mt-6 md:mt-8">
+            <div ref={wordmarkRef} className="mt-6 md:mt-8" style={{ opacity: 0 }}>
               <Wordmark className="text-[13px] md:text-[15px]" />
             </div>
           </div>
