@@ -65,9 +65,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="es"
+      suppressHydrationWarning
       className={`${instrumentSerif.variable} ${GeistSans.variable} ${GeistMono.variable}`}
     >
       <head>
+        {/* Ajusta <html lang> al idioma de la ruta (/en, /fr) antes del primer
+            paint, para lectores de pantalla y herramientas que no esperan al JS
+            de React. El HTML servido usa "es" por defecto y este script lo
+            corrige al instante. (El SSR 100% por idioma requeriría migrar a
+            app/[locale]; ver nota en el PR.) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{var s=location.pathname.split('/').filter(Boolean)[0];document.documentElement.lang=(s==='en'||s==='fr')?s:'es';}catch(e){}})();"
+          }}
+        />
         <SchemaJsonLd data={schemaMain} id="schema-main" />
       </head>
       <body className="antialiased no-cursor">
