@@ -28,7 +28,19 @@ export async function generateMetadata({
     title: `${pc.title} — Delva & Asociados`,
     description: pc.hook,
     alternates: { canonical: `/servicios/${slug}/${problema}` },
+    // openGraph parcial REEMPLAZA el del root (merge superficial de Next),
+    // así que hay que declararlo completo o se pierde og:image al compartir.
     openGraph: {
+      title: pc.title,
+      description: pc.hook,
+      url: `/servicios/${slug}/${problema}`,
+      type: "website",
+      locale: "es_MX",
+      siteName: "Delva & Asociados",
+      images: ["/opengraph-image"]
+    },
+    twitter: {
+      card: "summary_large_image",
       title: pc.title,
       description: pc.hook
     }
