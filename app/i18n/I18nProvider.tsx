@@ -38,18 +38,15 @@ export function I18nProvider({ children }: { children: ReactNode }) {
       } catch {}
       return;
     }
-    // 2) Rutas en raíz: fallback a la preferencia guardada o navegador.
+    // 2) Rutas en raíz: solo respetar una preferencia EXPLÍCITA previa
+    //    (localStorage del switcher). No usar navigator.language: el renderer
+    //    de Googlebot corre en en-US y re-renderizaba en inglés el contenido
+    //    de las URLs canónicas ES (home + /servicios/*), indexándolas mal.
     try {
       const stored = window.localStorage.getItem(STORAGE_KEY) as Locale | null;
       if (stored && locales.includes(stored)) {
         setLocaleState(stored);
         document.documentElement.lang = stored;
-        return;
-      }
-      const nav = (navigator.language || "es").slice(0, 2).toLowerCase() as Locale;
-      if (locales.includes(nav)) {
-        setLocaleState(nav);
-        document.documentElement.lang = nav;
       }
     } catch {}
   }, [pathname, pathLocale]);

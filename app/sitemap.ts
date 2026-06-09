@@ -8,7 +8,10 @@ import { areas } from "./lib/servicios";
 // /servicios y subpaths siguen solo en ES por ahora (postpuesto a otro sprint).
 
 const SITE = "https://delvayasociados.com";
-const LASTMOD = new Date();
+// Fecha del último cambio real de contenido/metadata — actualizar al publicar
+// cambios sustantivos. Antes era new Date() y cada build "mentía" que las 100
+// URLs acababan de cambiar, lo que hace que Google ignore la señal.
+const LASTMOD = new Date("2026-06-04");
 
 function buildAlternates(esPath: string): { languages: Record<string, string> } {
   return {
