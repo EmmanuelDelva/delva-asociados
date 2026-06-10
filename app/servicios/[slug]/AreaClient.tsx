@@ -110,7 +110,9 @@ export default function AreaClient({ area, next }: { area: Area; next: Area }) {
 
           <div className="grid grid-cols-12 gap-6 items-end">
             <div className="col-span-12 md:col-span-2" data-hero-anim>
-              <span className={`block font-mono text-[clamp(3.5rem,12vw,5.5rem)] md:text-[6.5rem] leading-[0.85] text-bone/30`} style={{ fontWeight: 400 }}>
+              {/* Numeral decorativo: a 2.5:1 de contraste no pasa AA, así que
+                  se oculta a tecnologías de asistencia en vez de aclararlo. */}
+              <span aria-hidden className={`block font-mono text-[clamp(3.5rem,12vw,5.5rem)] md:text-[6.5rem] leading-[0.85] text-bone/30`} style={{ fontWeight: 400 }}>
                 {area.num}
               </span>
             </div>

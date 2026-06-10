@@ -6,35 +6,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { Wordmark } from "./Mark";
 import { useI18n } from "../i18n/I18nProvider";
 import { locales, type Locale } from "../i18n/dict";
+import { applyLocaleToPath, localizeHref } from "../i18n/paths";
 import { areas, getAreaContent } from "../lib/servicios";
-
-// Rutas que tienen variantes /en y /fr (las institucionales + legales).
-// /servicios/* sigue solo en ES por ahora — postpone migración trilingüe.
-const I18N_PATHS = new Set([
-  "",
-  "despacho",
-  "manifiesto",
-  "contacto",
-  "privacidad",
-  "terminos",
-  "cookies"
-]);
-
-function stripLocalePrefix(pathname: string): string {
-  const parts = pathname.split("/").filter(Boolean);
-  if (parts[0] === "en" || parts[0] === "fr") parts.shift();
-  return "/" + parts.join("/");
-}
-
-function applyLocaleToPath(pathname: string, locale: Locale): string {
-  const cleanPath = stripLocalePrefix(pathname);
-  const firstSeg = cleanPath.split("/").filter(Boolean)[0] || "";
-  // Solo aplicar prefix de locale si la ruta tiene variante traducida.
-  // Si es /servicios/... o similar, mantener ES (sin prefix).
-  if (!I18N_PATHS.has(firstSeg)) return cleanPath;
-  if (locale === "es") return cleanPath === "" ? "/" : cleanPath;
-  return `/${locale}${cleanPath === "/" ? "" : cleanPath}`;
-}
 
 export default function Nav() {
   const { locale, setLocale, t } = useI18n();
@@ -101,7 +74,7 @@ export default function Nav() {
     >
       <div className="relative mx-auto flex items-center justify-between gap-2 max-w-[1500px] pl-4 pr-3 md:pl-7 md:pr-5 py-3 md:py-3.5">
         <Link
-          href="/"
+          href={applyLocaleToPath("/", locale)}
           className="flex items-center pl-1 group shrink-0"
           aria-label="Delva & Asociados — Inicio"
         >
@@ -109,7 +82,18 @@ export default function Nav() {
         </Link>
 
         <nav className="hidden lg:flex items-center gap-0.5 font-mono text-[10.5px] uppercase tracking-[0.2em]">
-          <div className="relative" onMouseEnter={openServicios} onMouseLeave={closeServiciosSoon}>
+          <div
+            className="relative"
+            onMouseEnter={openServicios}
+            onMouseLeave={closeServiciosSoon}
+            // onFocus/onBlur burbujean (focusin/focusout en React): tabular al
+            // trigger o dentro del panel lo mantiene abierto; salir lo cierra.
+            onFocus={openServicios}
+            onBlur={closeServiciosSoon}
+            onKeyDown={(e) => {
+              if (e.key === "Escape") setOpen(null);
+            }}
+          >
             <Link
               href="/servicios"
               className="px-3 py-1.5 opacity-80 hover:opacity-100 transition-opacity duration-300 flex items-center gap-1.5"
@@ -145,7 +129,7 @@ export default function Nav() {
                 </div>
                 <div className="mt-3 pt-3 border-t border-current/15">
                   <Link
-                    href="/#areas"
+                    href={localizeHref("/#areas", locale)}
                     onClick={() => setOpen(null)}
                     className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.22em] opacity-70 hover:opacity-100 px-3 py-1.5"
                   >
@@ -157,10 +141,10 @@ export default function Nav() {
             )}
           </div>
 
-          <Link href="/despacho" className="px-3 py-1.5 opacity-80 hover:opacity-100 transition-opacity duration-300">
+          <Link href={applyLocaleToPath("/despacho", locale)} className="px-3 py-1.5 opacity-80 hover:opacity-100 transition-opacity duration-300">
             {t.nav.nosotros}
           </Link>
-          <Link href="/contacto" className="px-3 py-1.5 opacity-80 hover:opacity-100 transition-opacity duration-300">
+          <Link href={applyLocaleToPath("/contacto", locale)} className="px-3 py-1.5 opacity-80 hover:opacity-100 transition-opacity duration-300">
             {t.nav.contacto}
           </Link>
         </nav>
@@ -181,7 +165,7 @@ export default function Nav() {
             ))}
           </div>
           <Link
-            href="/contacto"
+            href={applyLocaleToPath("/contacto", locale)}
             className={`hidden md:inline-flex items-center gap-1.5 font-mono text-[10.5px] uppercase tracking-[0.18em] rounded-full px-3.5 py-2 transition-all duration-500 ${
               onDark ? "bg-bone text-forest hover:bg-ember" : "bg-ink text-bone hover:bg-forest"
             }`}
@@ -225,21 +209,21 @@ export default function Nav() {
           </div>
           <div className="mt-5 grid grid-cols-3 gap-2">
             <Link
-              href="/despacho"
+              href={applyLocaleToPath("/despacho", locale)}
               onClick={() => setOpen(null)}
               className="font-mono text-[10px] uppercase tracking-[0.2em] py-2.5 rounded-full border border-current/30 text-center"
             >
               {t.nav.nosotros}
             </Link>
             <Link
-              href="/contacto"
+              href={applyLocaleToPath("/contacto", locale)}
               onClick={() => setOpen(null)}
               className="font-mono text-[10px] uppercase tracking-[0.2em] py-2.5 rounded-full border border-current/30 text-center"
             >
               {t.nav.contacto}
             </Link>
             <Link
-              href="/manifiesto"
+              href={applyLocaleToPath("/manifiesto", locale)}
               onClick={() => setOpen(null)}
               className="font-mono text-[10px] uppercase tracking-[0.2em] py-2.5 rounded-full border border-current/30 text-center"
             >
@@ -247,7 +231,7 @@ export default function Nav() {
             </Link>
           </div>
           <Link
-            href="/contacto"
+            href={applyLocaleToPath("/contacto", locale)}
             onClick={() => setOpen(null)}
             className={`mt-3 inline-flex w-full items-center justify-center gap-1.5 font-mono text-[10.5px] uppercase tracking-[0.2em] rounded-full px-4 py-3 ${
               onDark ? "bg-bone text-forest" : "bg-ink text-bone"

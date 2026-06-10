@@ -12,6 +12,22 @@ export const metadata: Metadata = {
       fr: "/fr/despacho",
       "x-default": "/despacho"
     }
+  },
+  // openGraph parcial REEMPLAZA el del root (merge superficial de Next),
+  // así que hay que declararlo completo o se pierde og:image al compartir.
+  openGraph: {
+    title: "Despacho — Delva & Asociados",
+    description: "Conducción: Juan Emmanuel Delva Benavides, Doctor en Derecho, investigador y profesor.",
+    url: "/despacho",
+    type: "website",
+    locale: "es_MX",
+    siteName: "Delva & Asociados",
+    images: ["/opengraph-image"]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Despacho — Delva & Asociados",
+    description: "Conducción: Juan Emmanuel Delva Benavides, Doctor en Derecho, investigador y profesor."
   }
 };
 

@@ -11,10 +11,10 @@ export default function Cursor() {
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const coarse = window.matchMedia("(pointer: coarse)").matches;
-    if (reduce || coarse) {
-      document.body.classList.remove("no-cursor");
-      return;
-    }
+    if (reduce || coarse) return;
+    // El SSR ya no manda "no-cursor": se oculta el cursor nativo solo cuando
+    // el cursor custom realmente va a montarse.
+    document.body.classList.add("no-cursor");
     setActive(true);
 
     let mx = window.innerWidth / 2;
@@ -86,6 +86,7 @@ export default function Cursor() {
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseover", onOver);
       window.removeEventListener("mouseout", onOut);
+      document.body.classList.remove("no-cursor");
     };
   }, []);
 

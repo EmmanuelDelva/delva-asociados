@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { areas, getProblematica } from "../../../lib/servicios";
 import ProblemaClient from "./ProblemaClient";
 import SchemaJsonLd from "../../../components/SchemaJsonLd";
-import schemaFaqs from "../../../lib/schemas/faqs.json";
+import { problemaDescription, withBrandSuffix } from "../../../lib/seo";
 
 export function generateStaticParams() {
   const params: { slug: string; problema: string }[] = [];
@@ -24,15 +24,18 @@ export async function generateMetadata({
   const found = getProblematica(slug, problema);
   if (!found) return { title: "No encontrado · Delva & Asociados" };
   const pc = found.problema.i18n.es!;
+  const description = problemaDescription(pc);
   return {
-    title: `${pc.title} — Delva & Asociados`,
-    description: pc.hook,
+    // Sin sufijo de marca cuando el title base ya es largo (>55 chars):
+    // con sufijo, 57/65 de estas páginas excedían los ~60 chars visibles.
+    title: withBrandSuffix(pc.title),
+    description,
     alternates: { canonical: `/servicios/${slug}/${problema}` },
     // openGraph parcial REEMPLAZA el del root (merge superficial de Next),
     // así que hay que declararlo completo o se pierde og:image al compartir.
     openGraph: {
       title: pc.title,
-      description: pc.hook,
+      description,
       url: `/servicios/${slug}/${problema}`,
       type: "website",
       locale: "es_MX",
@@ -42,7 +45,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: pc.title,
-      description: pc.hook
+      description
     }
   };
 }
@@ -59,11 +62,32 @@ export default async function ProblemaPage({
   const { area, problema: prob } = found;
   const index = area.problematicas.findIndex((p) => p.id === prob.id);
   const next = area.problematicas[(index + 1) % area.problematicas.length];
-  const faqSchema = (schemaFaqs as Record<string, unknown>)[area.slug];
+  // El FAQPage del área se emite en /servicios/[slug] (donde sus preguntas
+  // son visibles); aquí solo va el breadcrumb propio de esta URL.
+  const baseUrl = "https://delvayasociados.com";
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: `${baseUrl}/` },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: area.i18n.es!.title,
+        item: `${baseUrl}/servicios/${area.slug}`
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: prob.i18n.es!.title,
+        item: `${baseUrl}/servicios/${area.slug}/${prob.id}`
+      }
+    ]
+  };
 
   return (
     <>
-      {faqSchema ? <SchemaJsonLd data={faqSchema} id={`schema-faq-${area.slug}`} /> : null}
+      <SchemaJsonLd data={breadcrumbSchema} id={`schema-breadcrumb-${prob.id}`} />
       <ProblemaClient area={area} problema={prob} next={next} />
     </>
   );
