@@ -82,7 +82,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <SchemaJsonLd data={schemaMain} id="schema-main" />
       </head>
-      <body className="antialiased no-cursor">
+      {/* "no-cursor" la añade Cursor.tsx al montar: si el JS falla o no
+          aplica (reduced-motion, touch), el usuario conserva el cursor nativo. */}
+      <body className="antialiased">
         <I18nProvider>
           <SmoothScroll />
           <Cursor />

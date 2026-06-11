@@ -6,6 +6,12 @@
       "runtimeExecutable": "node",
       "runtimeArgs": ["node_modules/next/dist/bin/next", "dev", "-p", "3015"],
       "port": 3015
+    },
+    {
+      "name": "delva-prod",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["node_modules/next/dist/bin/next", "start", "-p", "3016"],
+      "port": 3016
     }
   ]
 }

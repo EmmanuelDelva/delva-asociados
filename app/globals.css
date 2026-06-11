@@ -28,6 +28,13 @@
   p {
     text-wrap: pretty;
   }
+
+  /* Anillo de foco de marca (ember): visible sobre forest y sobre bone.
+     Solo con navegación por teclado — :focus-visible no salta con click. */
+  :focus-visible {
+    outline: 2px solid oklch(0.72 0.155 50);
+    outline-offset: 3px;
+  }
 }
 
 @layer utilities {

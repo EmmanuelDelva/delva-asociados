@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { BrandSigil, Wordmark } from "./Mark";
 import { useI18n } from "../i18n/I18nProvider";
+import { applyLocaleToPath, localizeHref } from "../i18n/paths";
 import { areas, getAreaContent } from "../lib/servicios";
 
 function FacebookIcon({ size = 18 }: { size?: number }) {
@@ -24,7 +25,7 @@ export default function Footer() {
       <div className="px-6 md:px-12 lg:px-20">
         <div className="grid grid-cols-12 gap-6 border-t border-ink/15 pt-12">
           <div className="col-span-12 md:col-span-5">
-            <Link href="/" className="inline-flex items-center gap-5 group" aria-label="Delva & Asociados">
+            <Link href={applyLocaleToPath("/", locale)} className="inline-flex items-center gap-5 group" aria-label="Delva & Asociados">
               <span
                 style={{ width: 84, height: 84 }}
                 className="block shrink-0 text-ink/85 transition-colors duration-500 group-hover:text-ink"
@@ -81,7 +82,7 @@ export default function Footer() {
                 );
               })}
               <li>
-                <Link href="/#areas" className="font-mono uppercase tracking-widest text-[10.5px] text-ink-mute hover:text-ink transition-colors">
+                <Link href={localizeHref("/#areas", locale)} className="font-mono uppercase tracking-widest text-[10.5px] text-ink-mute hover:text-ink transition-colors">
                   {t.nav.submenuExplore} →
                 </Link>
               </li>
@@ -104,12 +105,12 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <Link href="/despacho" className="hover:text-ink transition-colors">
+                <Link href={applyLocaleToPath("/despacho", locale)} className="hover:text-ink transition-colors">
                   {t.nav.nosotros}
                 </Link>
               </li>
               <li>
-                <Link href="/manifiesto" className="hover:text-ink transition-colors">
+                <Link href={applyLocaleToPath("/manifiesto", locale)} className="hover:text-ink transition-colors">
                   {t.footer.manifiesto}
                 </Link>
               </li>
@@ -124,7 +125,7 @@ export default function Footer() {
           <span>© MMXXV — Delva &amp; Asociados · {t.footer.rights}</span>
           <div className="flex flex-wrap gap-4">
             {t.footer.legalLinks.map((l) => (
-              <Link key={l.href} href={l.href} className="hover:text-ink transition-colors">
+              <Link key={l.href} href={applyLocaleToPath(l.href, locale)} className="hover:text-ink transition-colors">
                 {l.label}
               </Link>
             ))}
